@@ -69,17 +69,17 @@ y_pred_str = label_encoder.inverse_transform(y_pred)
 print("🔮 Predicted categories (first 5):", y_pred_str[:5])
 
 # === 💾 Save all model artifacts ===
-os.makedirs("model", exist_ok=True)
-with open('model/xgb_model.pkl', 'wb') as f:
+os.makedirs("ml", exist_ok=True)
+with open('ml/xgb_model.pkl', 'wb') as f:
     pickle.dump(model, f)
 
-with open('model/tfidf_vectorizer.pkl', 'wb') as f:
+with open('ml/tfidf_vectorizer.pkl', 'wb') as f:
     pickle.dump(vectorizer, f)
 
-with open('model/label_encoder.pkl', 'wb') as f:
+with open('ml/label_encoder.pkl', 'wb') as f:
     pickle.dump(label_encoder, f)
 
-with open('model/amount_scaler.pkl', 'wb') as f:
+with open('ml/amount_scaler.pkl', 'wb') as f:
     pickle.dump(scaler, f)
 
-print("✅ Model, vectorizer, encoder, and scaler saved in 'model/' directory.")
+print("✅ Model, vectorizer, encoder, and scaler saved in 'ml/' directory.")
