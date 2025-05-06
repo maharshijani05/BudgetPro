@@ -1,0 +1,2056 @@
+description,amount_inr,category
+UberEats,2167,Food and Dining
+Barbeque Nation,143,Food and Dining
+Zomato Order,1837,Food and Dining
+KFC Bill,304,Food and Dining
+KFC Bill,1151,Food and Dining
+UberEats,5113,Food and Dining
+Dominos Pizza,2304,Food and Dining
+Cafe Coffee Day,2481,Food and Dining
+Swiggy Payment,3249,Food and Dining
+Barbeque Nation,1416,Food and Dining
+UberEats,5326,Food and Dining
+Swiggy Payment,2374,Food and Dining
+Cafe Coffee Day,1072,Food and Dining
+KFC Bill,8538,Food and Dining
+Zomato Order,5934,Food and Dining
+Indian Oil Petrol,2608,Transportation
+Metro Card Recharge,4510,Transportation
+Rapido Payment,1014,Transportation
+Local Bus Pass,4691,Transportation
+Uber Ride,3993,Transportation
+Bharat Petroleum,1757,Transportation
+Ola Cabs,3781,Transportation
+Bharat Petroleum,2625,Transportation
+Bharat Petroleum,3158,Transportation
+Uber Ride,2732,Transportation
+Ajio,2965,Shopping
+Ajio,2124,Shopping
+Myntra Clothing,2806,Shopping
+Nykaa Cosmetics,2472,Shopping
+Shopper's Stop,3576,Shopping
+D-Mart Shopping,3509,Shopping
+Shopper's Stop,1045,Shopping
+Flipkart Order,3165,Shopping
+Nykaa Cosmetics,1751,Shopping
+Shopper's Stop,5015,Shopping
+Gas Bill Mahanagar Gas,1058,Bills and Utilities
+Tata Power Bill,2348,Bills and Utilities
+Gas Bill Mahanagar Gas,960,Bills and Utilities
+Gas Bill Mahanagar Gas,3278,Bills and Utilities
+Electricity Bill TNEB,376,Bills and Utilities
+Indane Gas,3208,Bills and Utilities
+JioFiber Payment,2711,Bills and Utilities
+Electricity Bill TNEB,1713,Bills and Utilities
+Gas Bill Mahanagar Gas,559,Bills and Utilities
+Indane Gas,1357,Bills and Utilities
+Water Bill BWSSB,3342,Bills and Utilities
+MTNL Landline,944,Bills and Utilities
+Tata Power Bill,2194,Bills and Utilities
+JioFiber Payment,5048,Bills and Utilities
+Indane Gas,6251,Bills and Utilities
+Sports Match Entry,1593,Entertainment
+Eventbrite Tickets,2318,Entertainment
+Theatre Performance Fee,423,Entertainment
+Theatre Performance Fee,2245,Entertainment
+Las Vegas Casino Entry,2347,Entertainment
+PVR Cinemas Tickets,2261,Entertainment
+PVR Cinemas Tickets,1143,Entertainment
+Eventbrite Tickets,2300,Entertainment
+Sports Match Entry,1433,Entertainment
+Sports Match Entry,669,Entertainment
+Booking.com Hotel,2148,Travel
+EaseMyTrip,1841,Travel
+MakeMyTrip Booking,1707,Travel
+EaseMyTrip,995,Travel
+EaseMyTrip,1537,Travel
+EaseMyTrip,1320,Travel
+OYO Rooms,219,Travel
+Booking.com Hotel,19,Travel
+Yatra Flight,2775,Travel
+Yatra Flight,3353,Travel
+1mg Order,386,Health
+Fortis Healthcare,922,Health
+Fortis Healthcare,2941,Health
+1mg Order,1385,Health
+Yoga Class Fees,1708,Health
+Udemy Course,321,Education
+College Tuition Fee,82,Education
+WhiteHat Jr,1923,Education
+WhiteHat Jr,1538,Education
+Exam Registration Fee,224,Education
+School Books,417,Education
+School Books,1625,Education
+WhiteHat Jr,875,Education
+School Books,895,Education
+College Tuition Fee,3390,Education
+Netflix Renewal,2676,Recharge and Subscriptions
+Amazon Prime,1857,Recharge and Subscriptions
+Hotstar Plan,2277,Recharge and Subscriptions
+Hotstar Plan,2911,Recharge and Subscriptions
+Netflix Renewal,2312,Recharge and Subscriptions
+Wallet Top-Up,1090,Others
+GPay Transaction,313,Others
+NEFT Transfer,292,Others
+GPay Transaction,754,Others
+Service Charge,911,Others
+Account Maintenance Fee,1364,Others
+Service Charge,374,Others
+Unknown Payment,530,Others
+Wallet Top-Up,462,Others
+UPI to Friend,1811,Others
+KFC Bill,3731,Food and Dining
+Cafe Coffee Day,5681,Food and Dining
+Barbeque Nation,2342,Food and Dining
+Starbucks Coffee,4964,Food and Dining
+UberEats,3124,Food and Dining
+UberEats,4928,Food and Dining
+UberEats,4457,Food and Dining
+Barbeque Nation,6895,Food and Dining
+McDonald's,5947,Food and Dining
+Swiggy Payment,37760,Food and Dining
+Fuel Station HP,3994,Transportation
+Auto Fare,62,Transportation
+Uber Ride,731,Transportation
+Metro Card Recharge,3468,Transportation
+Ola Cabs,321,Transportation
+Ola Cabs,6689,Transportation
+Fuel Station HP,13507,Transportation
+Indian Oil Petrol,11767,Transportation
+Fuel Station HP,10178,Transportation
+Bharat Petroleum,3673,Transportation
+Ajio,2640,Shopping
+D-Mart Shopping,684,Shopping
+Ajio,5113,Shopping
+Reliance Trends,5600,Shopping
+Big Bazaar,2388,Shopping
+Ajio,1943,Shopping
+Shopper's Stop,4461,Shopping
+Tata CLiQ,6092,Shopping
+Shopper's Stop,2987,Shopping
+Shopper's Stop,3236,Shopping
+Nykaa Cosmetics,3642,Shopping
+Nykaa Cosmetics,5724,Shopping
+Big Bazaar,1882,Shopping
+D-Mart Shopping,244,Shopping
+Reliance Trends,772,Shopping
+Vodafone Postpaid,432,Bills and Utilities
+Electricity Bill TNEB,2811,Bills and Utilities
+MTNL Landline,292,Bills and Utilities
+Gas Bill Mahanagar Gas,3960,Bills and Utilities
+MTNL Landline,6589,Bills and Utilities
+Water Bill BWSSB,8712,Bills and Utilities
+Electricity Bill TNEB,10581,Bills and Utilities
+Gas Bill Mahanagar Gas,3471,Bills and Utilities
+Tata Power Bill,5,Bills and Utilities
+Vodafone Postpaid,11446,Bills and Utilities
+Eventbrite Tickets,2136,Entertainment
+Fun City Tickets,2791,Entertainment
+Fun City Tickets,6011,Entertainment
+Movie Ticket BookMyShow,1359,Entertainment
+Eventbrite Tickets,6310,Entertainment
+Eventbrite Tickets,1129,Entertainment
+Concert Booking,4592,Entertainment
+Las Vegas Casino Entry,893,Entertainment
+PVR Cinemas Tickets,5512,Entertainment
+Fun City Tickets,13072,Entertainment
+EaseMyTrip,4830,Travel
+Air India,4246,Travel
+Air India,656,Travel
+Booking.com Hotel,5434,Travel
+Yatra Flight,4148,Travel
+Air India,464,Travel
+MakeMyTrip Booking,4474,Travel
+Booking.com Hotel,3137,Travel
+Redbus Ticket,6294,Travel
+MakeMyTrip Booking,7565,Travel
+Fortis Healthcare,487,Health
+Fortis Healthcare,2691,Health
+Apollo Pharmacy,3512,Health
+1mg Order,3111,Health
+1mg Order,5323,Health
+Max Hospital,629,Health
+Fortis Healthcare,388,Health
+1mg Order,3463,Health
+Fortis Healthcare,6569,Health
+MedPlus Medicine,1738,Health
+Unacademy Plan,1660,Education
+Coursera Payment,1477,Education
+Skillshare Learning,915,Education
+Byju's Subscription,2601,Education
+Unacademy Plan,2627,Education
+Udemy Course,2423,Education
+Coursera Payment,1139,Education
+School Books,786,Education
+Udemy Course,1573,Education
+WhiteHat Jr,2203,Education
+Amazon Prime,374,Recharge and Subscriptions
+Airtel Prepaid,4466,Recharge and Subscriptions
+Vodafone Recharge,1828,Recharge and Subscriptions
+Netflix Renewal,777,Recharge and Subscriptions
+Amazon Prime,7900,Recharge and Subscriptions
+Wallet Top-Up,2063,Others
+NEFT Transfer,2175,Others
+GPay Transaction,1191,Others
+Service Charge,539,Others
+NEFT Transfer,796,Others
+NEFT Transfer,1804,Others
+Account Maintenance Fee,1710,Others
+Service Charge,2460,Others
+Account Maintenance Fee,1495,Others
+Account Maintenance Fee,1455,Others
+Starbucks Coffee,3147,Food and Dining
+Zomato Order,10846,Food and Dining
+Cafe Coffee Day,5954,Food and Dining
+UberEats,13918,Food and Dining
+UberEats,6940,Food and Dining
+Cafe Coffee Day,12765,Food and Dining
+Zomato Order,23952,Food and Dining
+McDonald's,15834,Food and Dining
+Zomato Order,8471,Food and Dining
+Barbeque Nation,9430,Food and Dining
+Rapido Payment,12639,Transportation
+Ola Cabs,8936,Transportation
+Uber Ride,3073,Transportation
+Indian Oil Petrol,2451,Transportation
+Ola Cabs,20884,Transportation
+Ola Cabs,3242,Transportation
+Ola Cabs,17680,Transportation
+Bharat Petroleum,7399,Transportation
+Toll Plaza FASTag,10966,Transportation
+Indian Oil Petrol,22244,Transportation
+Shopper's Stop,14512,Shopping
+Amazon Purchase,423,Shopping
+Amazon Purchase,21481,Shopping
+Amazon Purchase,29770,Shopping
+Tata CLiQ,26615,Shopping
+Tata CLiQ,6019,Shopping
+D-Mart Shopping,20061,Shopping
+Nykaa Cosmetics,2365,Shopping
+Tata CLiQ,26554,Shopping
+Amazon Purchase,9210,Shopping
+Vodafone Postpaid,7804,Bills and Utilities
+MTNL Landline,8673,Bills and Utilities
+Vodafone Postpaid,13794,Bills and Utilities
+Electricity Bill TNEB,11015,Bills and Utilities
+Tata Power Bill,4969,Bills and Utilities
+JioFiber Payment,14470,Bills and Utilities
+Water Bill BWSSB,1155,Bills and Utilities
+BSNL Broadband,596,Bills and Utilities
+BSNL Broadband,14197,Bills and Utilities
+Vodafone Postpaid,3565,Bills and Utilities
+Movie Ticket BookMyShow,2615,Entertainment
+Theatre Performance Fee,9900,Entertainment
+Sports Match Entry,19840,Entertainment
+Art Gallery Entry Fee,19003,Entertainment
+Art Gallery Entry Fee,20170,Entertainment
+Art Gallery Entry Fee,9743,Entertainment
+Movie Ticket BookMyShow,7223,Entertainment
+Magic Planet Amusement Park,3907,Entertainment
+Magic Planet Amusement Park,8983,Entertainment
+PVR Cinemas Tickets,34518,Entertainment
+Air India,15680,Travel
+Redbus Ticket,4710,Travel
+Tripoto Travel,20201,Travel
+MakeMyTrip Booking,3230,Travel
+MakeMyTrip Booking,17521,Travel
+Redbus Ticket,12772,Travel
+MakeMyTrip Booking,24108,Travel
+OYO Rooms,2299,Travel
+Yatra Flight,24641,Travel
+EaseMyTrip,4130,Travel
+MedPlus Medicine,664,Health
+Gym Membership,13358,Health
+Fortis Healthcare,4405,Health
+Pathlab Test,756,Health
+Doctor Consultation,15320,Health
+1mg Order,2439,Health
+Apollo Pharmacy,2497,Health
+MedPlus Medicine,4084,Health
+Gym Membership,25893,Health
+Fortis Healthcare,21991,Health
+Byju's Subscription,3585,Education
+College Tuition Fee,11518,Education
+Coursera Payment,1657,Education
+Unacademy Plan,13074,Education
+Khan Academy,5147,Education
+College Tuition Fee,1024,Education
+School Books,13726,Education
+College Tuition Fee,4426,Education
+College Tuition Fee,13027,Education
+School Books,13466,Education
+Disney+ Subscription,436,Recharge and Subscriptions
+Sun Direct Recharge,2895,Recharge and Subscriptions
+Airtel Prepaid,1975,Recharge and Subscriptions
+Vodafone Recharge,2854,Recharge and Subscriptions
+Sun Direct Recharge,1520,Recharge and Subscriptions
+BSNL Recharge,6412,Recharge and Subscriptions
+Netflix Renewal,9870,Recharge and Subscriptions
+Jio Recharge,2184,Recharge and Subscriptions
+Hotstar Plan,6736,Recharge and Subscriptions
+Disney+ Subscription,7493,Recharge and Subscriptions
+Service Charge,4165,Others
+GPay Transaction,3860,Others
+Cheque Clearance,168,Others
+Service Charge,4155,Others
+Cash Withdrawal,849,Others
+NEFT Transfer,4907,Others
+NEFT Transfer,1346,Others
+Cash Withdrawal,4208,Others
+Service Charge,4095,Others
+Account Maintenance Fee,2884,Others
+Swiggy Payment,3350,Food and Dining
+Dominos Pizza,4166,Food and Dining
+Swiggy Payment,5906,Food and Dining
+Dominos Pizza,3440,Food and Dining
+Zomato Order,4670,Food and Dining
+Barbeque Nation,172,Food and Dining
+KFC Bill,3609,Food and Dining
+Starbucks Coffee,8374,Food and Dining
+Barbeque Nation,3896,Food and Dining
+Starbucks Coffee,1909,Food and Dining
+Fuel Station HP,415,Transportation
+Indian Oil Petrol,1572,Transportation
+Toll Plaza FASTag,2957,Transportation
+Local Bus Pass,2686,Transportation
+Local Bus Pass,2831,Transportation
+Local Bus Pass,2891,Transportation
+Uber Ride,1448,Transportation
+Metro Card Recharge,92,Transportation
+Fuel Station HP,714,Transportation
+Ola Cabs,3457,Transportation
+Fuel Station HP,381,Transportation
+Toll Plaza FASTag,930,Transportation
+Local Bus Pass,1515,Transportation
+Local Bus Pass,7322,Transportation
+Rapido Payment,3090,Transportation
+Myntra Clothing,673,Shopping
+Shopper's Stop,3960,Shopping
+Flipkart Order,1046,Shopping
+Nykaa Cosmetics,4338,Shopping
+D-Mart Shopping,6362,Shopping
+Big Bazaar,4848,Shopping
+Tata CLiQ,2115,Shopping
+Flipkart Order,1213,Shopping
+JioFiber Payment,4209,Bills and Utilities
+Indane Gas,2649,Bills and Utilities
+Airtel Broadband,2648,Bills and Utilities
+Airtel Broadband,2163,Bills and Utilities
+Airtel Broadband,4927,Bills and Utilities
+Gas Bill Mahanagar Gas,530,Bills and Utilities
+BSNL Broadband,4319,Bills and Utilities
+Electricity Bill TNEB,1655,Bills and Utilities
+Vodafone Postpaid,1775,Bills and Utilities
+Indane Gas,15163,Bills and Utilities
+Eventbrite Tickets,1145,Entertainment
+Eventbrite Tickets,100,Entertainment
+Eventbrite Tickets,1126,Entertainment
+Magic Planet Amusement Park,1603,Entertainment
+Fun City Tickets,615,Entertainment
+Las Vegas Casino Entry,1433,Entertainment
+Fun City Tickets,1398,Entertainment
+Comedy Show Ticket,185,Entertainment
+Art Gallery Entry Fee,1086,Entertainment
+Concert Booking,877,Entertainment
+Art Gallery Entry Fee,2564,Entertainment
+Comedy Show Ticket,164,Entertainment
+Movie Ticket BookMyShow,1505,Entertainment
+Redbus Ticket,1591,Travel
+OYO Rooms,3217,Travel
+Goibibo Hotel,1013,Travel
+EaseMyTrip,3520,Travel
+OYO Rooms,2827,Travel
+IRCTC Train Ticket,47,Travel
+Goibibo Hotel,3652,Travel
+Fortis Healthcare,2458,Health
+Practo Appointment,2112,Health
+Pathlab Test,1692,Health
+1mg Order,1257,Health
+Fortis Healthcare,1015,Health
+Apollo Pharmacy,334,Health
+MedPlus Medicine,2013,Health
+Apollo Pharmacy,3444,Health
+School Books,577,Education
+Exam Registration Fee,469,Education
+Skillshare Learning,538,Education
+School Books,112,Education
+Byju's Subscription,659,Education
+College Tuition Fee,1570,Education
+Skillshare Learning,246,Education
+Skillshare Learning,2031,Education
+Byju's Subscription,3348,Education
+Khan Academy,661,Education
+Sun Direct Recharge,18,Recharge and Subscriptions
+Tata Sky DTH,535,Recharge and Subscriptions
+Amazon Prime,470,Recharge and Subscriptions
+Hotstar Plan,396,Recharge and Subscriptions
+Jio Recharge,1900,Recharge and Subscriptions
+Tata Sky DTH,2520,Recharge and Subscriptions
+BSNL Recharge,31,Recharge and Subscriptions
+Airtel Prepaid,577,Recharge and Subscriptions
+Tata Sky DTH,1001,Recharge and Subscriptions
+Jio Recharge,959,Recharge and Subscriptions
+GPay Transaction,1000,Others
+NEFT Transfer,246,Others
+Cash Withdrawal,675,Others
+Service Charge,1434,Others
+Unknown Payment,121,Others
+Service Charge,169,Others
+NEFT Transfer,1474,Others
+Cheque Clearance,1542,Others
+Unknown Payment,166,Others
+NEFT Transfer,1417,Others
+Foodpanda,6719,Food and Dining
+KFC Bill,2789,Food and Dining
+Barbeque Nation,2250,Food and Dining
+UberEats,6426,Food and Dining
+Barbeque Nation,6309,Food and Dining
+Zomato Order,5679,Food and Dining
+Foodpanda,6395,Food and Dining
+UberEats,6058,Food and Dining
+Zomato Order,3206,Food and Dining
+Foodpanda,710,Food and Dining
+Toll Plaza FASTag,1373,Transportation
+Local Bus Pass,3120,Transportation
+Indian Oil Petrol,3148,Transportation
+Ola Cabs,2512,Transportation
+Indian Oil Petrol,189,Transportation
+Bharat Petroleum,3570,Transportation
+Uber Ride,976,Transportation
+Indian Oil Petrol,3259,Transportation
+Bharat Petroleum,2126,Transportation
+Ola Cabs,499,Transportation
+Rapido Payment,1649,Transportation
+Bharat Petroleum,362,Transportation
+Indian Oil Petrol,2294,Transportation
+Toll Plaza FASTag,2330,Transportation
+Rapido Payment,77,Transportation
+Flipkart Order,4193,Shopping
+Amazon Purchase,5296,Shopping
+Shopper's Stop,4236,Shopping
+D-Mart Shopping,3817,Shopping
+Shopper's Stop,4114,Shopping
+D-Mart Shopping,5021,Shopping
+Myntra Clothing,4353,Shopping
+Myntra Clothing,1718,Shopping
+Water Bill BWSSB,2284,Bills and Utilities
+BSNL Broadband,1137,Bills and Utilities
+MTNL Landline,376,Bills and Utilities
+JioFiber Payment,4713,Bills and Utilities
+BSNL Broadband,5077,Bills and Utilities
+MTNL Landline,3918,Bills and Utilities
+Gas Bill Mahanagar Gas,3788,Bills and Utilities
+BSNL Broadband,4447,Bills and Utilities
+Airtel Broadband,11313,Bills and Utilities
+Water Bill BWSSB,3652,Bills and Utilities
+Las Vegas Casino Entry,1598,Entertainment
+Concert Booking,1619,Entertainment
+PVR Cinemas Tickets,1676,Entertainment
+Concert Booking,486,Entertainment
+Concert Booking,2283,Entertainment
+Las Vegas Casino Entry,1894,Entertainment
+Las Vegas Casino Entry,1269,Entertainment
+Concert Booking,1968,Entertainment
+Las Vegas Casino Entry,1985,Entertainment
+Magic Planet Amusement Park,1008,Entertainment
+Comedy Show Ticket,1173,Entertainment
+Fun City Tickets,1620,Entertainment
+Comedy Show Ticket,2652,Entertainment
+EaseMyTrip,316,Travel
+OYO Rooms,3079,Travel
+IRCTC Train Ticket,3112,Travel
+Redbus Ticket,1801,Travel
+OYO Rooms,1406,Travel
+EaseMyTrip,3608,Travel
+Air India,107,Travel
+Practo Appointment,1887,Health
+Doctor Consultation,1116,Health
+Yoga Class Fees,244,Health
+MedPlus Medicine,2880,Health
+Gym Membership,2313,Health
+Pathlab Test,2262,Health
+Apollo Pharmacy,2635,Health
+Doctor Consultation,1713,Health
+Khan Academy,604,Education
+College Tuition Fee,164,Education
+Byju's Subscription,239,Education
+Byju's Subscription,1138,Education
+College Tuition Fee,898,Education
+Udemy Course,1727,Education
+Unacademy Plan,1014,Education
+Skillshare Learning,1031,Education
+Udemy Course,4401,Education
+Exam Registration Fee,263,Education
+Tata Sky DTH,589,Recharge and Subscriptions
+Airtel Prepaid,2115,Recharge and Subscriptions
+Jio Recharge,1664,Recharge and Subscriptions
+Jio Recharge,1692,Recharge and Subscriptions
+BSNL Recharge,1979,Recharge and Subscriptions
+BSNL Recharge,1606,Recharge and Subscriptions
+Airtel Prepaid,682,Recharge and Subscriptions
+Disney+ Subscription,2413,Recharge and Subscriptions
+Tata Sky DTH,156,Recharge and Subscriptions
+Jio Recharge,2102,Recharge and Subscriptions
+NEFT Transfer,447,Others
+Service Charge,1341,Others
+Miscellaneous Expense,262,Others
+GPay Transaction,634,Others
+Wallet Top-Up,1788,Others
+Unknown Payment,1415,Others
+Cheque Clearance,102,Others
+Account Maintenance Fee,166,Others
+NEFT Transfer,832,Others
+Cash Withdrawal,3281,Others
+KFC Bill,83,Food and Dining
+KFC Bill,10364,Food and Dining
+UberEats,5966,Food and Dining
+Barbeque Nation,9013,Food and Dining
+Dominos Pizza,9667,Food and Dining
+Starbucks Coffee,4761,Food and Dining
+Barbeque Nation,5478,Food and Dining
+Cafe Coffee Day,6409,Food and Dining
+Starbucks Coffee,6887,Food and Dining
+Dominos Pizza,5163,Food and Dining
+Zomato Order,3542,Food and Dining
+Foodpanda,11533,Food and Dining
+Zomato Order,9481,Food and Dining
+Cafe Coffee Day,8835,Food and Dining
+KFC Bill,3060,Food and Dining
+Bharat Petroleum,1997,Transportation
+Indian Oil Petrol,591,Transportation
+Auto Fare,6379,Transportation
+Toll Plaza FASTag,5173,Transportation
+Ola Cabs,3077,Transportation
+Indian Oil Petrol,3325,Transportation
+Local Bus Pass,13035,Transportation
+Auto Fare,13261,Transportation
+Fuel Station HP,2500,Transportation
+Auto Fare,48563,Transportation
+D-Mart Shopping,13214,Shopping
+D-Mart Shopping,16807,Shopping
+Big Bazaar,9646,Shopping
+Flipkart Order,1074,Shopping
+Big Bazaar,13550,Shopping
+Flipkart Order,12824,Shopping
+Myntra Clothing,11880,Shopping
+Myntra Clothing,19855,Shopping
+Indane Gas,4298,Bills and Utilities
+Gas Bill Mahanagar Gas,4639,Bills and Utilities
+Gas Bill Mahanagar Gas,6855,Bills and Utilities
+Tata Power Bill,10849,Bills and Utilities
+Electricity Bill TNEB,6644,Bills and Utilities
+BSNL Broadband,2582,Bills and Utilities
+Tata Power Bill,4890,Bills and Utilities
+JioFiber Payment,2169,Bills and Utilities
+Gas Bill Mahanagar Gas,7022,Bills and Utilities
+MTNL Landline,36900,Bills and Utilities
+Movie Ticket BookMyShow,4351,Entertainment
+Concert Booking,1089,Entertainment
+Eventbrite Tickets,1245,Entertainment
+Fun City Tickets,111,Entertainment
+Magic Planet Amusement Park,2126,Entertainment
+Las Vegas Casino Entry,5828,Entertainment
+Movie Ticket BookMyShow,9959,Entertainment
+Theatre Performance Fee,6389,Entertainment
+Comedy Show Ticket,3537,Entertainment
+Eventbrite Tickets,3842,Entertainment
+Las Vegas Casino Entry,8458,Entertainment
+Eventbrite Tickets,10083,Entertainment
+Comedy Show Ticket,14958,Entertainment
+Redbus Ticket,5298,Travel
+Tripoto Travel,251,Travel
+Goibibo Hotel,12722,Travel
+Goibibo Hotel,18475,Travel
+Goibibo Hotel,10133,Travel
+OYO Rooms,11072,Travel
+Tripoto Travel,17126,Travel
+MedPlus Medicine,21,Health
+Apollo Pharmacy,3602,Health
+Doctor Consultation,4634,Health
+Pathlab Test,11573,Health
+Apollo Pharmacy,3734,Health
+Apollo Pharmacy,1796,Health
+Practo Appointment,1407,Health
+Pathlab Test,13048,Health
+Udemy Course,913,Education
+Udemy Course,4274,Education
+Byju's Subscription,399,Education
+College Tuition Fee,6818,Education
+College Tuition Fee,6517,Education
+School Books,4350,Education
+Skillshare Learning,3133,Education
+Skillshare Learning,1859,Education
+School Books,8216,Education
+College Tuition Fee,12004,Education
+Amazon Prime,2502,Recharge and Subscriptions
+Netflix Renewal,991,Recharge and Subscriptions
+Hotstar Plan,1257,Recharge and Subscriptions
+Amazon Prime,1228,Recharge and Subscriptions
+Tata Sky DTH,2326,Recharge and Subscriptions
+BSNL Recharge,130,Recharge and Subscriptions
+Tata Sky DTH,4456,Recharge and Subscriptions
+BSNL Recharge,2386,Recharge and Subscriptions
+Tata Sky DTH,5595,Recharge and Subscriptions
+Netflix Renewal,400,Recharge and Subscriptions
+Unknown Payment,182,Others
+Cheque Clearance,874,Others
+UPI to Friend,8,Others
+Wallet Top-Up,2417,Others
+NEFT Transfer,225,Others
+Wallet Top-Up,1994,Others
+Account Maintenance Fee,393,Others
+Wallet Top-Up,2109,Others
+NEFT Transfer,4120,Others
+Wallet Top-Up,1483,Others
+Swiggy Payment,4224,Food and Dining
+Zomato Order,5640,Food and Dining
+Starbucks Coffee,7565,Food and Dining
+UberEats,8386,Food and Dining
+McDonald's,25648,Food and Dining
+Starbucks Coffee,19559,Food and Dining
+Foodpanda,7239,Food and Dining
+Swiggy Payment,30449,Food and Dining
+Foodpanda,2133,Food and Dining
+McDonald's,60657,Food and Dining
+Indian Oil Petrol,15862,Transportation
+Indian Oil Petrol,15330,Transportation
+Local Bus Pass,447,Transportation
+Toll Plaza FASTag,433,Transportation
+Rapido Payment,12619,Transportation
+Toll Plaza FASTag,18598,Transportation
+Ola Cabs,10370,Transportation
+Fuel Station HP,16283,Transportation
+Auto Fare,921,Transportation
+Auto Fare,27761,Transportation
+Nykaa Cosmetics,30686,Shopping
+Amazon Purchase,28586,Shopping
+D-Mart Shopping,8951,Shopping
+Shopper's Stop,22454,Shopping
+Shopper's Stop,9816,Shopping
+Nykaa Cosmetics,16137,Shopping
+Flipkart Order,12764,Shopping
+D-Mart Shopping,23052,Shopping
+BSNL Broadband,1193,Bills and Utilities
+BSNL Broadband,14036,Bills and Utilities
+Vodafone Postpaid,18063,Bills and Utilities
+BSNL Broadband,10309,Bills and Utilities
+BSNL Broadband,18377,Bills and Utilities
+Electricity Bill TNEB,12690,Bills and Utilities
+Water Bill BWSSB,3387,Bills and Utilities
+BSNL Broadband,3396,Bills and Utilities
+Tata Power Bill,5422,Bills and Utilities
+Vodafone Postpaid,48717,Bills and Utilities
+Magic Planet Amusement Park,14301,Entertainment
+Theatre Performance Fee,5630,Entertainment
+Comedy Show Ticket,8201,Entertainment
+Theatre Performance Fee,2793,Entertainment
+Concert Booking,8640,Entertainment
+Concert Booking,4761,Entertainment
+Comedy Show Ticket,5045,Entertainment
+Sports Match Entry,2207,Entertainment
+Movie Ticket BookMyShow,2982,Entertainment
+Comedy Show Ticket,3595,Entertainment
+Las Vegas Casino Entry,4436,Entertainment
+Las Vegas Casino Entry,27952,Entertainment
+Comedy Show Ticket,13483,Entertainment
+Goibibo Hotel,10237,Travel
+Tripoto Travel,18423,Travel
+Redbus Ticket,15808,Travel
+Goibibo Hotel,6734,Travel
+Goibibo Hotel,26561,Travel
+IRCTC Train Ticket,4788,Travel
+OYO Rooms,42223,Travel
+Pathlab Test,3512,Health
+MedPlus Medicine,7852,Health
+MedPlus Medicine,9065,Health
+MedPlus Medicine,12742,Health
+MedPlus Medicine,12866,Health
+Max Hospital,7484,Health
+Pathlab Test,11659,Health
+Pathlab Test,9422,Health
+Skillshare Learning,7364,Education
+Coursera Payment,7042,Education
+Exam Registration Fee,9596,Education
+Exam Registration Fee,8303,Education
+Byju's Subscription,5766,Education
+Skillshare Learning,5889,Education
+School Books,25,Education
+Skillshare Learning,837,Education
+Skillshare Learning,11813,Education
+WhiteHat Jr,7417,Education
+Skillshare Learning,10874,Education
+School Books,2067,Education
+School Books,1498,Education
+Airtel Prepaid,3265,Recharge and Subscriptions
+Airtel Prepaid,4524,Recharge and Subscriptions
+Jio Recharge,4653,Recharge and Subscriptions
+BSNL Recharge,4260,Recharge and Subscriptions
+Sun Direct Recharge,3936,Recharge and Subscriptions
+Netflix Renewal,4048,Recharge and Subscriptions
+BSNL Recharge,3749,Recharge and Subscriptions
+Disney+ Subscription,3118,Recharge and Subscriptions
+Netflix Renewal,3177,Recharge and Subscriptions
+Tata Sky DTH,1755,Recharge and Subscriptions
+Hotstar Plan,2151,Recharge and Subscriptions
+Jio Recharge,2160,Recharge and Subscriptions
+UPI to Friend,4624,Others
+Cash Withdrawal,627,Others
+Account Maintenance Fee,3378,Others
+UPI to Friend,488,Others
+Unknown Payment,1070,Others
+Miscellaneous Expense,839,Others
+NEFT Transfer,4125,Others
+GPay Transaction,502,Others
+Unknown Payment,10874,Others
+Service Charge,8663,Others
+Foodpanda,5270,Food and Dining
+Barbeque Nation,11551,Food and Dining
+Swiggy Payment,5411,Food and Dining
+Starbucks Coffee,13631,Food and Dining
+KFC Bill,15806,Food and Dining
+Starbucks Coffee,4283,Food and Dining
+Starbucks Coffee,4955,Food and Dining
+Foodpanda,9848,Food and Dining
+Barbeque Nation,19167,Food and Dining
+Dominos Pizza,11742,Food and Dining
+Metro Card Recharge,10079,Transportation
+Fuel Station HP,7120,Transportation
+Auto Fare,15138,Transportation
+Toll Plaza FASTag,7712,Transportation
+Rapido Payment,12736,Transportation
+Local Bus Pass,9484,Transportation
+Rapido Payment,7743,Transportation
+Bharat Petroleum,4825,Transportation
+Reliance Trends,115,Shopping
+Big Bazaar,11818,Shopping
+D-Mart Shopping,5758,Shopping
+Flipkart Order,11105,Shopping
+D-Mart Shopping,4035,Shopping
+D-Mart Shopping,8550,Shopping
+Nykaa Cosmetics,1920,Shopping
+Myntra Clothing,31819,Shopping
+Gas Bill Mahanagar Gas,6944,Bills and Utilities
+Gas Bill Mahanagar Gas,4882,Bills and Utilities
+Indane Gas,7256,Bills and Utilities
+BSNL Broadband,3750,Bills and Utilities
+Electricity Bill TNEB,1961,Bills and Utilities
+BSNL Broadband,6402,Bills and Utilities
+MTNL Landline,8202,Bills and Utilities
+Indane Gas,13868,Bills and Utilities
+BSNL Broadband,2798,Bills and Utilities
+Vodafone Postpaid,907,Bills and Utilities
+Concert Booking,5449,Entertainment
+Concert Booking,619,Entertainment
+Fun City Tickets,1401,Entertainment
+Movie Ticket BookMyShow,7136,Entertainment
+Art Gallery Entry Fee,2919,Entertainment
+Las Vegas Casino Entry,6279,Entertainment
+PVR Cinemas Tickets,1365,Entertainment
+Eventbrite Tickets,890,Entertainment
+PVR Cinemas Tickets,7625,Entertainment
+Comedy Show Ticket,6703,Entertainment
+Las Vegas Casino Entry,2221,Entertainment
+Sports Match Entry,8384,Entertainment
+Fun City Tickets,1666,Entertainment
+MakeMyTrip Booking,2192,Travel
+Tripoto Travel,3790,Travel
+Redbus Ticket,332,Travel
+Goibibo Hotel,8313,Travel
+Yatra Flight,257,Travel
+MakeMyTrip Booking,3006,Travel
+IRCTC Train Ticket,2069,Travel
+Goibibo Hotel,12894,Travel
+Goibibo Hotel,4010,Travel
+Yoga Class Fees,383,Health
+Doctor Consultation,8077,Health
+Max Hospital,3254,Health
+Yoga Class Fees,7245,Health
+Doctor Consultation,1206,Health
+1mg Order,1354,Health
+MedPlus Medicine,3523,Health
+Doctor Consultation,14000,Health
+Exam Registration Fee,269,Education
+Khan Academy,1496,Education
+WhiteHat Jr,2359,Education
+WhiteHat Jr,2355,Education
+WhiteHat Jr,478,Education
+Skillshare Learning,2424,Education
+Exam Registration Fee,9,Education
+Coursera Payment,4458,Education
+Exam Registration Fee,350,Education
+Udemy Course,2515,Education
+WhiteHat Jr,1522,Education
+Unacademy Plan,825,Education
+Byju's Subscription,11544,Education
+Hotstar Plan,478,Recharge and Subscriptions
+Sun Direct Recharge,2920,Recharge and Subscriptions
+Hotstar Plan,562,Recharge and Subscriptions
+Hotstar Plan,171,Recharge and Subscriptions
+Jio Recharge,2156,Recharge and Subscriptions
+Tata Sky DTH,1479,Recharge and Subscriptions
+Tata Sky DTH,3076,Recharge and Subscriptions
+Vodafone Recharge,2369,Recharge and Subscriptions
+Sun Direct Recharge,361,Recharge and Subscriptions
+Tata Sky DTH,1890,Recharge and Subscriptions
+BSNL Recharge,1498,Recharge and Subscriptions
+Netflix Renewal,5287,Recharge and Subscriptions
+Cheque Clearance,1896,Others
+Cash Withdrawal,124,Others
+Account Maintenance Fee,1051,Others
+Unknown Payment,753,Others
+NEFT Transfer,125,Others
+NEFT Transfer,4929,Others
+Unknown Payment,3799,Others
+UPI to Friend,3782,Others
+Miscellaneous Expense,3418,Others
+Miscellaneous Expense,1971,Others
+Barbeque Nation,2976,Food and Dining
+Barbeque Nation,3256,Food and Dining
+Swiggy Payment,3891,Food and Dining
+KFC Bill,3729,Food and Dining
+Cafe Coffee Day,2892,Food and Dining
+UberEats,1061,Food and Dining
+Barbeque Nation,6487,Food and Dining
+Barbeque Nation,4986,Food and Dining
+Swiggy Payment,8047,Food and Dining
+KFC Bill,1663,Food and Dining
+Cafe Coffee Day,13903,Food and Dining
+UberEats,3704,Food and Dining
+Metro Card Recharge,1633,Transportation
+Toll Plaza FASTag,4918,Transportation
+Toll Plaza FASTag,9590,Transportation
+Metro Card Recharge,3744,Transportation
+Rapido Payment,2911,Transportation
+Indian Oil Petrol,9886,Transportation
+Reliance Trends,5450,Shopping
+Big Bazaar,1503,Shopping
+Tata CLiQ,2372,Shopping
+Big Bazaar,367,Shopping
+Tata CLiQ,5668,Shopping
+Ajio,9930,Shopping
+D-Mart Shopping,4212,Shopping
+Flipkart Order,3939,Shopping
+Electricity Bill TNEB,6238,Bills and Utilities
+Airtel Broadband,414,Bills and Utilities
+JioFiber Payment,3313,Bills and Utilities
+JioFiber Payment,4240,Bills and Utilities
+Indane Gas,4363,Bills and Utilities
+JioFiber Payment,7544,Bills and Utilities
+Indane Gas,4271,Bills and Utilities
+Airtel Broadband,7209,Bills and Utilities
+Vodafone Postpaid,3510,Bills and Utilities
+BSNL Broadband,2696,Bills and Utilities
+Theatre Performance Fee,1541,Entertainment
+Fun City Tickets,2664,Entertainment
+Art Gallery Entry Fee,321,Entertainment
+Eventbrite Tickets,3464,Entertainment
+Magic Planet Amusement Park,2286,Entertainment
+Magic Planet Amusement Park,2696,Entertainment
+Comedy Show Ticket,1941,Entertainment
+Concert Booking,1970,Entertainment
+Movie Ticket BookMyShow,2126,Entertainment
+Las Vegas Casino Entry,2246,Entertainment
+Yatra Flight,2363,Travel
+Air India,21,Travel
+Booking.com Hotel,1929,Travel
+Booking.com Hotel,1418,Travel
+EaseMyTrip,880,Travel
+Redbus Ticket,180,Travel
+EaseMyTrip,3058,Travel
+Goibibo Hotel,4846,Travel
+EaseMyTrip,6947,Travel
+1mg Order,751,Health
+Pathlab Test,1833,Health
+Yoga Class Fees,503,Health
+MedPlus Medicine,1538,Health
+Pathlab Test,957,Health
+Fortis Healthcare,2512,Health
+Doctor Consultation,2090,Health
+1mg Order,152,Health
+Yoga Class Fees,1439,Health
+MedPlus Medicine,1673,Health
+1mg Order,1660,Health
+Udemy Course,968,Education
+Skillshare Learning,1282,Education
+College Tuition Fee,1544,Education
+Coursera Payment,260,Education
+Byju's Subscription,1668,Education
+College Tuition Fee,1216,Education
+Skillshare Learning,59,Education
+Skillshare Learning,922,Education
+Byju's Subscription,846,Education
+Udemy Course,44,Education
+Unacademy Plan,2450,Education
+Exam Registration Fee,955,Education
+School Books,1606,Education
+Tata Sky DTH,1261,Recharge and Subscriptions
+Hotstar Plan,781,Recharge and Subscriptions
+Netflix Renewal,657,Recharge and Subscriptions
+Airtel Prepaid,488,Recharge and Subscriptions
+Tata Sky DTH,1516,Recharge and Subscriptions
+Jio Recharge,1975,Recharge and Subscriptions
+Disney+ Subscription,1093,Recharge and Subscriptions
+Hotstar Plan,1547,Recharge and Subscriptions
+Sun Direct Recharge,451,Recharge and Subscriptions
+Amazon Prime,1226,Recharge and Subscriptions
+Sun Direct Recharge,1760,Recharge and Subscriptions
+Netflix Renewal,5245,Recharge and Subscriptions
+NEFT Transfer,598,Others
+Wallet Top-Up,1356,Others
+Account Maintenance Fee,1423,Others
+Miscellaneous Expense,790,Others
+Wallet Top-Up,16,Others
+NEFT Transfer,409,Others
+UPI to Friend,2,Others
+Unknown Payment,579,Others
+Account Maintenance Fee,438,Others
+Wallet Top-Up,850,Others
+Swiggy Payment,27167,Food and Dining
+KFC Bill,17662,Food and Dining
+KFC Bill,15467,Food and Dining
+Barbeque Nation,22400,Food and Dining
+Starbucks Coffee,8512,Food and Dining
+Foodpanda,59658,Food and Dining
+Rapido Payment,3541,Transportation
+Auto Fare,14713,Transportation
+Bharat Petroleum,5851,Transportation
+Indian Oil Petrol,14534,Transportation
+Fuel Station HP,9326,Transportation
+Ola Cabs,3291,Transportation
+Fuel Station HP,532,Transportation
+Uber Ride,717,Transportation
+Local Bus Pass,20413,Transportation
+Fuel Station HP,13492,Transportation
+Rapido Payment,10053,Transportation
+Toll Plaza FASTag,9135,Transportation
+Shopper's Stop,18868,Shopping
+Nykaa Cosmetics,6565,Shopping
+Ajio,32325,Shopping
+Myntra Clothing,976,Shopping
+Shopper's Stop,21596,Shopping
+Flipkart Order,2017,Shopping
+Flipkart Order,20974,Shopping
+Myntra Clothing,75924,Shopping
+BSNL Broadband,5856,Bills and Utilities
+JioFiber Payment,14591,Bills and Utilities
+Water Bill BWSSB,1055,Bills and Utilities
+Water Bill BWSSB,863,Bills and Utilities
+Tata Power Bill,20353,Bills and Utilities
+Gas Bill Mahanagar Gas,10466,Bills and Utilities
+JioFiber Payment,7,Bills and Utilities
+MTNL Landline,15639,Bills and Utilities
+Indane Gas,7434,Bills and Utilities
+Airtel Broadband,40159,Bills and Utilities
+Concert Booking,16872,Entertainment
+Magic Planet Amusement Park,5027,Entertainment
+Fun City Tickets,17306,Entertainment
+Art Gallery Entry Fee,28429,Entertainment
+Art Gallery Entry Fee,39875,Entertainment
+Goibibo Hotel,15361,Travel
+Booking.com Hotel,4462,Travel
+Air India,2753,Travel
+IRCTC Train Ticket,6073,Travel
+OYO Rooms,20450,Travel
+Air India,4645,Travel
+Goibibo Hotel,21382,Travel
+Tripoto Travel,17518,Travel
+Yatra Flight,23120,Travel
+Gym Membership,5604,Health
+Yoga Class Fees,7676,Health
+MedPlus Medicine,1333,Health
+Fortis Healthcare,1965,Health
+Pathlab Test,8946,Health
+Doctor Consultation,10752,Health
+Gym Membership,5301,Health
+Practo Appointment,3915,Health
+Fortis Healthcare,9479,Health
+Gym Membership,7865,Health
+Pathlab Test,20179,Health
+Byju's Subscription,522,Education
+Unacademy Plan,2659,Education
+Khan Academy,2158,Education
+School Books,4028,Education
+Coursera Payment,4909,Education
+Skillshare Learning,5899,Education
+Khan Academy,4320,Education
+Coursera Payment,4773,Education
+WhiteHat Jr,7494,Education
+Exam Registration Fee,990,Education
+Skillshare Learning,5856,Education
+School Books,1295,Education
+Exam Registration Fee,8421,Education
+Khan Academy,3476,Education
+Skillshare Learning,5556,Education
+Coursera Payment,8680,Education
+Unacademy Plan,3770,Education
+Vodafone Recharge,304,Recharge and Subscriptions
+Netflix Renewal,2277,Recharge and Subscriptions
+Hotstar Plan,1324,Recharge and Subscriptions
+Disney+ Subscription,3528,Recharge and Subscriptions
+Airtel Prepaid,4925,Recharge and Subscriptions
+BSNL Recharge,1679,Recharge and Subscriptions
+Airtel Prepaid,1609,Recharge and Subscriptions
+Hotstar Plan,2995,Recharge and Subscriptions
+BSNL Recharge,7531,Recharge and Subscriptions
+Hotstar Plan,1423,Recharge and Subscriptions
+Jio Recharge,1090,Recharge and Subscriptions
+Netflix Renewal,7153,Recharge and Subscriptions
+Cash Withdrawal,703,Others
+NEFT Transfer,2546,Others
+Account Maintenance Fee,2967,Others
+NEFT Transfer,2375,Others
+Wallet Top-Up,3665,Others
+GPay Transaction,4508,Others
+GPay Transaction,4409,Others
+Miscellaneous Expense,2831,Others
+UPI to Friend,479,Others
+Unknown Payment,6125,Others
+Swiggy Payment,6640,Food and Dining
+UberEats,2727,Food and Dining
+Starbucks Coffee,618,Food and Dining
+KFC Bill,17348,Food and Dining
+Zomato Order,425,Food and Dining
+Dominos Pizza,8098,Food and Dining
+Metro Card Recharge,46,Transportation
+Auto Fare,838,Transportation
+Local Bus Pass,575,Transportation
+Fuel Station HP,128,Transportation
+Local Bus Pass,258,Transportation
+Local Bus Pass,138,Transportation
+Metro Card Recharge,316,Transportation
+Metro Card Recharge,611,Transportation
+Local Bus Pass,330,Transportation
+Auto Fare,372,Transportation
+Metro Card Recharge,587,Transportation
+Bharat Petroleum,93,Transportation
+Auto Fare,1010,Transportation
+Uber Ride,442,Transportation
+Indian Oil Petrol,109,Transportation
+Rapido Payment,1038,Transportation
+Uber Ride,145,Transportation
+Metro Card Recharge,3,Transportation
+Rapido Payment,568,Transportation
+Local Bus Pass,1127,Transportation
+Indian Oil Petrol,549,Transportation
+Bharat Petroleum,904,Transportation
+Local Bus Pass,333,Transportation
+Indian Oil Petrol,1028,Transportation
+Indian Oil Petrol,709,Transportation
+Ola Cabs,894,Transportation
+Ola Cabs,750,Transportation
+Toll Plaza FASTag,623,Transportation
+Local Bus Pass,791,Transportation
+Toll Plaza FASTag,1024,Transportation
+Uber Ride,847,Transportation
+Uber Ride,1281,Transportation
+Metro Card Recharge,295,Transportation
+Toll Plaza FASTag,620,Transportation
+Uber Ride,24,Transportation
+Toll Plaza FASTag,1305,Transportation
+Metro Card Recharge,159,Transportation
+Auto Fare,705,Transportation
+Bharat Petroleum,958,Transportation
+Bharat Petroleum,586,Transportation
+Uber Ride,490,Transportation
+Auto Fare,373,Transportation
+Ola Cabs,1155,Transportation
+Indian Oil Petrol,1,Transportation
+Toll Plaza FASTag,1281,Transportation
+Ola Cabs,382,Transportation
+Bharat Petroleum,401,Transportation
+Rapido Payment,1898,Transportation
+Ola Cabs,1522,Transportation
+Rapido Payment,684,Transportation
+Fuel Station HP,842,Transportation
+Auto Fare,4157,Transportation
+Ajio,2407,Shopping
+Ajio,2161,Shopping
+Myntra Clothing,6398,Shopping
+Flipkart Order,5462,Shopping
+Tata CLiQ,4774,Shopping
+Shopper's Stop,2289,Shopping
+Ajio,296,Shopping
+Nykaa Cosmetics,5492,Shopping
+Vodafone Postpaid,427,Bills and Utilities
+Vodafone Postpaid,6061,Bills and Utilities
+Tata Power Bill,1146,Bills and Utilities
+Tata Power Bill,1093,Bills and Utilities
+BSNL Broadband,6199,Bills and Utilities
+MTNL Landline,4720,Bills and Utilities
+Electricity Bill TNEB,4906,Bills and Utilities
+BSNL Broadband,5211,Bills and Utilities
+MTNL Landline,3624,Bills and Utilities
+JioFiber Payment,1511,Bills and Utilities
+Movie Ticket BookMyShow,2217,Entertainment
+Comedy Show Ticket,1537,Entertainment
+Art Gallery Entry Fee,621,Entertainment
+Eventbrite Tickets,731,Entertainment
+Movie Ticket BookMyShow,134,Entertainment
+Movie Ticket BookMyShow,9070,Entertainment
+Magic Planet Amusement Park,3271,Entertainment
+Air India,1182,Travel
+Yatra Flight,1666,Travel
+Air India,1073,Travel
+Tripoto Travel,1639,Travel
+OYO Rooms,1565,Travel
+OYO Rooms,658,Travel
+Air India,574,Travel
+IRCTC Train Ticket,689,Travel
+Redbus Ticket,1195,Travel
+Tripoto Travel,1986,Travel
+Air India,1630,Travel
+Tripoto Travel,1909,Travel
+Max Hospital,892,Health
+Practo Appointment,1316,Health
+Fortis Healthcare,210,Health
+Yoga Class Fees,580,Health
+Doctor Consultation,1909,Health
+Doctor Consultation,608,Health
+Apollo Pharmacy,343,Health
+MedPlus Medicine,2158,Health
+Gym Membership,885,Health
+MedPlus Medicine,1766,Health
+Doctor Consultation,1231,Health
+Khan Academy,541,Education
+College Tuition Fee,231,Education
+Coursera Payment,172,Education
+School Books,102,Education
+Skillshare Learning,298,Education
+College Tuition Fee,491,Education
+WhiteHat Jr,1201,Education
+Unacademy Plan,877,Education
+Udemy Course,1490,Education
+Exam Registration Fee,72,Education
+Khan Academy,1118,Education
+Udemy Course,49,Education
+Coursera Payment,2245,Education
+Coursera Payment,232,Education
+Unacademy Plan,1344,Education
+Disney+ Subscription,135,Recharge and Subscriptions
+BSNL Recharge,1409,Recharge and Subscriptions
+Hotstar Plan,255,Recharge and Subscriptions
+Amazon Prime,1258,Recharge and Subscriptions
+Sun Direct Recharge,639,Recharge and Subscriptions
+Vodafone Recharge,445,Recharge and Subscriptions
+BSNL Recharge,1749,Recharge and Subscriptions
+BSNL Recharge,1867,Recharge and Subscriptions
+Jio Recharge,1460,Recharge and Subscriptions
+BSNL Recharge,218,Recharge and Subscriptions
+Hotstar Plan,516,Recharge and Subscriptions
+Vodafone Recharge,3776,Recharge and Subscriptions
+Cash Withdrawal,625,Others
+Unknown Payment,671,Others
+Account Maintenance Fee,305,Others
+Miscellaneous Expense,657,Others
+Service Charge,311,Others
+NEFT Transfer,177,Others
+Account Maintenance Fee,2380,Others
+Cash Withdrawal,1108,Others
+Cash Withdrawal,630,Others
+UPI to Friend,1486,Others
+UberEats,36797,Food and Dining
+KFC Bill,21819,Food and Dining
+UberEats,23958,Food and Dining
+McDonald's,18696,Food and Dining
+McDonald's,47277,Food and Dining
+Zomato Order,4930,Food and Dining
+Local Bus Pass,4705,Transportation
+Local Bus Pass,7069,Transportation
+Toll Plaza FASTag,16548,Transportation
+Ola Cabs,17425,Transportation
+Toll Plaza FASTag,19931,Transportation
+Uber Ride,16465,Transportation
+Metro Card Recharge,20421,Transportation
+Bharat Petroleum,15432,Transportation
+Toll Plaza FASTag,9543,Transportation
+Toll Plaza FASTag,8855,Transportation
+Toll Plaza FASTag,3202,Transportation
+Fuel Station HP,43048,Transportation
+Nykaa Cosmetics,41224,Shopping
+Myntra Clothing,30061,Shopping
+Tata CLiQ,37929,Shopping
+Amazon Purchase,40756,Shopping
+Ajio,46143,Shopping
+Reliance Trends,19422,Shopping
+Flipkart Order,4947,Shopping
+Amazon Purchase,56205,Shopping
+Electricity Bill TNEB,1680,Bills and Utilities
+BSNL Broadband,18638,Bills and Utilities
+Vodafone Postpaid,4220,Bills and Utilities
+Vodafone Postpaid,2863,Bills and Utilities
+MTNL Landline,22545,Bills and Utilities
+Tata Power Bill,26068,Bills and Utilities
+Airtel Broadband,8605,Bills and Utilities
+MTNL Landline,924,Bills and Utilities
+BSNL Broadband,8292,Bills and Utilities
+JioFiber Payment,26356,Bills and Utilities
+Fun City Tickets,16612,Entertainment
+Fun City Tickets,33436,Entertainment
+Movie Ticket BookMyShow,21035,Entertainment
+Eventbrite Tickets,12398,Entertainment
+Fun City Tickets,24705,Entertainment
+Art Gallery Entry Fee,23639,Entertainment
+Art Gallery Entry Fee,32896,Entertainment
+Redbus Ticket,10660,Travel
+Yatra Flight,1681,Travel
+Yatra Flight,22760,Travel
+Redbus Ticket,14826,Travel
+Tripoto Travel,26782,Travel
+Air India,19931,Travel
+Air India,15042,Travel
+Goibibo Hotel,10868,Travel
+Air India,14018,Travel
+Air India,14749,Travel
+Goibibo Hotel,15237,Travel
+Tripoto Travel,14447,Travel
+Yoga Class Fees,7691,Health
+MedPlus Medicine,4511,Health
+MedPlus Medicine,12846,Health
+Fortis Healthcare,2361,Health
+MedPlus Medicine,11538,Health
+Practo Appointment,20535,Health
+Gym Membership,16910,Health
+Practo Appointment,15913,Health
+Pathlab Test,4025,Health
+MedPlus Medicine,15929,Health
+Gym Membership,16918,Health
+Khan Academy,4321,Education
+School Books,8325,Education
+Skillshare Learning,2928,Education
+School Books,17107,Education
+Byju's Subscription,10949,Education
+Unacademy Plan,9545,Education
+Unacademy Plan,4136,Education
+College Tuition Fee,18755,Education
+Exam Registration Fee,5468,Education
+WhiteHat Jr,12516,Education
+Skillshare Learning,21031,Education
+Unacademy Plan,8784,Education
+Vodafone Recharge,5554,Recharge and Subscriptions
+Airtel Prepaid,4924,Recharge and Subscriptions
+Airtel Prepaid,4959,Recharge and Subscriptions
+Sun Direct Recharge,4572,Recharge and Subscriptions
+BSNL Recharge,1853,Recharge and Subscriptions
+BSNL Recharge,3874,Recharge and Subscriptions
+Hotstar Plan,5229,Recharge and Subscriptions
+Airtel Prepaid,5159,Recharge and Subscriptions
+BSNL Recharge,3937,Recharge and Subscriptions
+Hotstar Plan,7499,Recharge and Subscriptions
+Vodafone Recharge,2690,Recharge and Subscriptions
+Amazon Prime,6181,Recharge and Subscriptions
+GPay Transaction,2088,Others
+Account Maintenance Fee,4144,Others
+Account Maintenance Fee,3160,Others
+Cash Withdrawal,1248,Others
+NEFT Transfer,7838,Others
+NEFT Transfer,679,Others
+Miscellaneous Expense,7027,Others
+Cash Withdrawal,9368,Others
+NEFT Transfer,7823,Others
+Wallet Top-Up,4504,Others
+Foodpanda,1484,Food and Dining
+Dominos Pizza,3564,Food and Dining
+McDonald's,479,Food and Dining
+Dominos Pizza,2282,Food and Dining
+Barbeque Nation,3083,Food and Dining
+Starbucks Coffee,7067,Food and Dining
+Fuel Station HP,1041,Transportation
+Rapido Payment,1705,Transportation
+Rapido Payment,968,Transportation
+Local Bus Pass,1251,Transportation
+Indian Oil Petrol,4,Transportation
+Indian Oil Petrol,1484,Transportation
+Local Bus Pass,476,Transportation
+Local Bus Pass,1991,Transportation
+Toll Plaza FASTag,1860,Transportation
+Fuel Station HP,1453,Transportation
+Ajio,749,Shopping
+Big Bazaar,1560,Shopping
+Ajio,1170,Shopping
+Myntra Clothing,788,Shopping
+Big Bazaar,925,Shopping
+Tata CLiQ,595,Shopping
+Amazon Purchase,789,Shopping
+Nykaa Cosmetics,941,Shopping
+Tata CLiQ,237,Shopping
+Reliance Trends,2962,Shopping
+MTNL Landline,988,Bills and Utilities
+Tata Power Bill,660,Bills and Utilities
+JioFiber Payment,1428,Bills and Utilities
+Airtel Broadband,168,Bills and Utilities
+Water Bill BWSSB,2214,Bills and Utilities
+Gas Bill Mahanagar Gas,1027,Bills and Utilities
+Indane Gas,1550,Bills and Utilities
+Vodafone Postpaid,1215,Bills and Utilities
+Electricity Bill TNEB,423,Bills and Utilities
+Gas Bill Mahanagar Gas,4398,Bills and Utilities
+Art Gallery Entry Fee,153,Entertainment
+Concert Booking,461,Entertainment
+Theatre Performance Fee,332,Entertainment
+Fun City Tickets,412,Entertainment
+Concert Booking,2093,Entertainment
+Sports Match Entry,112,Entertainment
+Comedy Show Ticket,1251,Entertainment
+Tripoto Travel,4,Travel
+Redbus Ticket,584,Travel
+Booking.com Hotel,104,Travel
+OYO Rooms,674,Travel
+Yatra Flight,442,Travel
+Yatra Flight,980,Travel
+Air India,831,Travel
+Air India,776,Travel
+Air India,345,Travel
+Yatra Flight,951,Travel
+MedPlus Medicine,338,Health
+Max Hospital,311,Health
+Pathlab Test,84,Health
+Doctor Consultation,127,Health
+Practo Appointment,58,Health
+Yoga Class Fees,256,Health
+Practo Appointment,695,Health
+Fortis Healthcare,28,Health
+1mg Order,817,Health
+Fortis Healthcare,253,Health
+MedPlus Medicine,221,Health
+Gym Membership,1124,Health
+Doctor Consultation,669,Health
+WhiteHat Jr,402,Education
+Udemy Course,78,Education
+Skillshare Learning,190,Education
+Skillshare Learning,169,Education
+Unacademy Plan,532,Education
+Udemy Course,426,Education
+Unacademy Plan,48,Education
+College Tuition Fee,554,Education
+Exam Registration Fee,519,Education
+College Tuition Fee,146,Education
+Byju's Subscription,150,Education
+Skillshare Learning,840,Education
+Jio Recharge,410,Recharge and Subscriptions
+Vodafone Recharge,569,Recharge and Subscriptions
+BSNL Recharge,362,Recharge and Subscriptions
+Sun Direct Recharge,53,Recharge and Subscriptions
+Vodafone Recharge,238,Recharge and Subscriptions
+Vodafone Recharge,243,Recharge and Subscriptions
+Disney+ Subscription,250,Recharge and Subscriptions
+Sun Direct Recharge,495,Recharge and Subscriptions
+Disney+ Subscription,771,Recharge and Subscriptions
+Airtel Prepaid,377,Recharge and Subscriptions
+Tata Sky DTH,475,Recharge and Subscriptions
+Tata Sky DTH,513,Recharge and Subscriptions
+UPI to Friend,378,Others
+Unknown Payment,306,Others
+NEFT Transfer,440,Others
+Cash Withdrawal,260,Others
+Miscellaneous Expense,177,Others
+Cash Withdrawal,100,Others
+Miscellaneous Expense,437,Others
+Account Maintenance Fee,403,Others
+Service Charge,7,Others
+Account Maintenance Fee,454,Others
+Dominos Pizza,13666,Food and Dining
+Barbeque Nation,5684,Food and Dining
+Zomato Order,7853,Food and Dining
+Swiggy Payment,10144,Food and Dining
+McDonald's,11219,Food and Dining
+Starbucks Coffee,2267,Food and Dining
+Barbeque Nation,12971,Food and Dining
+Dominos Pizza,1406,Food and Dining
+Dominos Pizza,15184,Food and Dining
+Starbucks Coffee,15611,Food and Dining
+KFC Bill,4331,Food and Dining
+KFC Bill,44763,Food and Dining
+Bharat Petroleum,15748,Transportation
+Local Bus Pass,8809,Transportation
+Bharat Petroleum,2195,Transportation
+Indian Oil Petrol,10494,Transportation
+Rapido Payment,15362,Transportation
+Indian Oil Petrol,8885,Transportation
+Metro Card Recharge,12218,Transportation
+Bharat Petroleum,4793,Transportation
+Rapido Payment,21153,Transportation
+Auto Fare,9051,Transportation
+Reliance Trends,4999,Shopping
+Nykaa Cosmetics,17423,Shopping
+D-Mart Shopping,9088,Shopping
+Myntra Clothing,13928,Shopping
+Tata CLiQ,12533,Shopping
+Shopper's Stop,8894,Shopping
+Myntra Clothing,8288,Shopping
+Ajio,5339,Shopping
+Shopper's Stop,24931,Shopping
+Flipkart Order,13616,Shopping
+MTNL Landline,8898,Bills and Utilities
+Indane Gas,7784,Bills and Utilities
+Tata Power Bill,11261,Bills and Utilities
+Tata Power Bill,11337,Bills and Utilities
+Gas Bill Mahanagar Gas,7822,Bills and Utilities
+Water Bill BWSSB,1976,Bills and Utilities
+MTNL Landline,13157,Bills and Utilities
+Airtel Broadband,5865,Bills and Utilities
+Water Bill BWSSB,12441,Bills and Utilities
+Airtel Broadband,26205,Bills and Utilities
+Art Gallery Entry Fee,7161,Entertainment
+PVR Cinemas Tickets,13421,Entertainment
+Fun City Tickets,1350,Entertainment
+Concert Booking,5473,Entertainment
+Eventbrite Tickets,6677,Entertainment
+Magic Planet Amusement Park,4483,Entertainment
+Comedy Show Ticket,609,Entertainment
+Fun City Tickets,23650,Entertainment
+Sports Match Entry,18322,Entertainment
+Movie Ticket BookMyShow,10979,Entertainment
+Goibibo Hotel,2998,Travel
+Tripoto Travel,746,Travel
+EaseMyTrip,9604,Travel
+IRCTC Train Ticket,6227,Travel
+EaseMyTrip,13484,Travel
+EaseMyTrip,10027,Travel
+OYO Rooms,11167,Travel
+OYO Rooms,3274,Travel
+Goibibo Hotel,2180,Travel
+Booking.com Hotel,37202,Travel
+Fortis Healthcare,7588,Health
+Practo Appointment,1557,Health
+1mg Order,1390,Health
+MedPlus Medicine,3614,Health
+MedPlus Medicine,4226,Health
+Doctor Consultation,1914,Health
+Pathlab Test,16162,Health
+Gym Membership,12741,Health
+Doctor Consultation,30,Health
+Apollo Pharmacy,7836,Health
+College Tuition Fee,1633,Education
+Khan Academy,5523,Education
+Exam Registration Fee,3283,Education
+Khan Academy,2713,Education
+WhiteHat Jr,323,Education
+Khan Academy,128,Education
+Khan Academy,307,Education
+Exam Registration Fee,7201,Education
+School Books,4533,Education
+School Books,5838,Education
+School Books,3856,Education
+Khan Academy,24052,Education
+Sun Direct Recharge,7418,Recharge and Subscriptions
+Hotstar Plan,6544,Recharge and Subscriptions
+Netflix Renewal,1409,Recharge and Subscriptions
+Airtel Prepaid,123,Recharge and Subscriptions
+Netflix Renewal,2499,Recharge and Subscriptions
+Tata Sky DTH,16559,Recharge and Subscriptions
+UPI to Friend,1754,Others
+Service Charge,3521,Others
+GPay Transaction,712,Others
+Cash Withdrawal,786,Others
+Wallet Top-Up,2555,Others
+Miscellaneous Expense,1346,Others
+Cheque Clearance,1089,Others
+Wallet Top-Up,4829,Others
+Account Maintenance Fee,2816,Others
+Cash Withdrawal,4711,Others
+McDonald's,2900,Food and Dining
+UberEats,5473,Food and Dining
+KFC Bill,6894,Food and Dining
+Cafe Coffee Day,2147,Food and Dining
+Starbucks Coffee,2123,Food and Dining
+Swiggy Payment,1177,Food and Dining
+Swiggy Payment,6314,Food and Dining
+KFC Bill,5657,Food and Dining
+Swiggy Payment,6174,Food and Dining
+UberEats,6518,Food and Dining
+Zomato Order,1983,Food and Dining
+Cafe Coffee Day,3361,Food and Dining
+Rapido Payment,3322,Transportation
+Local Bus Pass,2447,Transportation
+Local Bus Pass,727,Transportation
+Local Bus Pass,3601,Transportation
+Auto Fare,2918,Transportation
+Uber Ride,3222,Transportation
+Rapido Payment,3052,Transportation
+Local Bus Pass,4084,Transportation
+Ola Cabs,966,Transportation
+Bharat Petroleum,1711,Transportation
+Auto Fare,1391,Transportation
+Fuel Station HP,2872,Transportation
+Uber Ride,3611,Transportation
+Bharat Petroleum,1066,Transportation
+Metro Card Recharge,12752,Transportation
+Tata CLiQ,5039,Shopping
+Nykaa Cosmetics,3428,Shopping
+Big Bazaar,2117,Shopping
+Myntra Clothing,1467,Shopping
+Amazon Purchase,3911,Shopping
+Nykaa Cosmetics,7303,Shopping
+Reliance Trends,3430,Shopping
+Amazon Purchase,3003,Shopping
+Reliance Trends,10446,Shopping
+Tata CLiQ,3414,Shopping
+Vodafone Postpaid,2395,Bills and Utilities
+Gas Bill Mahanagar Gas,10493,Bills and Utilities
+Tata Power Bill,13290,Bills and Utilities
+Airtel Broadband,2556,Bills and Utilities
+Airtel Broadband,1020,Bills and Utilities
+PVR Cinemas Tickets,1707,Entertainment
+Comedy Show Ticket,1591,Entertainment
+Comedy Show Ticket,2848,Entertainment
+PVR Cinemas Tickets,654,Entertainment
+Magic Planet Amusement Park,3272,Entertainment
+Las Vegas Casino Entry,931,Entertainment
+Art Gallery Entry Fee,783,Entertainment
+Movie Ticket BookMyShow,1544,Entertainment
+Magic Planet Amusement Park,3416,Entertainment
+Concert Booking,3577,Entertainment
+Art Gallery Entry Fee,1674,Entertainment
+Sports Match Entry,587,Entertainment
+Movie Ticket BookMyShow,1741,Entertainment
+Movie Ticket BookMyShow,82,Entertainment
+Theatre Performance Fee,3588,Entertainment
+Booking.com Hotel,1699,Travel
+OYO Rooms,1124,Travel
+Yatra Flight,2520,Travel
+Air India,1451,Travel
+IRCTC Train Ticket,4693,Travel
+IRCTC Train Ticket,5943,Travel
+Yatra Flight,1515,Travel
+IRCTC Train Ticket,4374,Travel
+Tripoto Travel,3627,Travel
+Tripoto Travel,2321,Travel
+Gym Membership,378,Health
+Doctor Consultation,2351,Health
+Fortis Healthcare,2907,Health
+Doctor Consultation,54,Health
+Apollo Pharmacy,3801,Health
+1mg Order,2337,Health
+Fortis Healthcare,3749,Health
+Gym Membership,324,Health
+Apollo Pharmacy,5787,Health
+Apollo Pharmacy,2708,Health
+Khan Academy,1523,Education
+College Tuition Fee,1083,Education
+School Books,3213,Education
+Khan Academy,1883,Education
+Udemy Course,2197,Education
+Byju's Subscription,277,Education
+Coursera Payment,1216,Education
+Exam Registration Fee,4507,Education
+Hotstar Plan,2838,Recharge and Subscriptions
+Amazon Prime,940,Recharge and Subscriptions
+Jio Recharge,1437,Recharge and Subscriptions
+Vodafone Recharge,1188,Recharge and Subscriptions
+Vodafone Recharge,3230,Recharge and Subscriptions
+BSNL Recharge,4107,Recharge and Subscriptions
+UPI to Friend,1714,Others
+Unknown Payment,236,Others
+Account Maintenance Fee,1172,Others
+Service Charge,407,Others
+UPI to Friend,962,Others
+Unknown Payment,1653,Others
+Miscellaneous Expense,386,Others
+Miscellaneous Expense,2423,Others
+GPay Transaction,2167,Others
+Wallet Top-Up,1963,Others
+Swiggy Payment,453,Food and Dining
+Zomato Order,1213,Food and Dining
+Zomato Order,4232,Food and Dining
+McDonald's,1271,Food and Dining
+Starbucks Coffee,11962,Food and Dining
+UberEats,6507,Food and Dining
+McDonald's,15269,Food and Dining
+Barbeque Nation,13786,Food and Dining
+Dominos Pizza,4034,Food and Dining
+Barbeque Nation,3947,Food and Dining
+Foodpanda,4492,Food and Dining
+Cafe Coffee Day,16247,Food and Dining
+Ola Cabs,2332,Transportation
+Uber Ride,3381,Transportation
+Auto Fare,3548,Transportation
+Rapido Payment,1057,Transportation
+Uber Ride,414,Transportation
+Toll Plaza FASTag,7414,Transportation
+Local Bus Pass,4011,Transportation
+Auto Fare,24,Transportation
+Rapido Payment,7917,Transportation
+Ola Cabs,6397,Transportation
+Rapido Payment,2432,Transportation
+Bharat Petroleum,6954,Transportation
+Local Bus Pass,7492,Transportation
+Fuel Station HP,11353,Transportation
+Fuel Station HP,2128,Transportation
+Tata CLiQ,4448,Shopping
+Nykaa Cosmetics,868,Shopping
+Nykaa Cosmetics,4686,Shopping
+Reliance Trends,10252,Shopping
+Tata CLiQ,609,Shopping
+Reliance Trends,11903,Shopping
+Flipkart Order,483,Shopping
+D-Mart Shopping,371,Shopping
+D-Mart Shopping,6725,Shopping
+Shopper's Stop,37722,Shopping
+BSNL Broadband,1286,Bills and Utilities
+Tata Power Bill,914,Bills and Utilities
+Vodafone Postpaid,24625,Bills and Utilities
+Water Bill BWSSB,2738,Bills and Utilities
+Indane Gas,23106,Bills and Utilities
+Theatre Performance Fee,3004,Entertainment
+Concert Booking,1756,Entertainment
+Las Vegas Casino Entry,4217,Entertainment
+Comedy Show Ticket,2950,Entertainment
+Theatre Performance Fee,4842,Entertainment
+Magic Planet Amusement Park,4681,Entertainment
+Fun City Tickets,3978,Entertainment
+Comedy Show Ticket,1869,Entertainment
+Concert Booking,3356,Entertainment
+Sports Match Entry,3213,Entertainment
+Magic Planet Amusement Park,3381,Entertainment
+Magic Planet Amusement Park,3947,Entertainment
+Theatre Performance Fee,847,Entertainment
+PVR Cinemas Tickets,433,Entertainment
+Fun City Tickets,4080,Entertainment
+MakeMyTrip Booking,1526,Travel
+MakeMyTrip Booking,7443,Travel
+Yatra Flight,4264,Travel
+Yatra Flight,7531,Travel
+Yatra Flight,5374,Travel
+Goibibo Hotel,5229,Travel
+EaseMyTrip,4291,Travel
+Redbus Ticket,5543,Travel
+Booking.com Hotel,2567,Travel
+Redbus Ticket,6715,Travel
+Pathlab Test,2500,Health
+Max Hospital,3697,Health
+Yoga Class Fees,832,Health
+Max Hospital,6534,Health
+Doctor Consultation,4561,Health
+Practo Appointment,4939,Health
+Fortis Healthcare,4321,Health
+Practo Appointment,4569,Health
+Apollo Pharmacy,3377,Health
+MedPlus Medicine,4156,Health
+Coursera Payment,3593,Education
+Khan Academy,733,Education
+Khan Academy,3565,Education
+WhiteHat Jr,482,Education
+College Tuition Fee,2427,Education
+Skillshare Learning,700,Education
+Coursera Payment,4724,Education
+Unacademy Plan,6618,Education
+Jio Recharge,3965,Recharge and Subscriptions
+Netflix Renewal,1524,Recharge and Subscriptions
+Jio Recharge,638,Recharge and Subscriptions
+Amazon Prime,5222,Recharge and Subscriptions
+Vodafone Recharge,1352,Recharge and Subscriptions
+Airtel Prepaid,6811,Recharge and Subscriptions
+GPay Transaction,1587,Others
+UPI to Friend,1989,Others
+Cash Withdrawal,2305,Others
+Account Maintenance Fee,1161,Others
+Unknown Payment,893,Others
+GPay Transaction,262,Others
+Wallet Top-Up,2363,Others
+Miscellaneous Expense,4356,Others
+Unknown Payment,2852,Others
+Service Charge,2319,Others
+Swiggy Payment,8248,Food and Dining
+Zomato Order,6879,Food and Dining
+Swiggy Payment,2022,Food and Dining
+Barbeque Nation,5275,Food and Dining
+Starbucks Coffee,6286,Food and Dining
+KFC Bill,12424,Food and Dining
+Starbucks Coffee,11702,Food and Dining
+Dominos Pizza,4425,Food and Dining
+Foodpanda,6946,Food and Dining
+Barbeque Nation,11943,Food and Dining
+McDonald's,10573,Food and Dining
+Barbeque Nation,20502,Food and Dining
+Bharat Petroleum,8220,Transportation
+Toll Plaza FASTag,12112,Transportation
+Uber Ride,3514,Transportation
+Metro Card Recharge,2749,Transportation
+Ola Cabs,930,Transportation
+Toll Plaza FASTag,6624,Transportation
+Rapido Payment,16023,Transportation
+Ola Cabs,9757,Transportation
+Bharat Petroleum,3558,Transportation
+Toll Plaza FASTag,5845,Transportation
+Flipkart Order,4185,Shopping
+D-Mart Shopping,1954,Shopping
+Flipkart Order,4338,Shopping
+Nykaa Cosmetics,5387,Shopping
+Ajio,9365,Shopping
+D-Mart Shopping,8839,Shopping
+Myntra Clothing,6766,Shopping
+Tata CLiQ,176,Shopping
+Shopper's Stop,121,Shopping
+Ajio,8613,Shopping
+Myntra Clothing,7906,Shopping
+Big Bazaar,12400,Shopping
+Tata CLiQ,3736,Shopping
+Reliance Trends,11839,Shopping
+Big Bazaar,2869,Shopping
+JioFiber Payment,6369,Bills and Utilities
+Water Bill BWSSB,5135,Bills and Utilities
+Electricity Bill TNEB,8426,Bills and Utilities
+Water Bill BWSSB,22757,Bills and Utilities
+Vodafone Postpaid,403,Bills and Utilities
+Art Gallery Entry Fee,2908,Entertainment
+Theatre Performance Fee,2085,Entertainment
+Las Vegas Casino Entry,5297,Entertainment
+Las Vegas Casino Entry,4710,Entertainment
+Sports Match Entry,6911,Entertainment
+PVR Cinemas Tickets,6848,Entertainment
+Magic Planet Amusement Park,3877,Entertainment
+Comedy Show Ticket,724,Entertainment
+Theatre Performance Fee,7273,Entertainment
+Concert Booking,415,Entertainment
+Sports Match Entry,2251,Entertainment
+Comedy Show Ticket,8078,Entertainment
+Las Vegas Casino Entry,6330,Entertainment
+Comedy Show Ticket,7757,Entertainment
+Movie Ticket BookMyShow,973,Entertainment
+Tripoto Travel,8282,Travel
+EaseMyTrip,3496,Travel
+Air India,3056,Travel
+Air India,4479,Travel
+Redbus Ticket,7269,Travel
+MakeMyTrip Booking,12981,Travel
+OYO Rooms,807,Travel
+Yatra Flight,923,Travel
+EaseMyTrip,19325,Travel
+Goibibo Hotel,10296,Travel
+Gym Membership,1324,Health
+Practo Appointment,3755,Health
+Pathlab Test,6747,Health
+Max Hospital,1735,Health
+Max Hospital,341,Health
+Gym Membership,7833,Health
+Max Hospital,1684,Health
+Max Hospital,7082,Health
+1mg Order,9067,Health
+Gym Membership,9162,Health
+WhiteHat Jr,4001,Education
+Khan Academy,5330,Education
+Coursera Payment,7082,Education
+Byju's Subscription,7048,Education
+Exam Registration Fee,3218,Education
+College Tuition Fee,6801,Education
+WhiteHat Jr,253,Education
+School Books,15995,Education
+Disney+ Subscription,6202,Recharge and Subscriptions
+Jio Recharge,3233,Recharge and Subscriptions
+Vodafone Recharge,899,Recharge and Subscriptions
+Vodafone Recharge,7167,Recharge and Subscriptions
+Netflix Renewal,3546,Recharge and Subscriptions
+Tata Sky DTH,3013,Recharge and Subscriptions
+Wallet Top-Up,403,Others
+NEFT Transfer,1496,Others
+NEFT Transfer,1336,Others
+NEFT Transfer,1752,Others
+UPI to Friend,1751,Others
+Service Charge,2867,Others
+Unknown Payment,2800,Others
+Account Maintenance Fee,1809,Others
+UPI to Friend,2251,Others
+Account Maintenance Fee,1300,Others
+McDonald's,3173,Food and Dining
+Barbeque Nation,309,Food and Dining
+McDonald's,2397,Food and Dining
+UberEats,1566,Food and Dining
+UberEats,4078,Food and Dining
+KFC Bill,2499,Food and Dining
+Swiggy Payment,1911,Food and Dining
+Dominos Pizza,5274,Food and Dining
+McDonald's,3037,Food and Dining
+Zomato Order,211,Food and Dining
+Indian Oil Petrol,105,Transportation
+Fuel Station HP,2042,Transportation
+Local Bus Pass,124,Transportation
+Ola Cabs,1271,Transportation
+Toll Plaza FASTag,3158,Transportation
+Ola Cabs,1364,Transportation
+Metro Card Recharge,3592,Transportation
+Fuel Station HP,940,Transportation
+Ola Cabs,751,Transportation
+Toll Plaza FASTag,4009,Transportation
+Rapido Payment,2548,Transportation
+Fuel Station HP,2089,Transportation
+Myntra Clothing,1335,Shopping
+D-Mart Shopping,453,Shopping
+Nykaa Cosmetics,2012,Shopping
+Nykaa Cosmetics,1969,Shopping
+Amazon Purchase,827,Shopping
+Shopper's Stop,1069,Shopping
+Amazon Purchase,1555,Shopping
+Reliance Trends,1315,Shopping
+Flipkart Order,1412,Shopping
+Ajio,1776,Shopping
+Reliance Trends,586,Shopping
+D-Mart Shopping,1936,Shopping
+Ajio,1132,Shopping
+Big Bazaar,1219,Shopping
+Shopper's Stop,773,Shopping
+MTNL Landline,321,Bills and Utilities
+MTNL Landline,3657,Bills and Utilities
+Airtel Broadband,3130,Bills and Utilities
+Indane Gas,3407,Bills and Utilities
+Tata Power Bill,2318,Bills and Utilities
+BSNL Broadband,3360,Bills and Utilities
+Vodafone Postpaid,1634,Bills and Utilities
+Airtel Broadband,1962,Bills and Utilities
+Vodafone Postpaid,775,Bills and Utilities
+Water Bill BWSSB,476,Bills and Utilities
+Las Vegas Casino Entry,386,Entertainment
+Theatre Performance Fee,853,Entertainment
+Eventbrite Tickets,1336,Entertainment
+Eventbrite Tickets,577,Entertainment
+Comedy Show Ticket,769,Entertainment
+Concert Booking,1812,Entertainment
+Comedy Show Ticket,1302,Entertainment
+Theatre Performance Fee,2462,Entertainment
+Fun City Tickets,15,Entertainment
+Eventbrite Tickets,3741,Entertainment
+MakeMyTrip Booking,281,Travel
+OYO Rooms,962,Travel
+Air India,1483,Travel
+Tripoto Travel,213,Travel
+Yatra Flight,798,Travel
+Air India,1964,Travel
+Goibibo Hotel,1420,Travel
+Yatra Flight,478,Travel
+Yatra Flight,744,Travel
+Booking.com Hotel,1490,Travel
+Doctor Consultation,1074,Health
+Fortis Healthcare,856,Health
+Practo Appointment,406,Health
+1mg Order,954,Health
+Pathlab Test,932,Health
+Practo Appointment,886,Health
+Fortis Healthcare,1388,Health
+Max Hospital,132,Health
+Pathlab Test,1525,Health
+Apollo Pharmacy,1096,Health
+College Tuition Fee,1212,Education
+Khan Academy,1068,Education
+Khan Academy,486,Education
+Skillshare Learning,65,Education
+Coursera Payment,837,Education
+Khan Academy,1749,Education
+WhiteHat Jr,596,Education
+WhiteHat Jr,2210,Education
+BSNL Recharge,1854,Recharge and Subscriptions
+Tata Sky DTH,1685,Recharge and Subscriptions
+Airtel Prepaid,1601,Recharge and Subscriptions
+Tata Sky DTH,378,Recharge and Subscriptions
+Netflix Renewal,1359,Recharge and Subscriptions
+Vodafone Recharge,1860,Recharge and Subscriptions
+Wallet Top-Up,659,Others
+GPay Transaction,460,Others
+Cash Withdrawal,264,Others
+UPI to Friend,127,Others
+UPI to Friend,191,Others
+Cash Withdrawal,223,Others
+Cheque Clearance,1119,Others
+Cash Withdrawal,490,Others
+GPay Transaction,579,Others
+Unknown Payment,1906,Others
+Swiggy Payment,23781,Food and Dining
+Foodpanda,12381,Food and Dining
+Barbeque Nation,14907,Food and Dining
+KFC Bill,12665,Food and Dining
+Swiggy Payment,1963,Food and Dining
+Zomato Order,18727,Food and Dining
+KFC Bill,94,Food and Dining
+KFC Bill,38129,Food and Dining
+Zomato Order,6488,Food and Dining
+Barbeque Nation,15629,Food and Dining
+Bharat Petroleum,1529,Transportation
+Toll Plaza FASTag,9087,Transportation
+Uber Ride,15109,Transportation
+Indian Oil Petrol,1359,Transportation
+Local Bus Pass,18303,Transportation
+Toll Plaza FASTag,17617,Transportation
+Ola Cabs,731,Transportation
+Ola Cabs,22753,Transportation
+Ola Cabs,1002,Transportation
+Bharat Petroleum,5708,Transportation
+Rapido Payment,3273,Transportation
+Rapido Payment,19842,Transportation
+Amazon Purchase,8898,Shopping
+Shopper's Stop,16529,Shopping
+Big Bazaar,11785,Shopping
+Reliance Trends,9787,Shopping
+Amazon Purchase,15436,Shopping
+Flipkart Order,14189,Shopping
+Tata CLiQ,9646,Shopping
+Flipkart Order,17753,Shopping
+Ajio,17781,Shopping
+Tata CLiQ,13502,Shopping
+Nykaa Cosmetics,13480,Shopping
+Flipkart Order,7407,Shopping
+Ajio,3147,Shopping
+Shopper's Stop,6819,Shopping
+Big Bazaar,34226,Shopping
+JioFiber Payment,18005,Bills and Utilities
+Indane Gas,15380,Bills and Utilities
+Indane Gas,1988,Bills and Utilities
+Tata Power Bill,8435,Bills and Utilities
+Gas Bill Mahanagar Gas,20320,Bills and Utilities
+Airtel Broadband,14848,Bills and Utilities
+Gas Bill Mahanagar Gas,9548,Bills and Utilities
+Vodafone Postpaid,11760,Bills and Utilities
+Electricity Bill TNEB,6099,Bills and Utilities
+Gas Bill Mahanagar Gas,24545,Bills and Utilities
+Art Gallery Entry Fee,5968,Entertainment
+Magic Planet Amusement Park,20817,Entertainment
+PVR Cinemas Tickets,19645,Entertainment
+Fun City Tickets,10719,Entertainment
+Las Vegas Casino Entry,11985,Entertainment
+Comedy Show Ticket,122,Entertainment
+Theatre Performance Fee,24363,Entertainment
+Magic Planet Amusement Park,7230,Entertainment
+Movie Ticket BookMyShow,24735,Entertainment
+Las Vegas Casino Entry,16212,Entertainment
+Redbus Ticket,886,Travel
+Tripoto Travel,18759,Travel
+Tripoto Travel,2780,Travel
+Booking.com Hotel,8860,Travel
+EaseMyTrip,22379,Travel
+Booking.com Hotel,7346,Travel
+Goibibo Hotel,1882,Travel
+Redbus Ticket,11733,Travel
+EaseMyTrip,3101,Travel
+MakeMyTrip Booking,44102,Travel
+Fortis Healthcare,11864,Health
+Yoga Class Fees,13154,Health
+MedPlus Medicine,13053,Health
+Yoga Class Fees,3570,Health
+Fortis Healthcare,4395,Health
+Apollo Pharmacy,10412,Health
+Doctor Consultation,3680,Health
+Gym Membership,14320,Health
+Max Hospital,9504,Health
+MedPlus Medicine,3124,Health
+Udemy Course,9156,Education
+Skillshare Learning,7507,Education
+Exam Registration Fee,3811,Education
+WhiteHat Jr,7018,Education
+Khan Academy,15569,Education
+Udemy Course,6290,Education
+Byju's Subscription,15372,Education
+WhiteHat Jr,30928,Education
+BSNL Recharge,7647,Recharge and Subscriptions
+Jio Recharge,5139,Recharge and Subscriptions
+Sun Direct Recharge,8609,Recharge and Subscriptions
+Jio Recharge,5017,Recharge and Subscriptions
+Hotstar Plan,1654,Recharge and Subscriptions
+Jio Recharge,14409,Recharge and Subscriptions
+Cheque Clearance,1171,Others
+Unknown Payment,4298,Others
+Wallet Top-Up,1551,Others
+Miscellaneous Expense,3735,Others
+UPI to Friend,2976,Others
+Cash Withdrawal,6081,Others
+GPay Transaction,761,Others
+Cheque Clearance,3617,Others
+Service Charge,695,Others
+Wallet Top-Up,8986,Others
+KFC Bill,9074,Food and Dining
+KFC Bill,4175,Food and Dining
+Cafe Coffee Day,1172,Food and Dining
+Foodpanda,1830,Food and Dining
+UberEats,652,Food and Dining
+Dominos Pizza,13571,Food and Dining
+Zomato Order,2672,Food and Dining
+Barbeque Nation,12,Food and Dining
+Dominos Pizza,16069,Food and Dining
+Swiggy Payment,6536,Food and Dining
+Indian Oil Petrol,4478,Transportation
+Metro Card Recharge,5357,Transportation
+Indian Oil Petrol,2548,Transportation
+Indian Oil Petrol,3930,Transportation
+Bharat Petroleum,6461,Transportation
+Ola Cabs,811,Transportation
+Uber Ride,6803,Transportation
+Local Bus Pass,5451,Transportation
+Bharat Petroleum,938,Transportation
+Auto Fare,367,Transportation
+Rapido Payment,131,Transportation
+Toll Plaza FASTag,30867,Transportation
+Reliance Trends,3667,Shopping
+Shopper's Stop,5202,Shopping
+Nykaa Cosmetics,908,Shopping
+D-Mart Shopping,3514,Shopping
+Reliance Trends,4774,Shopping
+Tata CLiQ,4295,Shopping
+Tata CLiQ,2171,Shopping
+Shopper's Stop,1539,Shopping
+Flipkart Order,3985,Shopping
+Big Bazaar,788,Shopping
+Big Bazaar,6244,Shopping
+Reliance Trends,1424,Shopping
+Ajio,4049,Shopping
+Reliance Trends,11102,Shopping
+Shopper's Stop,5309,Shopping
+Tata Power Bill,2063,Bills and Utilities
+Tata Power Bill,4276,Bills and Utilities
+MTNL Landline,2308,Bills and Utilities
+Indane Gas,8713,Bills and Utilities
+Tata Power Bill,7951,Bills and Utilities
+Tata Power Bill,4425,Bills and Utilities
+BSNL Broadband,4049,Bills and Utilities
+MTNL Landline,6270,Bills and Utilities
+Tata Power Bill,3490,Bills and Utilities
+Water Bill BWSSB,11908,Bills and Utilities
+Fun City Tickets,2811,Entertainment
+Comedy Show Ticket,3055,Entertainment
+Sports Match Entry,3247,Entertainment
+Sports Match Entry,1730,Entertainment
+Magic Planet Amusement Park,3939,Entertainment
+Concert Booking,2164,Entertainment
+Magic Planet Amusement Park,1052,Entertainment
+Comedy Show Ticket,2578,Entertainment
+PVR Cinemas Tickets,3697,Entertainment
+Eventbrite Tickets,3013,Entertainment
+Comedy Show Ticket,2269,Entertainment
+Art Gallery Entry Fee,3768,Entertainment
+Sports Match Entry,3029,Entertainment
+Las Vegas Casino Entry,2812,Entertainment
+Concert Booking,2523,Entertainment
+Yatra Flight,120,Travel
+Goibibo Hotel,3649,Travel
+MakeMyTrip Booking,11227,Travel
+EaseMyTrip,12317,Travel
+EaseMyTrip,12086,Travel
+Apollo Pharmacy,511,Health
+Apollo Pharmacy,885,Health
+Max Hospital,4585,Health
+Doctor Consultation,4138,Health
+Practo Appointment,303,Health
+Apollo Pharmacy,3895,Health
+Max Hospital,2272,Health
+Yoga Class Fees,696,Health
+Pathlab Test,7480,Health
+Max Hospital,969,Health
+WhiteHat Jr,3715,Education
+WhiteHat Jr,473,Education
+Udemy Course,665,Education
+WhiteHat Jr,4188,Education
+Khan Academy,4320,Education
+Coursera Payment,2712,Education
+WhiteHat Jr,2280,Education
+Skillshare Learning,2308,Education
+Tata Sky DTH,3573,Recharge and Subscriptions
+Vodafone Recharge,2615,Recharge and Subscriptions
+Amazon Prime,273,Recharge and Subscriptions
+Disney+ Subscription,1887,Recharge and Subscriptions
+Netflix Renewal,4992,Recharge and Subscriptions
+Amazon Prime,4073,Recharge and Subscriptions
+Cheque Clearance,494,Others
+Account Maintenance Fee,2446,Others
+Miscellaneous Expense,2103,Others
+Service Charge,239,Others
+Account Maintenance Fee,1211,Others
+Service Charge,2894,Others
+Account Maintenance Fee,2135,Others
+Service Charge,1327,Others
+Service Charge,1716,Others
+Service Charge,3217,Others

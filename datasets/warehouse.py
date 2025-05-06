@@ -1,8 +1,15 @@
 from pymongo import MongoClient
+from dotenv import load_dotenv
 import pandas as pd
+import os
 
-#Connect to MongoDB
-client = MongoClient("mongodb+srv://patelaarya1402:Aarya%401402@cluster0.65qiy19.mongodb.net/")
+
+load_dotenv()
+# Get the database URL from environment variable
+database_url = os.getenv("DATABASE_URL")
+
+# Connect to MongoDB
+client = MongoClient(database_url)
 db = client["test"]
 
 #Load collections
@@ -54,6 +61,6 @@ summary_df = pd.merge(total_debit[["user_id", "avg_monthly_expense"]], income_df
 #Calculate expense-to-income ratio
 summary_df["expense_to_income_ratio"] = summary_df["avg_monthly_expense"] / summary_df["income"]
 
-#Save to CSV
-summary_df.to_csv("user_expense_summary.csv", index=False)
+# #Save to CSV
+# summary_df.to_csv("user_expense_summary.csv", index=False)
 print("CSV file 'user_expense_summary.csv' has been saved successfully.")
