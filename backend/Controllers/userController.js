@@ -3,17 +3,24 @@ const bcrypt = require('bcrypt');
 // Get all users
 exports.getAllUsers = async (req, res) => {
   try {
-    const users = await User.find();
+    console.log('Fetching all users');
+    const users = await User.find().select('-password');
+    console.log(`Found ${users.length} users`);
     res.status(200).json(users);
   } catch (error) {
-    res.status(500).json({ message: 'Failed to fetch users', error });
+    console.error('Error in getAllUsers:', error);
+    res.status(500).json({ 
+      message: 'Failed to fetch users', 
+      error: error.message 
+    });
   }
 };
 
 // Get user by ID
 exports.getUserById = async (req, res) => {
   try {
-    const user = await User.findOne({ userId: req.params.id });
+    console.log('Fetching user with ID:', req.params.id);
+    const user = await User.findById(req.params.id);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -22,13 +29,27 @@ exports.getUserById = async (req, res) => {
     res.status(500).json({ message: "Failed to fetch user", error });
   }
 };
+exports.getUserByEmail = async (req, res) => {
+  try {
+    const user = await User.findOne({ email : req.params.email });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch user", error });
+  }
+};
+
 //create user
 const Counter = require('../models/counter'); // Import the Counter model
 exports.createUser = async (req, res) => {
   try {
     const { password, ...rest } = req.body;
+    console.log('Creating new user with email:', rest.email);
 
     if (!password) {
+      console.log('Password missing in request');
       return res.status(400).json({ message: 'Password is required' });
     }
 
@@ -41,6 +62,7 @@ exports.createUser = async (req, res) => {
       { $inc: { seq: 1 } },
       { new: true, upsert: true }
     );
+    console.log('Generated new userId:', counter.seq);
 
     const newUser = new User({
       userId: counter.seq,
@@ -49,9 +71,17 @@ exports.createUser = async (req, res) => {
     });
 
     const savedUser = await newUser.save();
-    res.status(201).json(savedUser);
+    console.log('User created successfully');
+    
+    // Don't send password in response
+    const { password: _, ...userWithoutPassword } = savedUser.toObject();
+    res.status(201).json(userWithoutPassword);
   } catch (error) {
-    res.status(400).json({ message: 'Failed to create user', error });
+    console.error('Error in createUser:', error);
+    res.status(400).json({ 
+      message: 'Failed to create user', 
+      error: error.message 
+    });
   }
 };
 

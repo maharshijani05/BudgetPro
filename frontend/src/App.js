@@ -5,16 +5,59 @@ import Login from './Components/Auth/login';
 import Dashboard from './Components/dashboard';
 import LandingPage from './Components/landingPage';
 import { ProtectedRoute } from './protectedRoute';
+import ProfilePage from './Components/Profile/ProfilePage';
+import { FiLogOut } from 'react-icons/fi';
 import './App.css';
+import ChatbotPage from './Components/Chatbot/ChatbotPage';
 
 function App() {
-  return (
+  const handleLogout = () => {
+    // Handle logout functionality
+    console.log('Logout clicked');
+    // In a real app, this would clear auth tokens and redirect to login
+  };
+  return (  
     <Router>
       <div className="App">
+      <nav style={{
+        backgroundColor: '#4a3aff',
+        padding: '1rem 2rem',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        color: 'white',
+        marginBottom: '2rem',
+        width: '98%'
+      }}>
+        <div style={{ display: 'flex', gap: '2rem' }}>
+          <a href="#1" style={{ color: 'white', textDecoration: 'none' }}>1</a>
+          <a href="#2" style={{ color: 'white', textDecoration: 'none' }}>2</a>
+          <a href="#3" style={{ color: 'white', textDecoration: 'none' }}>2</a>
+          <a href="#4" style={{ color: 'white', textDecoration: 'none' }}>4</a>
+        </div>
+        <button
+          onClick={handleLogout}
+          style={{
+            backgroundColor: 'transparent',
+            border: '1px solid white',
+            color: 'white',
+            padding: '0.5rem 1rem',
+            borderRadius: '0.5rem',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem'
+          }}
+        >
+          <FiLogOut size={20} />
+        </button>
+      </nav>
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path='/chat' element={<ChatbotPage/>} />
           <Route 
             path="/dashboard" 
             element={

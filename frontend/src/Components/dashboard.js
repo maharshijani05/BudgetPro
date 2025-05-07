@@ -6,9 +6,12 @@ import { FiLogOut } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import { auth } from './Auth/firebase';
 import { signOut } from 'firebase/auth';
+import { useAuth } from '../contexts/AuthContext';
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const { userName,currentUser } = useAuth();
+  
   const handleLogout = async () => {
     try {
       await signOut(auth);
@@ -48,52 +51,40 @@ const Dashboard = () => {
   const [savingsProgress] = useState(75); // Percentage of savings goal achieved
 
   const [quickActions] = useState([
-    { name: 'Chat with AI', icon: <MessageSquare />, color: '#6366f1' },
-    { name: 'Future Simulator', icon: <TrendingUp />, color: '#8b5cf6' },
-    { name: 'Budget Settings', icon: <DollarSign />, color: '#ec4899' },
-    { name: 'Account', icon: <User />, color: '#f59e0b' }
+    { 
+      name: 'Chat with AI', 
+      icon: <MessageSquare />, 
+      color: '#6366f1',
+      onClick: () => navigate('/chat')  // Replace with your actual route or function
+    },
+    { 
+      name: 'Future Simulator', 
+      icon: <TrendingUp />, 
+      color: '#8b5cf6',
+      onClick: () => navigate('/simulate')
+    },
+    { 
+      name: 'Budget Settings', 
+      icon: <DollarSign />, 
+      color: '#ec4899',
+      onClick: () => navigate('/budget')
+    },
+    { 
+      name: 'Profile', 
+      icon: <User />, 
+      color: '#f59e0b',
+      onClick: () => navigate('/profile')
+    }
   ]);
-
+  
   return (
     <div className={styles.dashboardContainer}>
       {/* Add Navbar */}
-      <nav style={{
-        backgroundColor: '#4a3aff',
-        padding: '1rem 2rem',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        color: 'white',
-        marginBottom: '2rem',
-        width: '100%'
-      }}>
-        <div style={{ display: 'flex', gap: '2rem' }}>
-          <a href="#1" style={{ color: 'white', textDecoration: 'none' }}>1</a>
-          <a href="#2" style={{ color: 'white', textDecoration: 'none' }}>2</a>
-          <a href="#3" style={{ color: 'white', textDecoration: 'none' }}>3</a>
-          <a href="#4" style={{ color: 'white', textDecoration: 'none' }}>4</a>
-        </div>
-        <button
-          onClick={handleLogout}
-          style={{
-            backgroundColor: 'transparent',
-            border: '1px solid white',
-            color: 'white',
-            padding: '0.5rem 1rem',
-            borderRadius: '0.5rem',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem'
-          }}
-        >
-          <FiLogOut size={20} />
-        </button>
-      </nav>
+     
 
       <header className={styles.dashboardHeader}>
         <h1>Financial Dashboard</h1>
-        <p className={styles.welcomeText}>Welcome back, Alex! Here's your financial overview.</p>
+        <p className={styles.welcomeText}>Welcome back, { userName|| currentUser?.email?.split('@')[0] || 'User'}! Here's your financial overview.</p>
       </header>
 
       <div className={styles.dashboardGrid}>
@@ -157,6 +148,7 @@ const Dashboard = () => {
                 className={styles.quickAccessButton}
                 key={index}
                 style={{ backgroundColor: action.color }}
+                onClick={action.onClick}
               >
                 <span className={styles.actionIcon}>{action.icon}</span>
                 <span className={styles.actionName}>{action.name}</span>

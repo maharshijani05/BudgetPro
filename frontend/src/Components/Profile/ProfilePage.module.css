@@ -1,0 +1,626 @@
+/* ProfilePage.module.css */
+
+.profilePageContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0 2rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  /* Profile Section */
+  .profileSection {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+  }
+  
+  .sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.75rem;
+  }
+  
+  .sectionHeader h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .iconButton {
+    background: transparent;
+    border: none;
+    color: #4a3aff;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+  }
+  
+  .iconButton:hover {
+    background: rgba(74, 58, 255, 0.1);
+  }
+  
+  /* Profile Details */
+  .profileDetails {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+  
+  .profileDetail {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .profileDetail:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .detailLabel {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .detailValue {
+    font-size: 1.25rem;
+    color: #333;
+    font-weight: 600;
+  }
+  
+  /* Edit Form */
+  .editForm {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  
+  .formGroup label {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+  }
+  
+  .formGroup input {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+  }
+  
+  .formGroup input:focus {
+    outline: none;
+    border-color: #4a3aff;
+    box-shadow: 0 0 0 2px rgba(74, 58, 255, 0.2);
+  }
+  
+  .saveButton {
+    grid-column: 1 / -1;
+    background-color: #4a3aff;
+    color: white;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .saveButton:hover {
+    background-color: #3929cc;
+  }
+  
+  /* Accounts Section */
+  .accountsSection {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+  }
+  
+  .accountsSection .sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .accountsList {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 0.5rem 0;
+  }
+  
+  .accountCard {
+    min-width: 250px;
+    background: linear-gradient(135deg, #4a3aff 0%, #8679ff 100%);
+    color: white;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .accountCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(74, 58, 255, 0.3);
+  }
+  
+  .selectedAccount {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(74, 58, 255, 0.3);
+    position: relative;
+  }
+  
+  .selectedAccount::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 4px;
+    background-color: #4a3aff;
+    border-radius: 2px;
+  }
+  
+  .accountCardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  .accountIcon {
+    font-size: 1.5rem;
+  }
+  
+  .accountType {
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+  }
+  
+  .accountNumber {
+    font-size: 1.25rem;
+    letter-spacing: 0.05rem;
+    margin-bottom: 1rem;
+  }
+  
+  .accountBalance {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .accountFooter {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+  
+  /* Transactions Section */
+  .transactionsSection {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+  }
+  
+  .transactionsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .filterButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #f0f0f0;
+    color: #333;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  
+  .filterButton:hover {
+    background: #e0e0e0;
+  }
+  
+  .dateFilterContainer {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .dateInputGroup {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .dateInputGroup label {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .dateInputGroup input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+  }
+  
+  .applyFilterButton {
+    background: #4a3aff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    margin-left: auto;
+  }
+  
+  .applyFilterButton:hover {
+    background: #3929cc;
+  }
+  
+  /* Transactions Table */
+  .transactionsTable {
+    border: 1px solid #eee;
+    border-radius: 0.25rem;
+    overflow: hidden;
+  }
+  
+  .tableHeader {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr 1fr;
+    background: #f0f0f0;
+    font-weight: 600;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .tableRow {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr 1fr;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .tableRow:nth-child(even) {
+    background: #f8f9fa;
+  }
+  
+  .tableRow:hover {
+    background: #f0f4ff;
+  }
+  
+  .tableCell {
+    padding: 0.75rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+  }
+  
+  .debitAmount {
+    color: #e74c3c;
+  }
+  
+  .creditAmount {
+    color: #27ae60;
+  }
+  
+  .noTransactions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    color: #666;
+    font-style: italic;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .profileDetails {
+      grid-template-columns: 1fr;
+    }
+    
+    .editForm {
+      grid-template-columns: 1fr;
+    }
+    
+    .tableHeader,
+    .tableRow {
+      grid-template-columns: 1fr 2fr 1fr 1fr;
+    }
+    
+    .tableCell:nth-child(3),
+    .tableCell:nth-child(4),
+    .tableCell:nth-child(7) {
+      display: none;
+    }
+  }
+  
+  /* Modal Styles */
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal {
+    background: white;
+    border-radius: 0.5rem;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+  }
+  
+  .modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .modalHeader h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #333;
+  }
+  
+  .closeButton {
+    background: transparent;
+    border: none;
+    color: #666;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .closeButton:hover {
+    color: #333;
+  }
+  
+  .accountActions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .viewTransactionsButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #4a3aff;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .viewTransactionsButton:hover {
+    background-color: #3a2fd9;
+  }
+  
+  .viewTransactionsButton svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+  
+  /* Transactions section in modal */
+  .transactionsSection {
+    padding: 1rem 0;
+  }
+  
+  .transactionsHeader {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+  }
+  
+  .transactionsList {
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+  }
+  
+  .transactionItem {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .transactionItem:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .transactionDate {
+    width: 120px;
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .transactionDescription {
+    flex: 1;
+    margin: 0 1rem;
+  }
+  
+  .transactionTitle {
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .transactionCategory {
+    font-size: 0.8rem;
+    color: #666;
+  }
+  
+  .transactionAmount {
+    font-weight: 600;
+    margin: 0 1rem;
+  }
+  
+  .debitAmount {
+    color: #dc3545;
+  }
+  
+  .creditAmount {
+    color: #28a745;
+  }
+  
+  .viewButton {
+    color: #666;
+    padding: 0.5rem;
+    transition: color 0.2s ease;
+  }
+  
+  .viewButton:hover {
+    color: #333;
+  }
+  
+  /* Date filter styles */
+  .dateFilterContainer {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+  }
+  
+  .dateInputGroup {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .dateInputGroup label {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .dateInputGroup input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    font-size: 0.9rem;
+  }
+  
+  .applyFilterButton {
+    padding: 0.5rem 1rem;
+    background-color: #4a3aff;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .applyFilterButton:hover {
+    background-color: #3a2fd9;
+  }
+  
+  .noTransactions {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-style: italic;
+  }
+  
+  @media (max-width: 480px) {
+    .profilePageContainer {
+      padding: 0 1rem 1rem;
+    }
+    
+    .tableHeader,
+    .tableRow {
+      grid-template-columns: 1fr 1fr;
+    }
+    
+    .tableCell:nth-child(3),
+    .tableCell:nth-child(4),
+    .tableCell:nth-child(5),
+    .tableCell:nth-child(7) {
+      display: none;
+    }
+    
+    .dateFilterContainer {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .applyFilterButton {
+      margin-left: 0;
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+    
+    .modal {
+      width: 95%;
+    }
+  }
