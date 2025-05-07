@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-
+import { useAuth } from '../../contexts/AuthContext';
 // Main ChatBotPage component
 export default function ChatBotPage() {
+    const { dbUser } = useAuth();
   const [messages, setMessages] = useState([
     { 
       id: 1, 
@@ -62,7 +63,7 @@ export default function ChatBotPage() {
     
     try {
       // Send message to backend and get response
-      const response = await fetch('http://localhost:5000/chat', {
+      const response = await fetch(`http://localhost:5000/chat/${dbUser._id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

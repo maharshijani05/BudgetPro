@@ -8,5 +8,5 @@ const router = express.Router();
 // Enable CORS for React frontend
 
 router.post('/faq', chatbotController.faqhandler);
-router.post('/', chatbotController.handler);
+router.post('/:userid', chatbotController.handler);
 module.exports = router;

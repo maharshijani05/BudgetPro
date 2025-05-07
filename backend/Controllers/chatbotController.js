@@ -20,12 +20,8 @@ exports.handler = async (req, res) => {
       console.log("Python script path:", pythonScriptPath);
   
       // Call Python script with user's message
-      const pythonProcess = spawn('python', [pythonScriptPath], {
-        env: {
-          ...process.env,
-          USER_MESSAGE: message,
-        }
-      });
+      const pythonProcess = spawn('python', [pythonScriptPath],req.params.userId,message
+      );
   
       let botResponse = '';
       let errorData = '';
@@ -37,7 +33,7 @@ exports.handler = async (req, res) => {
           botResponse += output;
         }
       });
-  
+      console.log("Bot response:", botResponse);
       pythonProcess.stderr.on('data', (data) => {
         errorData += data.toString();
       });
@@ -68,20 +64,48 @@ exports.handler = async (req, res) => {
 };
 
 // FAQ handler
+
 exports.faqhandler = async (req, res) => {
     try {
-        // Add your FAQ handling logic here
-        return res.status(200).json({ 
-            response: '👋 Adios Amigo!',
-            faqs: [
-                // Add your FAQ items here
-            ]
+        console.log("Received FAQ request:", req.body);
+        const pythonScriptPath = path.join(__dirname, '../../FAQ_Chatbot/faq_chatbot.py');
+
+        // Spawn the Python process
+        const pythonProcess = spawn('python', [pythonScriptPath]);
+
+        let output = '';
+        let errorOutput = '';
+
+        // Capture Python script output
+        pythonProcess.stdout.on('data', (data) => {
+            output += data.toString();
+        });
+
+        // Capture Python script errors
+        pythonProcess.stderr.on('data', (data) => {
+            errorOutput += data.toString();
+        });
+
+        // Handle script completion
+        pythonProcess.on('close', (code) => {
+            if (code === 0) {
+                console.log(output)
+                return res.status(200).json({
+                    response: output.trim(),
+                });
+            } else {
+                console.error('Python script error:', errorOutput);
+                return res.status(500).json({
+                    error: 'Python script execution failed',
+                    details: errorOutput.trim(),
+                });
+            }
         });
     } catch (error) {
         console.error('Error handling FAQ request:', error);
-        res.status(500).json({ 
+        res.status(500).json({
             error: 'Internal server error',
-            response: 'Sorry, something went wrong while fetching FAQs.' 
+            response: 'Sorry, something went wrong while fetching FAQs.',
         });
     }
 };

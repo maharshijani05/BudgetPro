@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { MessageSquare, TrendingUp, DollarSign, PieChart, User } from 'lucide-react';
 import styles from './dashboard.module.css';
@@ -7,84 +7,257 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from './Auth/firebase';
 import { signOut } from 'firebase/auth';
 import { useAuth } from '../contexts/AuthContext';
+import axios from 'axios';
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const { userName,currentUser } = useAuth();
-  
+  const { userName, currentUser, dbUser } = useAuth();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [monthlyData, setMonthlyData] = useState([]);
+  const [insights, setInsights] = useState([]);
+  const [savingsProgress, setSavingsProgress] = useState(0);
+  const [currentAccount, setCurrentAccount] = useState(null);
+  const [transactions, setTransactions] = useState([]);
+  const [monthlySpending, setMonthlySpending] = useState({});
+
+  // Fetch user's current account and transactions
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!dbUser?._id) return;
+
+      try {
+        setLoading(true);
+        console.log("Getting account data");
+        const accountsResponse = await axios.get(`http://localhost:5000/account/getbyuserid/${dbUser._id}`);
+        console.log("Account data fetched:", accountsResponse.data);
+        const accounts = accountsResponse.data;
+
+        // Find current account
+        const currentAcc = accounts.find(acc => acc.accountType === 'current');
+        if (!currentAcc) {
+          throw new Error('No current account found');
+        }
+        setCurrentAccount(currentAcc);
+        console.log("Current account:", currentAcc);
+
+        // Fetch transactions for current account
+        const transactionsResponse = await axios.get(`http://localhost:5000/transaction/accountid/${currentAcc._id}`);
+        console.log("Transactions data fetched:", transactionsResponse.data);
+        const allTransactions = transactionsResponse.data;
+        setTransactions(allTransactions);
+        console.log("All transactions:", allTransactions);
+
+        // Calculate monthly spending data
+        const spendingData = calculateMonthlySpending(allTransactions);
+        setMonthlySpending(spendingData);
+        console.log("Monthly spending data:", spendingData);
+
+        // Calculate insights
+        console.log("Calculating insights...");
+        const calculatedInsights = calculateInsights(allTransactions, dbUser);
+        setInsights(calculatedInsights);
+
+        // Calculate savings progress
+        console.log("Calculating savings progress...");
+        const progress = calculateSavingsProgress(allTransactions, dbUser);
+        setSavingsProgress(progress);
+
+        setError(null);
+      } catch (error) {
+        console.error('Error fetching dashboard data:', error);
+        setError('Failed to load dashboard data');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [dbUser?._id]);
+
+  // Calculate monthly spending data
+  const calculateMonthlySpending = (transactions) => {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const currentDate = new Date();
+    const sixMonthsAgo = new Date();
+    sixMonthsAgo.setMonth(currentDate.getMonth() - 5);
+
+    const monthlySpending = {};
+    months.forEach(month => {
+      monthlySpending[month] = 0;
+    });
+
+    transactions.forEach(transaction => {
+      const date = new Date(transaction.date);
+      if (date >= sixMonthsAgo && date <= currentDate) {
+        const month = months[date.getMonth()];
+        if (transaction.debit > 0) {
+          monthlySpending[month] += transaction.debit;
+          console.log(`Transaction on ${date.toDateString()}: ${transaction.debit} in ${month}`);
+        }
+      }
+    });
+
+    console.log("Monthly spending data:", monthlySpending);
+    return monthlySpending;
+  };
+
+  // Calculate chart data from monthly spending
+  const calculateChartData = (spendingData) => {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const currentMonth = new Date().getMonth();
+
+    // Get the last six months, handling wrapping around the year
+    const lastSixMonths = [];
+    for (let i = 5; i >= 0; i--) {
+      const monthIndex = (currentMonth - i + 12) % 12;
+      lastSixMonths.push(months[monthIndex]);
+    }
+
+    // Map the spending data to the last six months
+    return lastSixMonths.map(month => ({
+      month,
+      spending: spendingData[month] || 0
+    }));
+  };
+
+  // Update monthly data when spending data changes
+  useEffect(() => {
+    const data = calculateChartData(monthlySpending);
+    setMonthlyData(data);
+    console.log("Updated monthly data for chart:", data);
+  }, [monthlySpending]);
+
+  // Calculate insights from transactions
+  const calculateInsights = (transactions, user) => {
+    const currentMonth = new Date().getMonth();
+    const lastMonth = currentMonth === 0 ? 11 : currentMonth - 1;
+
+    // Calculate highest expense category
+    const categorySpending = {};
+    transactions.forEach(tx => {
+      if (tx.debit > 0 && new Date(tx.date).getMonth() === currentMonth) {
+        categorySpending[tx.category] = (categorySpending[tx.category] || 0) + tx.debit;
+      }
+    });
+
+    const highestCategory = Object.entries(categorySpending)
+      .sort(([, a], [, b]) => b - a)[0];
+
+    // Calculate savings progress
+    const monthlyIncome = user.income || 0;
+    const savingsTarget = monthlyIncome * (user.save_per / 100);
+    const currentSavings = transactions
+      .filter(tx => tx.credit > 0 && new Date(tx.date).getMonth() === currentMonth)
+      .reduce((sum, tx) => sum + tx.credit, 0);
+
+    const savingsProgress = Math.min(100, (currentSavings / savingsTarget) * 100);
+
+    // Calculate unused subscriptions
+    const subscriptions = transactions
+      .filter(tx => tx.category === 'Subscription' && tx.debit > 0)
+      .reduce((acc, tx) => {
+        if (!acc[tx.description]) {
+          acc[tx.description] = tx.debit;
+        }
+        return acc;
+      }, {});
+
+    return [
+      {
+        title: `Highest Expense: ${highestCategory?.[0] || 'N/A'}`,
+        description: highestCategory ?
+          `You spent ${formatCurrency(highestCategory[1])} on ${highestCategory[0]} this month` :
+          'No expenses recorded this month',
+        icon: <PieChart className={styles.insightIcon} />
+      },
+      {
+        title: 'Savings Target',
+        description: `You are ${Math.round(savingsProgress)}% of the way to your monthly savings goal`,
+        icon: <DollarSign className={styles.insightIcon} />
+      },
+      {
+        title: 'Subscription Alert',
+        description: `You have ${Object.keys(subscriptions).length} active subscriptions`,
+        icon: <TrendingUp className={styles.insightIcon} />
+      }
+    ];
+  };
+
+  // Calculate savings progress
+  const calculateSavingsProgress = (transactions, user) => {
+    const monthlyIncome = user.income || 0;
+    const savingsTarget = monthlyIncome * (user.save_per / 100);
+    const currentMonth = new Date().getMonth();
+
+    const currentSavings = transactions
+      .filter(tx => tx.credit > 0 && new Date(tx.date).getMonth() === currentMonth)
+      .reduce((sum, tx) => sum + tx.credit, 0);
+
+    return Math.min(100, (currentSavings / savingsTarget) * 100);
+  };
+
+  // Format currency
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: 'INR',
+      maximumFractionDigits: 0
+    }).format(amount);
+  };
+
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      window.location.replace('/'); // redirect to landing page
+      window.location.replace('/');
     } catch (error) {
       console.error('Logout failed:', error);
     }
   };
-  // Mock data - in a real application, this would come from your API
-  const [monthlyData] = useState([
-    { month: 'Jan', spending: 2400 },
-    { month: 'Feb', spending: 1398 },
-    { month: 'Mar', spending: 3200 },
-    { month: 'Apr', spending: 2780 },
-    { month: 'May', spending: 1890 },
-    { month: 'Jun', spending: 2390 },
-  ]);
 
-  const [insights] = useState([
+  const quickActions = [
     {
-      title: 'Highest Expense: Groceries',
-      description: 'You spent 30% more on groceries this month compared to last month',
-      icon: <PieChart className={styles.insightIcon} />
-    },
-    {
-      title: 'Savings Target',
-      description: 'You are 75% of the way to your monthly savings goal',
-      icon: <DollarSign className={styles.insightIcon} />
-    },
-    {
-      title: 'Subscription Alert',
-      description: 'You have 3 unused subscriptions totaling $45/month',
-      icon: <TrendingUp className={styles.insightIcon} />
-    }
-  ]);
-
-  const [savingsProgress] = useState(75); // Percentage of savings goal achieved
-
-  const [quickActions] = useState([
-    { 
-      name: 'Chat with AI', 
-      icon: <MessageSquare />, 
+      name: 'Chat with AI',
+      icon: <MessageSquare />,
       color: '#6366f1',
-      onClick: () => navigate('/chat')  // Replace with your actual route or function
+      onClick: () => navigate('/chat')
     },
-    { 
-      name: 'Spending Insights', 
-      icon: <TrendingUp />, 
+    {
+      name: 'Spending Insights',
+      icon: <TrendingUp />,
       color: '#8b5cf6',
       onClick: () => navigate('/spendingInsights')
     },
-    { 
-      name: 'Budget Planner', 
-      icon: <DollarSign />, 
+    {
+      name: 'Budget Planner',
+      icon: <DollarSign />,
       color: '#ec4899',
       onClick: () => navigate('/budget')
     },
-    { 
-      name: 'Goal Tracker', 
+    {
+      name: 'Goal Tracker',
       icon: <PieChart />,
       color: '#f59e0b',
       onClick: () => navigate('/profile')
     }
-  ]);
-  
+  ];
+
+  if (loading) {
+    return <div className={styles.loading}>Loading dashboard...</div>;
+  }
+
+  if (error) {
+    return <div className={styles.error}>{error}</div>;
+  }
+
   return (
     <div className={styles.dashboardContainer}>
-      {/* Add Navbar */}
-     
-
       <header className={styles.dashboardHeader}>
         <h1>Financial Dashboard</h1>
-        <p className={styles.welcomeText}>Welcome back, { userName|| currentUser?.email?.split('@')[0] || 'User'}! Here's your financial overview.</p>
+        <p className={styles.welcomeText}>
+          Welcome back, {userName || currentUser?.email?.split('@')[0] || 'User'}!
+          Here's your financial overview.
+        </p>
       </header>
 
       <div className={styles.dashboardGrid}>
@@ -96,7 +269,7 @@ const Dashboard = () => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" />
                 <YAxis />
-                <Tooltip />
+                <Tooltip formatter={(value) => formatCurrency(value)} />
                 <Bar dataKey="spending" fill="#4a3aff" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
@@ -121,24 +294,35 @@ const Dashboard = () => {
         </section>
 
         <section className={styles.budgetSection}>
-          <h2>Budget Progress</h2>
-          <div className={styles.savingsProgress}>
-            <div className={styles.progressText}>
-              <p>Monthly Savings Goal</p>
-              <p className={styles.progressPercentage}>{savingsProgress}%</p>
-            </div>
-            <div className={styles.progressBar}>
-              <div
-                className={styles.progressFill}
-                style={{ width: `${savingsProgress}%` }}
-              ></div>
-            </div>
-            <div className={styles.progressLabels}>
-              <span>$0</span>
-              <span>$1,000</span>
-            </div>
-          </div>
-        </section>
+  <h2>Budget Progress</h2>
+  <div className={styles.savingsProgress}>
+    <div className={styles.progressText}>
+      <p>Monthly Spendings</p>
+      <p className={styles.progressPercentage}>
+        {formatCurrency(
+          monthlyData.find(data => data.month === new Date().toLocaleString('default', { month: 'short' }))?.spending || 0
+        )}
+      </p>
+    </div>
+    <div className={styles.progressBar}>
+      <div
+        className={styles.progressFill}
+        style={{
+          width: `${Math.min(
+            (monthlyData.find(data => data.month === new Date().toLocaleString('default', { month: 'short' }))?.spending || 0) /
+              (dbUser?.income || 1) *
+              100,
+            100
+          )}%`
+        }}
+      ></div>
+    </div>
+    <div className={styles.progressLabels}>
+      <span>{formatCurrency(0)}</span>
+      <span>{formatCurrency(dbUser?.income * (1 - (dbUser?.save_per / 100)) || 0)}</span>
+    </div>
+  </div>
+</section>
 
         <section className={styles.quickAccessSection}>
           <h2>Quick Access</h2>

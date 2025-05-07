@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { 
   BarChart, Bar, PieChart, Pie, Cell, 
@@ -8,6 +9,8 @@ import {
   Calendar, ChevronDown, AlertTriangle, 
   TrendingUp, Users, Filter, ArrowUpRight
 } from 'lucide-react';
+
+import { useAuth } from '../../contexts/AuthContext';
 
 // Theme colors
 const THEME = {
@@ -38,11 +41,17 @@ const CATEGORIES = [
   "Recharge and Subscriptions",
   "Others"
 ];
-
 const COLORS = [
-  '#4a3aff', '#6254ff', '#7a6eff', '#9288ff', 
-  '#aaa2ff', '#c2bcff', '#dad6ff', '#e9e6ff', 
-  '#f2f0ff', '#f8f7ff'
+  '#4a3aff', // Base Blue
+  '#6254ff', // Slightly Lighter Blue
+  '#7a6eff', // Medium Blue
+  '#9288ff', // Soft Blue
+  '#aaa2ff', // Light Blue
+  '#c2bcff', // Very Light Blue
+  '#8c8cff', // Vibrant Lavender
+  '#5c5cff', // Bright Indigo
+  '#3a3aff', // Deep Indigo
+  '#2a2aff'  // Dark Indigo
 ];
 
 // Styles
@@ -336,67 +345,114 @@ const styles = {
   },
 };
 
-// Mock data for the charts
-const mockTransactionsData = [
-  { month: 'Jan', "Food and Dining": 450, "Transportation": 200, "Shopping": 300, "Bills and Utilities": 350, "Entertainment": 150 },
-  { month: 'Feb', "Food and Dining": 470, "Transportation": 220, "Shopping": 250, "Bills and Utilities": 350, "Entertainment": 180 },
-  { month: 'Mar', "Food and Dining": 540, "Transportation": 180, "Shopping": 320, "Bills and Utilities": 350, "Entertainment": 200 },
-  { month: 'Apr', "Food and Dining": 520, "Transportation": 190, "Shopping": 400, "Bills and Utilities": 400, "Entertainment": 150 },
-  { month: 'May', "Food and Dining": 490, "Transportation": 220, "Shopping": 280, "Bills and Utilities": 350, "Entertainment": 170 },
-  { month: 'Jun', "Food and Dining": 560, "Transportation": 240, "Shopping": 220, "Bills and Utilities": 350, "Entertainment": 220 },
-];
 
-const pieChartData = [
-  { name: "Food and Dining", value: 2500 },
-  { name: "Transportation", value: 1250 },
-  { name: "Shopping", value: 1770 },
-  { name: "Bills and Utilities", value: 2150 },
-  { name: "Entertainment", value: 1070 },
-  { name: "Travel", value: 890 },
-  { name: "Health", value: 650 },
-  { name: "Education", value: 430 },
-  { name: "Recharge and Subscriptions", value: 780 },
-  { name: "Others", value: 390 }
-];
-
-// Mock insights and alerts
-const mockAlerts = [
-  { id: 1, category: "Entertainment", message: "Entertainment spending is 35% higher than your monthly average", severity: "high" },
-  { id: 2, category: "Shopping", message: "Shopping expenses are unusually high this month", severity: "medium" },
-  { id: 3, category: "Food and Dining", message: "You're spending more on dining out compared to last month", severity: "low" }
-];
-
+  // Fetch data from the backend
+  
 export default function SpendingInsightsPage() {
   const [timeRange, setTimeRange] = useState('month');
   const [chartType, setChartType] = useState('pie');
   const [userProfile, setUserProfile] = useState('balanced');
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  
-  // This would typically come from an API call
   const [transactions, setTransactions] = useState([]);
+  const [pieChartData, setPieChartData] = useState([]);
   const [loading, setLoading] = useState(true);
-  
+  const { dbUser } = useAuth(); // Assuming you have a context for user data
+
+  // Fetch data from the backend
   useEffect(() => {
-    // Simulating API fetch
-    setTimeout(() => {
-      setTransactions(mockTransactionsData);
-      setLoading(false);
-    }, 1000);
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        // Fetch accounts
+        const accountsResponse = await axios.get(`http://localhost:5000/account/getbyuserid/${dbUser._id}`);
+        const accounts = accountsResponse.data;
+        if (!accounts || accounts.length === 0) {
+          throw new Error('No accounts found for the user.');
+        }
+
+        // Find current account
+        const currentAcc = accounts.find(acc => acc.accountType === 'current');
+        if (!currentAcc) {
+          throw new Error('No current account found.');
+        }
+
+        // Fetch transactions
+        const transactionsResponse = await axios.get(`http://localhost:5000/transaction/accountid/${currentAcc._id}`);
+        const data = transactionsResponse.data;
+        if (!data || data.length === 0) {
+          throw new Error('No transactions found for the account.');
+        }
+
+        // Filter transactions
+        const filteredTransactions = data.filter((transaction) => {
+          const transactionDate = new Date(transaction.date);
+          const now = new Date();
+
+          if (timeRange === 'week') {
+            const oneWeekAgo = new Date();
+            oneWeekAgo.setDate(now.getDate() - 7);
+            return transactionDate >= oneWeekAgo && transactionDate <= now;
+          } else if (timeRange === 'month') {
+            return (
+              transactionDate.getMonth() === now.getMonth()-1 &&
+              transactionDate.getFullYear() === now.getFullYear()
+            );
+          } else if (timeRange === 'year') {
+            return transactionDate.getFullYear() === now.getFullYear();
+          }
+          return true;
+        });
+        console.log('Filtered Transactions:', filteredTransactions[10].category);
+        setTransactions(filteredTransactions);
+        console.log(CATEGORIES);
+        // Calculate pie chart data
+        const calculatedPieData = CATEGORIES.map((category) => {
+          return {
+            name: category,
+            value: filteredTransactions.reduce((sum, transaction) => {
+              return transaction.category?.trim().toLowerCase() === category.toLowerCase()
+                ? sum + transaction.debit 
+                : sum;
+            }, 0),
+          };
+        }).filter((item) => item.value > 0);
+        console.log('Pie Chart Data:', calculatedPieData);
+        setPieChartData(calculatedPieData);        
+
+        if (dbUser.tag) {
+          setUserProfile(dbUser.tag.toLowerCase()); 
+        } else {
+          setUserProfile('unknown'); // fallback if tag isn't available
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, [timeRange]);
-  
+
   const handleTimeRangeChange = (range) => {
     setTimeRange(range);
     setDropdownOpen(false);
   };
-  
+
   const getProfileDescription = () => {
-    switch(userProfile) {
+    switch (userProfile) {
+      case 'extremespender':
+        return "You're an 'Extreme Spender'. You tend to use nearly all your income with very little or no savings, which may put long-term financial goals at risk.";
       case 'spender':
-        return "Your spending patterns indicate you're a 'Spender'. You tend to use most of your available funds with less focus on savings.";
+        return "You're a 'Spender'. You use most of your available funds with less focus on saving.";
+      case 'balanced':
+        return "You're 'Balanced'. You maintain a healthy balance between spending and saving.";
       case 'saver':
-        return "Your spending patterns indicate you're a 'Saver'. You prioritize saving money and are careful with your spending.";
+        return "You're a 'Saver'. You prioritize saving money and are cautious with your expenses.";
+      case 'extremesaver':
+        return "You're an 'Extreme Saver'. You save a significant portion of your income and limit spending to essentials only.";
       default:
-        return "Your spending patterns indicate you're 'Balanced'. You maintain a healthy balance between spending and saving.";
+        return "Your financial habits are being evaluated.";
     }
   };
   
@@ -511,7 +567,7 @@ export default function SpendingInsightsPage() {
         </div>
         
         {/* Unusual spending alerts */}
-        <div style={styles.card}>
+        {/* <div style={styles.card}>
           <h2 style={styles.cardTitle}>
             <AlertTriangle size={20} style={styles.cardIcon} />
             Unusual Spending Alerts
@@ -533,7 +589,7 @@ export default function SpendingInsightsPage() {
           ) : (
             <div style={styles.emptyState}>No unusual spending detected.</div>
           )}
-        </div>
+        </div> */}
         
         {/* User profile/cluster insights */}
         <div style={styles.card}>

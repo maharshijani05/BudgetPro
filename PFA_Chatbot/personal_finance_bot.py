@@ -8,6 +8,7 @@ import re
 
 def run_chatbot(user_id):
     # Load environment variables
+    
     load_dotenv()
     groq_api_key = os.getenv("GROQ_API_KEY")
     db_url = os.getenv("MONGO_URI")
