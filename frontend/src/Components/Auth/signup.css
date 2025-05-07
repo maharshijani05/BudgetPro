@@ -1,0 +1,186 @@
+/* Center the form */
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  padding: 20px;
+}
+
+/* Form box styling */
+.signup-form {
+  background-color: #fff;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 420px;
+}
+
+/* Heading */
+.signup-form h2 {
+  /* text-align: center; */
+  color: #333;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+/* Form group */
+.form-group {
+  position: relative;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+/* Input field */
+.form-group input {
+  width: 100%;
+  padding: 1rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: none;
+  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Error state for input */
+.form-group input.error {
+  border-color: #dc3545;
+  background-color: #fff8f8;
+}
+
+.form-group input.error:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+/* Field error message */
+.field-error {
+  position: absolute;
+  bottom: -1.5rem;
+  left: 0;
+  color: #dc3545;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Placeholder (hidden but used for :placeholder-shown) */
+.form-group input::placeholder {
+  color: transparent;
+  text-align: left;
+}
+
+/* Floating label */
+.form-group label {
+  position: absolute;
+  text-align: left;
+  top: 0.5rem;
+  left: 0.75rem;
+  background-color: #fff;
+  padding: 0 0rem;
+  color: #777;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: 0.2s ease all;
+  border-top: 1px solid #fff;
+}
+
+/* Float the label when focused or filled */
+.form-group input:focus ~ label,
+.form-group input:not(:placeholder-shown) ~ label {
+  top: -0.6rem;
+  left: 1rem;
+  font-size: 0.8rem;
+  color: #4a3aff;
+  background-color: #fff;
+  /* border-top: 1px solid #4a3aff; */
+}
+
+/* Input focus style */
+.form-group input:focus {
+  border-color: #4a3aff;
+  outline: solid ;
+  box-shadow: 3px 3px 3px 3px rgba(74, 58, 255, 0.1);
+}
+
+/* Submit button */
+.signup-button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #4a3aff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.signup-button:hover {
+  background-color: #372ccc;
+  transform: translateY(-1px);
+}
+
+.signup-button:active {
+  transform: translateY(0);
+}
+
+.signup-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Error message */
+.error-message {
+  background-color: #fff8f8;
+  color: #dc3545;
+  padding: 0.75rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  border: 1px solid #ffcdd2;
+}
+
+/* Login link */
+.login-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.login-link a {
+  color: #4a3aff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.login-link a:hover {
+  color: #372ccc;
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .signup-form {
+    padding: 2rem;
+  }
+
+  .signup-form h2 {
+    font-size: 1.75rem;
+  }
+
+  .form-group input {
+    padding: 0.9rem 0.75rem 0.5rem;
+  }
+
+  .signup-button {
+    padding: 0.65rem;
+  }
+}
