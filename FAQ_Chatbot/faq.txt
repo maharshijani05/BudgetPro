@@ -1,17 +1,32 @@
-Q: What is the Smart Financial Assistant (SFA)?
-A: The Smart Financial Assistant is an AI-powered tool that helps users manage personal finances, track expenses, set budgets, and get financial advice.
+Q: What is the BudgetPro?
+A: The BudgetPro is an AI-powered tool that helps users manage personal finances, track expenses, set budgets, and get financial advice.
 
-Q: How do I link my bank account to SFA?
+Q: Who are you?
+A: I am an AI assistant of BudgetPro that answers questions based on the FAQ context.
+
+Q: What is FAQ?
+A: FAQ means Frequently Asked Questions.
+
+Q: Who is the creator of BudgetPro?
+A: Maharshi Jani and Aarya Patel created BudgetPro in May 2025.
+
+Q: Who is Maharshi Jani?
+A: Maharshi Jani is one of the creators and AI/ML architect behind BudgetPro.He has a deep passion for artificial intelligence and machine learning.
+
+Q: Who is Aarya Patel?
+A: Aarya is a dedicated and curious learner with a strong passion for building smart, user-friendly tech solutions. Her work reflects a blend of creativity, precision, and a drive to solve real-world problems.
+
+Q: How do I link my bank account to BudgetPro?
 A: Go to the "Accounts" section and securely link your bank account using our encrypted connection. We use Account Aggregators like OneMoney for secure integration.
 
-Q: Is my financial data safe with SFA?
+Q: Is my financial data safe with BudgetPro?
 A: Yes, all user data is encrypted and stored securely. We follow industry-grade security protocols and comply with BFSI data protection regulations.
 
 Q: Can I track expenses in multiple currencies?
 A: Currently, we support INR. Multi-currency support is planned for future releases.
 
 Q: How does the budgeting feature work?
-A: SFA analyzes your spending patterns and income to generate personalized monthly budgets using machine learning models.
+A: BudgetPro analyzes your spending patterns and income to generate personalized monthly budgets using machine learning models.
 
 Q: Can I get category-wise insights?
 A: Yes, you can view expense breakdowns by categories like Food, Travel, Bills, Shopping, etc.
@@ -22,16 +37,16 @@ A: The chatbot answers queries related to your finances, app usage, and provides
 Q: How do I ask a personal finance question?
 A: Just open the chatbot and type your question. For example: “How much did I spend on food last month?”
 
-Q: Does SFA give investment advice?
-A: While SFA can suggest budgeting strategies, it does not offer investment advice at this time.
+Q: Does BudgetPro give investment advice?
+A: While BudgetPro can suggest budgeting strategies, it does not offer investment advice at this time.
 
 Q: Can I download my expense history?
 A: Yes, go to "Reports" and choose "Export as CSV" to download your expense data.
 
-Q: What is user clustering in SFA?
+Q: What is user clustering in BudgetPro?
 A: Users are grouped into behavioral clusters to help tailor advice and budgeting tips based on similar spending patterns.
 
-Q: How does SFA predict next month's budget?
+Q: How does BudgetPro predict next month's budget?
 A: We use a regression-based model that considers your past expenses, income trends, and financial goals.
 
 Q: Can I manually add transactions?
@@ -47,18 +62,18 @@ Q: How does the savings tracker work?
 A: The savings tracker monitors how much of your income remains after all categorized expenses each month.
 
 Q: Can I connect multiple accounts?
-A: Yes, SFA supports linking multiple bank accounts for a consolidated financial overview.
+A: Yes, BudgetPro supports linking multiple bank accounts for a consolidated financial overview.
 
-Q: Is SFA free to use?
+Q: Is BudgetPro free to use?
 A: Yes, our core features are free. Premium features may be added in the future.
 
-Q: How does SFA categorize expenses?
+Q: How does BudgetPro categorize expenses?
 A: We use an ML-based classifier trained on INR transaction descriptions to auto-categorize your expenses.
 
 Q: What if my expenses are wrongly categorized?
 A: You can manually correct them and the model will learn from corrections over time.
 
-Q: Does SFA use my data to train models?
+Q: Does BudgetPro use my data to train models?
 A: No, all ML models are trained on anonymized and aggregated data. Your individual data is not shared or sold.
 
 Q: What is the “Financial Forecast” feature?
@@ -67,28 +82,28 @@ A: This feature predicts your next 3 months’ financial position based on incom
 Q: Can I set alerts for overspending?
 A: Yes, go to “Settings > Notifications” to enable alerts for when you cross your budget in any category.
 
-Q: How is SFA different from regular budget apps?
-A: SFA uses AI models for personalized budgeting, behavior clustering, and smart chatbot support for Q&A.
+Q: How is BudgetPro different from regular budget apps?
+A: BudgetPro uses AI models for personalized budgeting, behavior clustering, and smart chatbot support for Q&A.
 
-Q: Can I sync SFA with UPI apps?
-A: SFA can read transaction summaries if connected through supported Account Aggregators, including UPI-based data.
+Q: Can I sync BudgetPro with UPI apps?
+A: BudgetPro can read transaction summaries if connected through supported Account Aggregators, including UPI-based data.
 
 Q: Can I share my dashboard with my CA or advisor?
 A: Yes, you can share read-only dashboard reports by generating a secure link.
 
-Q: Does SFA work offline?
+Q: Does BudgetPro work offline?
 A: No, since it uses cloud-based AI and secure connections, internet is required for full functionality.
 
 Q: How do I report a bug or give feedback?
 A: Use the “Support” section in the app or email us at support@smartfinassistant.ai.
 
-Q: Can I use SFA for business finances?
+Q: Can I use BudgetPro for business finances?
 A: It’s primarily built for personal finance, but small business owners can use it for light financial tracking.
 
 Q: What are “Financial Health Tips”?
 A: These are AI-generated personalized tips based on your financial habits and savings goals.
 
-Q: How does SFA personalize tips?
+Q: How does BudgetPro personalize tips?
 A: We use a Retrieval-Augmented Generation (RAG) approach to fetch relevant financial advice based on your data.
 
 Q: What if I ask the chatbot a question it doesn’t understand?
@@ -103,13 +118,13 @@ A: Yes, go to “Goals” tab and define your savings, spending, or investment t
 Q: What is the "Spending Pattern Analysis"?
 A: This is a visual breakdown of your regular spending behavior using unsupervised learning and clustering.
 
-Q: What tech stack does SFA use?
+Q: What tech stack does BudgetPro use?
 A: It’s built using the MERN stack with Python for ML models, LangChain for chatbot logic, and AWS for deployment.
 
 Q: Can I delete my data?
 A: Yes, under “Account Settings,” you can request data deletion which is processed within 24 hours.
 
-Q: Does SFA have an Android/iOS app?
+Q: Does BudgetPro have an Android/iOS app?
 A: The web app is live. Mobile apps are under development and will be released soon.
 
 Q: How do I change my notification settings?
@@ -118,14 +133,14 @@ A: Go to “Settings > Notifications” and adjust preferences for reminders, al
 Q: What does the “Smart Insights” tab do?
 A: It gives you AI-generated summaries about how your current month is going financially.
 
-Q: Can I integrate SFA with Google Sheets?
+Q: Can I integrate BudgetPro with Google Sheets?
 A: Integration with Google Sheets is in beta and available upon request.
 
 Q: Can I view a monthly summary?
 A: Yes, the dashboard shows a monthly income, spending, and savings summary.
 
 Q: What happens if I miss a transaction?
-A: SFA may flag missing entries and let you manually reconcile them.
+A: BudgetPro may flag missing entries and let you manually reconcile them.
 
 Q: How is AI used in this app?
 A: We use AI for transaction classification, personalized budgeting, financial forecasting, and chatbot interactions.
@@ -139,12 +154,11 @@ A: We retain user data only as long as your account is active or as required by 
 Q: Who can access my data?
 A: Only you can access your data. Even our team cannot view your personal financial details.
 
-Q: Does SFA integrate with LenDenClub or OneMoney?
-A: Yes, SFA supports integrations with select AA partners like OneMoney and may integrate loan insights from LenDenClub.
+Q: Does BudgetPro integrate with LenDenClub or OneMoney?
+A: Yes, BudgetPro supports integrations with select AA partners like OneMoney and may integrate loan insights from LenDenClub.
 
 Q: Can I receive financial tips via email?
 A: Yes, you can opt in to receive weekly financial tips and summaries by email.
 
 Q: How can I logout from all devices?
 A: Go to “Account > Security” and click “Logout from all devices” for enhanced safety.
-

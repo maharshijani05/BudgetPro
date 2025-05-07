@@ -80,7 +80,7 @@ def run_faq_bot():
     while True:
         try:
             user_input = input("You: ").strip()
-            if user_input.lower() in {"exit", "quit"}:
+            if user_input.lower() in {"exit", "quit", "bye"}:
                 print("👋 Exiting. Have a great day!")
                 break
 
