@@ -58,20 +58,20 @@ const Dashboard = () => {
       onClick: () => navigate('/chat')  // Replace with your actual route or function
     },
     { 
-      name: 'Future Simulator', 
+      name: 'Spending Insights', 
       icon: <TrendingUp />, 
       color: '#8b5cf6',
-      onClick: () => navigate('/simulate')
+      onClick: () => navigate('/spendingInsights')
     },
     { 
-      name: 'Budget Settings', 
+      name: 'Budget Planner', 
       icon: <DollarSign />, 
       color: '#ec4899',
       onClick: () => navigate('/budget')
     },
     { 
-      name: 'Profile', 
-      icon: <User />, 
+      name: 'Goal Tracker', 
+      icon: <PieChart />,
       color: '#f59e0b',
       onClick: () => navigate('/profile')
     }

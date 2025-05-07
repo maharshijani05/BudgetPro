@@ -9,12 +9,19 @@ import ProfilePage from './Components/Profile/ProfilePage';
 import { FiLogOut } from 'react-icons/fi';
 import './App.css';
 import ChatbotPage from './Components/Chatbot/ChatbotPage';
-
+import FAQChatbotPage from './Components/Chatbot/FAQChatbotPage';
+import SpendingInsightsPage from './Components/ExpenseTracker/SpendingInsightsPage';
+import BudgetPlannerPage from './Components/budgetPlanner/budgetPlannerPage';
+import { auth } from './Components/Auth/firebase';
 function App() {
   const handleLogout = () => {
-    // Handle logout functionality
-    console.log('Logout clicked');
-    // In a real app, this would clear auth tokens and redirect to login
+    auth.signOut()
+      .then(() => {
+        window.location.replace('/'); // Redirect to landing page
+      })
+      .catch((error) => {
+        console.error('Logout failed:', error);
+      });
   };
   return (  
     <Router>
@@ -33,7 +40,7 @@ function App() {
           <a href="#1" style={{ color: 'white', textDecoration: 'none' }}>1</a>
           <a href="#2" style={{ color: 'white', textDecoration: 'none' }}>2</a>
           <a href="#3" style={{ color: 'white', textDecoration: 'none' }}>2</a>
-          <a href="#4" style={{ color: 'white', textDecoration: 'none' }}>4</a>
+          <a href="/FAQ" style={{ color: 'white', textDecoration: 'none' }}>FAQs</a>
         </div>
         <button
           onClick={handleLogout}
@@ -58,6 +65,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path='/chat' element={<ChatbotPage/>} />
+          <Route path='/FAQ'element={<FAQChatbotPage/>} />
+          <Route path='/spendingInsights' element={<SpendingInsightsPage/>}/>
+          <Route path='/budget' element={<BudgetPlannerPage/>}/>
           <Route 
             path="/dashboard" 
             element={

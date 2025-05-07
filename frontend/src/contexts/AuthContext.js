@@ -47,6 +47,7 @@ export function AuthProvider({ children }) {
   const value = {
     currentUser,
     dbUser,
+    setDbUser,
     userId: dbUser?._id || null,
     userName: dbUser?.name || null,
     loading,

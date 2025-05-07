@@ -2,16 +2,18 @@
 import { useState, useEffect } from 'react';
 import styles from './ProfilePage.module.css';
 import { FiEdit2, FiX, FiSave, FiCalendar, FiCreditCard, FiEye } from 'react-icons/fi';
+import { useAuth } from '../../contexts/AuthContext';
+import axios from 'axios';
 
 const ProfilePage = () => {
-  // User state
-  const [user, setUser] = useState(null);
+  const { dbUser, setDbUser } = useAuth(); // Get user from AuthContext
   const [accounts, setAccounts] = useState([]);
   const [transactions, setTransactions] = useState([]);
   const [selectedAccount, setSelectedAccount] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editedUser, setEditedUser] = useState({});
-  
+//   const [dbUser, setdbUser] = useState(null); // or useState({}) depending on initial data
+
   // Date filter states
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -34,107 +36,65 @@ const ProfilePage = () => {
     endDate: ''
   });
   const [filteredTransactions, setFilteredTransactions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Fetch user data
+  // Fetch user accounts
   useEffect(() => {
-    // This would be an API call in a real application
-    const fetchUserData = async () => {
+    const fetchUserAccounts = async () => {
+      if (!dbUser?._id) return;
       try {
-        // Mock data - would be replaced with actual API call
-        const userData = {
-          userId: 12345,
-          name: "Jane Doe",
-          email: "jane.doe@example.com",
-          Savings: 25000,
-          income: 60000,
-          save_per: 15,
-          tag: "Premium",
-          createdAt: new Date('2023-01-15')
-        };
-        
-        setUser(userData);
-        setEditedUser(userData);
-        fetchUserAccounts(userData.userId);
+        setLoading(true);
+        console.log("Fetching accounts for user ID:", dbUser._id);
+        const response = await axios.get(`http://localhost:5000/account/getbyuserid/${dbUser._id}`);
+        console.log("Accounts fetched:", response.data);
+        setAccounts(response.data);
+        setError(null);
       } catch (error) {
-        console.error("Error fetching user data:", error);
+        console.error("Error fetching accounts:", error);
+        setError("Failed to fetch accounts. Please try again later.");
+      } finally {
+        setLoading(false);
       }
     };
     
-    fetchUserData();
-  }, []);
+    fetchUserAccounts();
+  }, [dbUser?._id]);
 
-  // Fetch user accounts
-  const fetchUserAccounts = async (userId) => {
-    try {
-      // Mock data - would be replaced with actual API call
-      const accountsData = [
-        {
-          _id: "acc1",
-          accountNumber: "123456789012",
-          accountType: "savings",
-          balance: 15000,
-          currency: "INR",
-          createdAt: new Date('2023-01-20')
-        },
-        {
-          _id: "acc2",
-          accountNumber: "987654321012",
-          accountType: "current",
-          balance: 35000,
-          currency: "INR",
-          createdAt: new Date('2023-02-10')
-        }
-      ];
-      
-      setAccounts(accountsData);
-    } catch (error) {
-      console.error("Error fetching accounts:", error);
+  // Initialize editedUser when user data is available
+  useEffect(() => {
+    if (dbUser) {
+      setEditedUser(dbUser);
     }
-  };
+  }, [dbUser]);
 
   // Fetch transactions for a specific account
   const fetchAccountTransactions = async (accountId, startDate, endDate) => {
     try {
-      // Mock data - would be replaced with actual API call
-      const transactionsData = Array(25).fill().map((_, index) => {
-        const date = new Date();
-        date.setDate(date.getDate() - index);
-        
-        const isDebit = Math.random() > 0.4;
-        const amount = Math.floor(Math.random() * 10000) + 100;
-        
-        return {
-          _id: `tx${index}`,
-          date: date,
-          description: isDebit ? 
-            ["Food order", "Shopping", "Utility bill", "Subscription", "Fuel"][Math.floor(Math.random() * 5)] :
-            ["Salary", "Refund", "Interest", "Transfer", "Gift"][Math.floor(Math.random() * 5)],
-          debit: isDebit ? amount : 0,
-          credit: !isDebit ? amount : 0,
-          balance: 50000 - (isDebit ? amount : -amount) * index,
-          type: ["debit card", "credit card", "cash", "UPI"][Math.floor(Math.random() * 4)],
-          category: ["Food and Dining", "Shopping", "Bills and Utilities", "Entertainment", "Others"][Math.floor(Math.random() * 5)],
-          sender_id: isDebit ? "SELF" : `SND${Math.floor(Math.random() * 1000)}`,
-          receiver_id: isDebit ? `RCV${Math.floor(Math.random() * 1000)}` : "SELF"
-        };
-      });
-      
+      setLoading(true);
+      console.log("Fetching transactions for account ID:", accountId);
+      const response = await axios.get(`http://localhost:5000/transaction/accountid/${accountId}`);
+      console.log("Transactions fetched:", response.data);
       // Apply date filtering if provided
-      let filteredTransactions = transactionsData;
+      let filteredTransactions = response.data;
       if (startDate && endDate) {
         const startDateObj = new Date(startDate);
         const endDateObj = new Date(endDate);
         endDateObj.setDate(endDateObj.getDate() + 1); // Include end date
         
-        filteredTransactions = transactionsData.filter(tx => {
+        filteredTransactions = response.data.filter(tx => {
           const txDate = new Date(tx.date);
           return txDate >= startDateObj && txDate <= endDateObj;
         });
       }
       
       setTransactions(filteredTransactions);
+      setError(null);
     } catch (error) {
       console.error("Error fetching transactions:", error);
+      setError("Failed to fetch transactions. Please try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -148,7 +108,7 @@ const ProfilePage = () => {
   const handleEditToggle = () => {
     if (isEditing) {
       // If currently editing, cancel and reset form
-      setEditedUser(user);
+      setEditedUser(dbUser);
     }
     setIsEditing(!isEditing);
   };
@@ -169,58 +129,25 @@ const ProfilePage = () => {
     e.preventDefault();
     
     try {
-      // This would be an API call in a real application
-      // await updateUserProfile(editedUser);
-      
-      // For now, just update the local state
-      setUser(editedUser);
+      setLoading(true);
+      console.log("Updating user profile:", editedUser);
+      const response = await axios.put(`http://localhost:5000/user/${dbUser._id}`, editedUser);
+        console.log("Profile updated:", response.data);
+      setDbUser(response.data);
+      console.log("Updated user data:", response.data);
       setIsEditing(false);
+      console.log("Edit mode disabled");
+      setError(null);
+      console.log("Profile updated successfully");
+
     } catch (error) {
       console.error("Error updating profile:", error);
+      setError("Failed to update profile. Please try again later.");
+    } finally {
+      setLoading(false);
     }
   };
   
-  // Handle new account input changes
-  const handleNewAccountChange = (e) => {
-    const { name, value } = e.target;
-    setNewAccount({
-      ...newAccount,
-      [name]: name === 'balance' ? parseFloat(value) || 0 : value
-    });
-  };
-  
-  // Handle add account submission
-  const handleAddAccount = async (e) => {
-    e.preventDefault();
-    
-    try {
-      // Generate a random account number (12 digits)
-      const accountNumber = Array(12).fill().map(() => Math.floor(Math.random() * 10)).join('');
-      
-      // This would be an API call in a real application
-      // const response = await createNewAccount({ ...newAccount, accountNumber, userId: user._id });
-      
-      // For now, just update the local state
-      const newAccountObj = {
-        _id: `acc${accounts.length + 1}`,
-        accountNumber,
-        accountType: newAccount.accountType,
-        balance: newAccount.balance,
-        currency: newAccount.currency,
-        createdAt: new Date()
-      };
-      
-      setAccounts([...accounts, newAccountObj]);
-      setShowAddAccountModal(false);
-      setNewAccount({
-        accountType: 'savings',
-        balance: 0,
-        currency: 'INR'
-      });
-    } catch (error) {
-      console.error("Error creating account:", error);
-    }
-  };
 
   // Handle date filter
   const handleDateFilter = () => {
@@ -278,8 +205,12 @@ const ProfilePage = () => {
     }).format(amount);
   };
 
-  if (!user) {
+  if (loading && !dbUser) {
     return <div className={styles.loading}>Loading profile...</div>;
+  }
+
+  if (error) {
+    return <div className={styles.error}>{error}</div>;
   }
 
   return (
@@ -367,32 +298,32 @@ const ProfilePage = () => {
           <div className={styles.profileDetails}>
             <div className={styles.profileDetail}>
               <span className={styles.detailLabel}>Name:</span>
-              <span className={styles.detailValue}>{user.name}</span>
+              <span className={styles.detailValue}>{dbUser.name}</span>
             </div>
             
             <div className={styles.profileDetail}>
               <span className={styles.detailLabel}>Email:</span>
-              <span className={styles.detailValue}>{user.email}</span>
+              <span className={styles.detailValue}>{dbUser.email}</span>
             </div>
             
             <div className={styles.profileDetail}>
               <span className={styles.detailLabel}>Monthly Income:</span>
-              <span className={styles.detailValue}>{formatCurrency(user.income)}</span>
+              <span className={styles.detailValue}>{formatCurrency(dbUser.income)}</span>
             </div>
             
             <div className={styles.profileDetail}>
               <span className={styles.detailLabel}>Savings Percentage:</span>
-              <span className={styles.detailValue}>{user.save_per}%</span>
+              <span className={styles.detailValue}>{dbUser.save_per}%</span>
             </div>
             
             <div className={styles.profileDetail}>
               <span className={styles.detailLabel}>User Type:</span>
-              <span className={styles.detailValue}>{user.tag}</span>
+              <span className={styles.detailValue}>{dbUser.tag}</span>
             </div>
             
             <div className={styles.profileDetail}>
               <span className={styles.detailLabel}>Member Since:</span>
-              <span className={styles.detailValue}>{formatDate(user.createdAt)}</span>
+              <span className={styles.detailValue}>{formatDate(dbUser.createdAt)}</span>
             </div>
           </div>
         )}

@@ -62,7 +62,7 @@ export default function ChatBotPage() {
     
     try {
       // Send message to backend and get response
-      const response = await fetch('http://localhost:5000/chat', {
+      const response = await fetch('http://localhost:5000/chat/faq', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
