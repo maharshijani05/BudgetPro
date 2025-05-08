@@ -1,250 +1,161 @@
-/* BudgetPlannerPage.module.css */
-
 .container {
-  max-width: 1200px;
+  max-width: 64rem;
   margin: 0 auto;
-  padding: 2rem;
-  min-height: calc(100vh - 64px);
-  margin-top: 64px;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .header {
+  font-size: 1.875rem;
+  font-weight: bold;
+  text-align: center;
   margin-bottom: 2rem;
+  color: #4a3aff;
 }
 
-.title {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 0.5rem;
-}
-
-.subtitle {
-  font-size: 1.1rem;
-  color: #666;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.card {
-  background: white;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.cardTitle {
+.sectionTitle {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #333;
   margin-bottom: 1rem;
+}
+
+.carouselContainer {
+  margin-bottom: 2rem;
+}
+
+.carouselHeader {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.formGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.label {
-  font-size: 0.9rem;
-  color: #666;
-  font-weight: 500;
-}
-
-.input {
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.input:focus {
-  outline: none;
-  border-color: #4a3aff;
-  box-shadow: 0 0 0 2px rgba(74, 58, 255, 0.2);
-}
-
-.button {
-  background-color: #4a3aff;
-  color: white;
-  padding: 0.75rem 1.5rem;
+.navigationButton {
+  padding: 0.5rem;
+  border-radius: 9999px;
   border: none;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  font-weight: 500;
+  background: transparent;
   cursor: pointer;
-  transition: background-color 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
 }
 
-.button:hover {
-  background-color: #3929cc;
-}
-
-.button:disabled {
-  background-color: #ccc;
+.navigationButtonDisabled {
+  color: rgba(156, 163, 175, 1);
   cursor: not-allowed;
 }
 
-.summary {
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid #eee;
+.navigationButtonEnabled {
+  color: rgba(55, 65, 81, 1);
 }
 
-.summaryItem {
+.budgetCard {
+  border: 1px solid rgba(229, 231, 235, 1);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  min-height: 16rem;
+}
+
+.emptyState {
+  text-align: center;
+  color: rgba(107, 114, 128, 1);
+  padding: 2rem 0;
+}
+
+.primaryButton {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  color: white;
+  background-color: #4a3aff;
+  border: none;
+  cursor: pointer;
+}
+
+.buttonIcon {
+  margin-right: 0.5rem;
+}
+
+.targetSavingContainer {
+  margin-bottom: 2rem;
+}
+
+.inputContainer {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.inputWrapper {
+  position: relative;
+  flex: 1;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.75rem;
+  color: rgba(107, 114, 128, 1);
+}
+
+.savingInput {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid #4a3aff;
+  border-radius: 0.375rem;
+}
+
+.generateButton {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  color: white;
+  background-color: #4a3aff;
+  border: none;
+  cursor: pointer;
+}
+
+.budgetMonth {
+  font-size: 1.125rem;
+  font-weight: 600;
   margin-bottom: 0.5rem;
 }
 
-.summaryLabel {
-  color: #666;
-  font-size: 0.9rem;
-}
-
-.summaryValue {
-  font-weight: 600;
-  color: #333;
-}
-
-.chart {
-  width: 100%;
-  height: 300px;
-  margin-top: 1rem;
-}
-
-.error {
-  color: #dc2626;
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
-}
-
-.success {
-  color: #059669;
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .container {
-    padding: 1rem;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .title {
-    font-size: 1.5rem;
-  }
-
-  .subtitle {
-    font-size: 1rem;
-  }
-}
-
-/* Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.card {
-  animation: fadeIn 0.3s ease-out;
-}
-
-.table {
+.budgetTable {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
-.table th,
-.table td {
-  padding: 0.75rem;
+.tableHeader {
+  background-color: rgba(243, 244, 246, 1);
+}
+
+.tableHeaderCell {
+  border: 1px solid rgba(209, 213, 219, 1);
+  padding: 0.5rem;
   text-align: left;
-  border-bottom: 1px solid #eee;
 }
 
-.table th {
-  background-color: #f8f9fa;
+.tableAmountCell {
+  border: 1px solid rgba(209, 213, 219, 1);
+  padding: 0.5rem;
+  text-align: right;
+}
+
+.tableCell {
+  border: 1px solid rgba(209, 213, 219, 1);
+  padding: 0.5rem;
+}
+
+.totalRow {
   font-weight: 600;
-  color: #333;
 }
 
-.table tr:hover {
-  background-color: #f8f9fa;
-}
-
-.status {
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.warning {
-  background-color: #fef3c7;
-  color: #92400e;
-}
-
-.success {
-  background-color: #d1fae5;
-  color: #065f46;
-}
-
-.error {
-  background-color: #fee2e2;
-  color: #991b1b;
-}
-
-/* List styles */
-.summary ul {
-  list-style-type: disc;
-  padding-left: 1.5rem;
-  margin: 1rem 0;
-}
-
-.summary li {
-  margin-bottom: 0.5rem;
-  color: #666;
-}
-
-.summary strong {
-  color: #333;
+.savingRow {
   font-weight: 600;
-} 
+  color: rgba(16, 185, 129, 1);
+}

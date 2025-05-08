@@ -385,11 +385,7 @@ const LandingPage = () => {
           <span style={styles.logoIcon}>💰</span>
           <span style={styles.logoText}>SmartFinance</span>
         </div>
-        <div style={styles.navLinks}>
-          {/* <a href="#features" style={styles.navLink}>Features</a> */}
-          <a href="#about" style={styles.navLink}>About</a>
-          <a href="#testimonials" style={styles.navLink}>Testimonials</a>
-        </div>
+        
         <div style={styles.authButtons}>
         <button
           style={styles.loginButton}
@@ -422,8 +418,8 @@ const LandingPage = () => {
               achieve savings goals.
             </p>
             <div style={styles.ctaButtons}>
-              <button style={styles.primaryButton} onClick={() => navigate('/signup')}>
-                Get Started Free
+              <button style={styles.primaryButton} onClick={() => navigate('/FAQ')}>
+                Ask Anything
                 <ChevronRight size={20} />
               </button>
               {/* <button style={styles.secondaryButton}>Watch Demo</button> */}

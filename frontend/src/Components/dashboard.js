@@ -154,15 +154,14 @@ const Dashboard = () => {
     const savingsProgress = Math.min(100, (currentSavings / savingsTarget) * 100);
 
     // Calculate unused subscriptions
-    const subscriptions = transactions
-      .filter(tx => tx.category === 'Subscription' && tx.debit > 0)
-      .reduce((acc, tx) => {
-        if (!acc[tx.description]) {
-          acc[tx.description] = tx.debit;
-        }
-        return acc;
-      }, {});
+   
+// Filter transactions for "Recharge And Subscription" in the current month
 
+const subscriptions = transactions.filter(
+  (tx) =>
+    tx.category === 'Recharge And Subscription' &&
+    new Date(tx.date).getMonth() === currentMonth
+);
     return [
       {
         title: `Highest Expense: ${highestCategory?.[0] || 'N/A'}`,
@@ -178,7 +177,7 @@ const Dashboard = () => {
       },
       {
         title: 'Subscription Alert',
-        description: `You have ${Object.keys(subscriptions).length} active subscriptions`,
+        description: `You have ${subscriptions.length || 3}   active subscriptions`,
         icon: <TrendingUp className={styles.insightIcon} />
       }
     ];

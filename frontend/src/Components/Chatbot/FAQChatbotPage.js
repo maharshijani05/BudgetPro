@@ -130,7 +130,7 @@ export default function ChatBotPage() {
             color: 'black',
             margin: 0
           }}>
-            Personal Finance Assistant
+           FAQ Chatbot
           </h1>
         </div>
 

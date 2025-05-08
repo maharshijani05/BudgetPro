@@ -52,6 +52,7 @@ app.use('/account', accountRoutes);
 app.use('/alert', alertRoutes);
 app.use('/budget', budgetRoutes);
 app.use('/transaction', transactionRoutes);
+app.use('/goal', require('./Routes/goal')); // Goal route
 app.use('/chat', require('./Routes/chatbot')); // Chatbot route
 // Default route
 app.get('/', (req, res) => {

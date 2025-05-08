@@ -1,381 +1,745 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import styles from './BudgetPlannerPage.module.css';
+import { useState ,useEffect} from 'react';
+import { ChevronLeft, ChevronRight, PlusCircle, X, DollarSign } from 'lucide-react';
+import axios from 'axios';
+import { useAuth } from '../../contexts/AuthContext';
+// Function to get month name
+const getNextMonth = (currentMonth) => {
+  const months = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+  const currentIndex = months.indexOf(currentMonth);
+  return months[(currentIndex + 1) % 12];
+};
+
+// Function to predict next month's budget based on previous months' averages
+const predictNextBudget = async (dbUser,previousBudgets) => {
+  console.log(previousBudgets)
+  try {
+    function getMonthlyTotals(previousBudgets) {
+      return previousBudgets.map(b => (
+        b.foodAndDining + b.shopping + b.entertainment + b.travel +
+        b.health + b.education + b.rechargeAndSubscriptions + b.others +
+        b.transportation + b.billsAndUtilities
+      ));
+    }
+    
+    function getCategoryWiseAverages(budgets) {
+      const categories = [
+        "foodAndDining", "shopping", "entertainment", "travel",
+        "health", "education", "rechargeAndSubscriptions", "others",
+        "transportation", "billsAndUtilities"
+      ];
+      const totals = {};
+      categories.forEach(cat => totals[cat] = 0);
+    
+      budgets.forEach(b => {
+        categories.forEach(cat => {
+          totals[cat] += b[cat] || 0;
+        });
+      });
+    
+      const count = budgets.length;
+      const averages = {};
+      categories.forEach(cat => {
+        averages[cat] = parseFloat((totals[cat] / count).toFixed(2));
+      });
+    
+      return averages;
+    }
+    
+    function getStdDev(values) {
+      const avg = values.reduce((a, b) => a + b, 0) / values.length;
+      const variance = values.reduce((a, b) => a + Math.pow(b - avg, 2), 0) / values.length;
+      return Math.sqrt(variance);
+    }
+    
+    // Suppose you have: dbUser.income, dbUser.tag, and previousBudgets[] from MongoDB
+    function preparePayload(dbUser, previousBudgets) {
+      console.log(previousBudgets)
+      const monthlyTotals = getMonthlyTotals(previousBudgets);
+      const averages = getCategoryWiseAverages(previousBudgets);
+    
+      const totalAvg = monthlyTotals.reduce((a, b) => a + b, 0) / monthlyTotals.length;
+      const stdMonthlyExpense = getStdDev(monthlyTotals);
+      const expenseToIncomeRatio = parseFloat((totalAvg / dbUser.income).toFixed(2));
+    
+      return {
+        "income": dbUser.income,
+        "expense_to_income_ratio": expenseToIncomeRatio,
+        "std_monthly_expense": parseFloat(stdMonthlyExpense.toFixed(2)),
+        "cluster_name": dbUser.tag,
+        "Food and Dining": averages.foodAndDining,
+        "Transportation": averages.transportation,
+        "Shopping": averages.shopping,
+        "Bills and Utilities": averages.billsAndUtilities,
+        "Entertainment": averages.entertainment,
+        "Travel": averages.travel,
+        "Health": averages.health,
+        "Education": averages.education,
+        "Recharge and Subscriptions": averages.rechargeAndSubscriptions,
+        "Others": averages.others
+      };
+    }
+    
+    // Then send payload via fetch to Flask
+    const payload = preparePayload(dbUser, previousBudgets);
+    console.log('Payload:', payload); // Log the payload for debugging
+    const response = await axios.post('http://localhost:5001/predict-budget',payload);
+    console.log(response.data); // Log the response for debugging
+    return response.data; // Assuming the API returns the predicted budget
+  } catch (error) {
+    console.error('Prediction error:', error);
+    throw error;
+  }
+};
+
+// Function to generate budget based on target saving
+const generateBudgetWithTargetSaving = (previousBudgets, targetSaving) => {
+  if (!previousBudgets || previousBudgets.length === 0) {
+    return {};
+  }
+
+  const lastBudget = previousBudgets[previousBudgets.length - 1];
+  const nextMonth = getNextMonth(lastBudget.month);
+  const nextYear = nextMonth === 'January' ? lastBudget.year + 1 : lastBudget.year;
+
+  // Get the predicted budget as a starting point
+  const predictedBudget = predictNextBudget(previousBudgets);
+  
+  // Calculate current total expenses
+  const fields = [
+    'foodAndDining', 'shopping', 'entertainment', 'travel', 'health', 
+    'education', 'rechargeAndSubscriptions', 'others', 'transportation', 
+    'billsAndUtilities'
+  ];
+  
+  const totalExpenses = fields.reduce((acc, field) => acc + predictedBudget[field], 0);
+  
+  // Calculate what the total expenses should be to achieve target saving
+  const targetExpenses = lastBudget.limitAmount - targetSaving;
+  
+  // If target expenses are higher than predicted, just return the predicted budget
+  if (targetExpenses >= totalExpenses) {
+    predictedBudget.saving = targetSaving;
+    return predictedBudget;
+  }
+  
+  // Otherwise, we need to reduce expenses proportionally
+  const reductionFactor = targetExpenses / totalExpenses;
+  
+  // Apply reduction to each field
+  fields.forEach(field => {
+    predictedBudget[field] = Math.round(predictedBudget[field] * reductionFactor);
+  });
+  
+  predictedBudget.saving = targetSaving;
+  
+  return predictedBudget;
+};
 
 export default function BudgetPlanner() {
-  // State for form inputs
-  const [income, setIncome] = useState('');
-  const [targetAmount, setTargetAmount] = useState('');
-  const [upfrontAmount, setUpfrontAmount] = useState('');
-  const [emiMonths, setEmiMonths] = useState(6);
-  const [goalName, setGoalName] = useState('');
+  const monthNames = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
   
-  // State for calculated budget
-  const [budgetSummary, setBudgetSummary] = useState(null);
-  const [eligibility, setEligibility] = useState(null);
-  
-  // State for saved goals
-  const [savedGoals, setSavedGoals] = useState([]);
-  
-  // Convert string values to numbers and handle empty inputs
-  const parseInputValue = (value) => {
-    const parsed = parseFloat(value);
-    return isNaN(parsed) ? 0 : parsed;
+  const {dbUser} = useAuth();
+    const [budgets, setBudgets] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [showPredictionModal, setShowPredictionModal] = useState(false);
+  const [showTargetSavingModal, setShowTargetSavingModal] = useState(false);
+  const [predictedBudget, setPredictedBudget] = useState(null);
+  const [targetSaving, setTargetSaving] = useState('');
+  const [generatedBudget, setGeneratedBudget] = useState(null);
+  const [loading, setLoading] = useState(true); // Add loading state
+  const [error, setError] = useState(null); // Add error state
+  useEffect(() => {
+    const fetchBudgets = async () => {
+      try {
+        setLoading(true); // Start loading
+        const response = await axios.get(`http://localhost:5000/budget/userid/${dbUser._id}`); // Replace with your API endpoint
+        setBudgets(response.data); // Update state with fetched budgets
+      } catch (err) {
+        console.error('Error fetching budgets:', err);
+        setError('Failed to fetch budgets. Please try again later.');
+      } finally {
+        setLoading(false); // Stop loading
+      }
+    };
+
+    fetchBudgets();
+  }, []);
+  const handlePrevious = () => {
+    setCurrentIndex(prev => (prev > 0 ? prev - 1 : prev));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex(prev => (prev < budgets.length - 1 ? prev + 1 : prev));
+  };
+
+  const handlePredictBudget = async () => {
+    try {
+      console.log(budgets);
+      const predicted = await predictNextBudget(dbUser, budgets); // ✅ Await the promise
+      console.log("predicted", predicted);
+      setPredictedBudget(predicted); // ✅ Set once resolved
+      setShowPredictionModal(true);
+    } catch (error) {
+      console.error("Prediction error:", error);
+    }
   };
   
-  // Calculate budget based on the 10-6-20 rule
-  const calculateBudget = () => {
-    const incomeValue = parseInputValue(income);
-    const targetValue = parseInputValue(targetAmount);
-    const upfrontValue = parseInputValue(upfrontAmount);
-    const emiPeriod = parseInt(emiMonths) || 6;
-    
-    if (!incomeValue || !targetValue) {
-      alert('Please enter your income and target amount.');
+
+ 
+
+const handleSavePrediction = async () => {
+  if (!predictedBudget || !dbUser?._id) return;
+
+  // Compute next month and year
+  const currentDate = new Date();
+  const nextMonthDate = new Date(currentDate.setMonth(currentDate.getMonth() + 1));
+  const month = nextMonthDate.getMonth() + 1; // JS months are 0-based
+  const year = nextMonthDate.getFullYear();
+
+  // Build budget data from predictedBudget
+  const newBudget = {
+    userId: dbUser._id,
+    foodAndDining: predictedBudget.foodAndDining || 0,
+    shopping: predictedBudget.shopping || 0,
+    entertainment: predictedBudget.entertainment || 0,
+    travel: predictedBudget.travel || 0,
+    health: predictedBudget.health || 0,
+    education: predictedBudget.education || 0,
+    rechargeAndSubscriptions: predictedBudget.rechargeAndSubscriptions || 0,
+    others: predictedBudget.others || 0,
+    transportation: predictedBudget.transportation || 0,
+    billsAndUtilities: predictedBudget.billsAndUtilities || 0,
+    limitAmount: predictedBudget.limitAmount || 0, // Optional
+    saving: predictedBudget.savings || 0, // Rename 'savings' to 'saving'
+    month,
+    year,
+  };
+
+  try {
+    const response = await axios.post('http://localhost:5000/budget', newBudget);
+    console.log('Saved to DB:', response.data);
+
+    // Update frontend state
+    setBudgets(prev => [...prev, { ...response.data }]);
+    setCurrentIndex(budgets.length);
+    setShowPredictionModal(false);
+  } catch (error) {
+    console.error('Error saving predicted budget:', error);
+  }
+};
+
+  
+  const handleGenerateBudget = () => {
+    if (!targetSaving || isNaN(parseFloat(targetSaving))) {
+      alert('Please enter a valid target saving amount');
       return;
     }
     
-    // Calculate budget components
-    const remainingAmount = targetValue - upfrontValue;
-    const requiredEMI = remainingAmount / emiPeriod;
-    const totalSavings = incomeValue * 0.2; // 20% of income for savings
-    const requiredMonthlySavings = requiredEMI * 0.1; // 10% rule - upfront payment
-    const budgetLimit = incomeValue * 0.6; // 60% of income for expenses
-    
-    const summary = {
-      monthlyIncome: incomeValue,
-      totalSavings: totalSavings,
-      savingsPerMonth: totalSavings - requiredMonthlySavings,
-      requiredEMI: requiredEMI,
-      requiredMonthlySavings: requiredMonthlySavings,
-      budgetLimit: budgetLimit
-    };
-    
-    setBudgetSummary(summary);
-    
-    // Check eligibility
-    if (totalSavings >= requiredMonthlySavings + requiredEMI) {
-      setEligibility({
-        status: 'success',
-        message: 'You can proceed with your purchase plan!'
-      });
-    } else if (totalSavings >= requiredMonthlySavings) {
-      const shortfall = requiredEMI - (totalSavings - requiredMonthlySavings);
-      setEligibility({
-        status: 'warning',
-        message: `You're short of ₹${shortfall.toFixed(2)} for your EMI.`,
-        shortfall: shortfall
-      });
-    } else {
-      const additionalSavingsNeeded = requiredMonthlySavings - totalSavings;
-      setEligibility({
-        status: 'danger',
-        message: `You need to save ₹${additionalSavingsNeeded.toFixed(2)} more per month.`,
-        additionalSavingsNeeded: additionalSavingsNeeded
-      });
+    const generated = generateBudgetWithTargetSaving(budgets, parseFloat(targetSaving));
+    setGeneratedBudget(generated);
+    setShowTargetSavingModal(true);
+  };
+
+  const handleSaveGenerated = () => {
+    if (generatedBudget) {
+      setBudgets(prev => [...prev, { ...generatedBudget, _id: `${prev.length + 1}` }]);
+      setShowTargetSavingModal(false);
+      // Move to the newly added budget
+      setCurrentIndex(budgets.length);
+      setTargetSaving('');
     }
   };
-  
-  // Save goal to the table
-  const saveGoal = () => {
-    if (!budgetSummary || !goalName) {
-      alert('Please enter a goal name and calculate a budget first.');
-      return;
-    }
+
+  // Helper function to render budget in table format
+  const renderBudgetTable = (budget) => {
+    if (!budget) return null;
     
-    const newGoal = {
-      id: Date.now(),
-      name: goalName,
-      targetAmount: parseInputValue(targetAmount),
-      upfrontAmount: parseInputValue(upfrontAmount),
-      emiMonths: emiMonths,
-      requiredSavings: budgetSummary.requiredMonthlySavings,
-      requiredEMI: budgetSummary.requiredEMI,
-      eligibility: eligibility.status,
-      createdAt: new Date().toLocaleDateString()
+    const tableStyles = {
+      budgetMonth: {
+        fontSize: '1.125rem',
+        fontWeight: 600,
+        marginBottom: '0.5rem'
+      },
+      budgetTable: {
+        width: '100%',
+        borderCollapse: 'collapse',
+        marginBottom: '1rem'
+      },
+      tableHeader: {
+        backgroundColor: 'rgba(243, 244, 246, 1)'
+      },
+      tableHeaderCell: {
+        border: '1px solid rgba(209, 213, 219, 1)',
+        padding: '0.5rem',
+        textAlign: 'left'
+      },
+      tableAmountCell: {
+        border: '1px solid rgba(209, 213, 219, 1)',
+        padding: '0.5rem',
+        textAlign: 'right'
+      },
+      tableCell: {
+        border: '1px solid rgba(209, 213, 219, 1)',
+        padding: '0.5rem'
+      },
+      totalRow: {
+        fontWeight: 600
+      },
+      savingRow: {
+        fontWeight: 600,
+        color: 'rgba(16, 185, 129, 1)'
+      }
     };
     
-    setSavedGoals([...savedGoals, newGoal]);
+    const categories = [
+      { key: 'foodAndDining', label: 'Food & Dining' },
+      { key: 'shopping', label: 'Shopping' },
+      { key: 'entertainment', label: 'Entertainment' },
+      { key: 'travel', label: 'Travel' },
+      { key: 'health', label: 'Health' },
+      { key: 'education', label: 'Education' },
+      { key: 'rechargeAndSubscriptions', label: 'Recharges & Subscriptions' },
+      { key: 'transportation', label: 'Transportation' },
+      { key: 'billsAndUtilities', label: 'Bills & Utilities' },
+      { key: 'others', label: 'Others' }
+    ];
     
-    // Reset form
-    setGoalName('');
-    setTargetAmount('');
-    setUpfrontAmount('');
-    setEmiMonths(6);
-    setBudgetSummary(null);
-    setEligibility(null);
-  };
-  
-  // Handle modified budget plan
-  const planModifiedBudget = (additionalSavings) => {
-    if (!budgetSummary) return;
+    // Calculate total expenses
+    const totalExpenses = categories.reduce((sum, cat) => sum + budget[cat.key], 0);
     
-    const incomeValue = parseInputValue(income);
-    
-    // Calculate new budget with reduced expenses
-    const newBudgetLimit = budgetSummary.budgetLimit - additionalSavings;
-    const newSavings = budgetSummary.totalSavings + additionalSavings;
-    
-    const summary = {
-      ...budgetSummary,
-      totalSavings: newSavings,
-      savingsPerMonth: newSavings - budgetSummary.requiredMonthlySavings,
-      budgetLimit: newBudgetLimit
-    };
-    
-    setBudgetSummary(summary);
-    
-    // Update eligibility
-    if (newSavings >= summary.requiredMonthlySavings + summary.requiredEMI) {
-      setEligibility({
-        status: 'success',
-        message: 'With the modified budget, you can proceed with your purchase plan!'
-      });
-    } else {
-      const remainingShortfall = summary.requiredMonthlySavings + summary.requiredEMI - newSavings;
-      setEligibility({
-        status: 'warning',
-        message: `You're still short of ₹${remainingShortfall.toFixed(2)} even with the modified budget.`,
-        shortfall: remainingShortfall
-      });
-    }
-  };
-  
-  // Format currency
-  const formatCurrency = (amount) => {
-    return new Intl.NumberFormat('en-IN', {
-      style: 'currency',
-      currency: 'INR',
-      maximumFractionDigits: 0
-    }).format(amount);
-  };
-  
-  return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>Budget Planner with Goal Tracker</h1>
+    return (
+      <div style={{ width: '100%' }}>
+        <div style={tableStyles.budgetMonth}>
+          {monthNames[budget.month - 1]} {budget.year}
+        </div>
+        <table style={tableStyles.budgetTable}>
+          <thead>
+            <tr style={tableStyles.tableHeader}>
+              <th style={tableStyles.tableHeaderCell}>Category</th>
+              <th style={{...tableStyles.tableHeaderCell, textAlign: 'right'}}>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            {categories.map(cat => (
+              <tr key={cat.key}>
+                <td style={tableStyles.tableCell}>{cat.label}</td>
+                <td style={tableStyles.tableAmountCell}>₹{budget[cat.key]}</td>
+              </tr>
+            ))}
+            <tr style={tableStyles.totalRow}>
+              <td style={tableStyles.tableCell}>Total Expenses</td>
+              <td style={tableStyles.tableAmountCell}>₹{totalExpenses}</td>
+            </tr>
+            <tr style={tableStyles.totalRow}>
+              <td style={tableStyles.tableCell}>Budget Limit</td>
+              <td style={tableStyles.tableAmountCell}>₹{budget.limitAmount}</td>
+            </tr>
+            <tr style={tableStyles.savingRow}>
+              <td style={tableStyles.tableCell}>Saving</td>
+              <td style={tableStyles.tableAmountCell}>₹{budget.saving}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+    );
+  };
+
+  // Define styles
+  const styles = {
+    container: {
+      maxWidth: '64rem',
+      margin: '0 auto',
+      padding: '1.5rem',
+      backgroundColor: 'white',
+      borderRadius: '0.5rem',
+      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+    },
+    header: {
+      fontSize: '1.875rem',
+      fontWeight: 'bold',
+      textAlign: 'center',
+      marginBottom: '2rem',
+      color: '#4a3aff'
+    },
+    sectionTitle: {
+      fontSize: '1.25rem',
+      fontWeight: 600,
+      marginBottom: '1rem'
+    },
+    carouselContainer: {
+      marginBottom: '2rem'
+    },
+    carouselHeader: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginBottom: '1rem'
+    },
+    navigationButton: {
+      padding: '0.5rem',
+      borderRadius: '9999px',
+      border: 'none',
+      background: 'transparent',
+      cursor: 'pointer'
+    },
+    navigationButtonDisabled: {
+      color: 'rgba(156, 163, 175, 1)',
+      cursor: 'not-allowed'
+    },
+    navigationButtonEnabled: {
+      color: 'rgba(55, 65, 81, 1)'
+    },
+    budgetCard: {
+      border: '1px solid rgba(229, 231, 235, 1)',
+      borderRadius: '0.5rem',
+      padding: '1rem',
+      minHeight: '16rem'
+    },
+    emptyState: {
+      textAlign: 'center',
+      color: 'rgba(107, 114, 128, 1)',
+      padding: '2rem 0'
+    },
+    primaryButton: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '100%',
+      padding: '0.75rem',
+      borderRadius: '0.375rem',
+      fontWeight: 500,
+      color: 'white',
+      backgroundColor: '#4a3aff',
+      border: 'none',
+      cursor: 'pointer'
+    },
+    buttonIcon: {
+      marginRight: '0.5rem'
+    },
+    targetSavingContainer: {
+      marginBottom: '2rem'
+    },
+    inputContainer: {
+      display: 'flex',
+      gap: '0.5rem'
+    },
+    inputWrapper: {
+      position: 'relative',
+      flex: 1
+    },
+    inputIcon: {
+      position: 'absolute',
+      left: '0.75rem',
+      top: '0.75rem',
+      color: 'rgba(107, 114, 128, 1)'
+    },
+    savingInput: {
+      width: '100%',
+      padding: '0.75rem 1rem 0.75rem 2.5rem',
+      border: '1px solid #4a3aff',
+      borderRadius: '0.375rem'
+    },
+    generateButton: {
+      padding: '0.75rem 1.5rem',
+      borderRadius: '0.375rem',
+      fontWeight: 500,
+      color: 'white',
+      backgroundColor: '#4a3aff',
+      border: 'none',
+      cursor: 'pointer'
+    }
+  };
+
+  return (
+    <div style={styles.container}>
+      {/* Header */}
+      <h1 style={styles.header}>
+        Budget Planner
+      </h1>
       
-      {/* Main content container */}
-      <div className={styles.grid}>
-        {/* Budget Planner Form */}
-        <div className={styles.card}>
-          <h2 className={styles.cardTitle}>
-            <span>🧾</span> Budget Planner Form
-          </h2>
-          <div className={styles.form}>
-            <div className={styles.formGroup}>
-              <label className={styles.label}>Monthly Income</label>
-              <input
-                type="number"
-                value={income}
-                onChange={(e) => setIncome(e.target.value)}
-                className={styles.input}
-                placeholder="Enter your monthly income"
-              />
-            </div>
-            
-            <div className={styles.formGroup}>
-              <label className={styles.label}>Target Amount</label>
-              <input
-                type="number"
-                value={targetAmount}
-                onChange={(e) => setTargetAmount(e.target.value)}
-                className={styles.input}
-                placeholder="Enter target purchase amount"
-              />
-            </div>
-            
-            <div className={styles.formGroup}>
-              <label className={styles.label}>Upfront Amount</label>
-              <input
-                type="number"
-                value={upfrontAmount}
-                onChange={(e) => setUpfrontAmount(e.target.value)}
-                className={styles.input}
-                placeholder="Enter upfront payment amount"
-              />
-            </div>
-            
-            <div className={styles.formGroup}>
-              <label className={styles.label}>EMI Months</label>
-              <input
-                type="number"
-                value={emiMonths}
-                onChange={(e) => setEmiMonths(e.target.value)}
-                className={styles.input}
-                placeholder="Enter EMI period in months"
-                min="1"
-              />
-            </div>
-            
-            <div className={styles.formGroup}>
-              <label className={styles.label}>Goal Name</label>
-              <input
-                type="text"
-                value={goalName}
-                onChange={(e) => setGoalName(e.target.value)}
-                className={styles.input}
-                placeholder="Give your goal a name"
-              />
-            </div>
-            
-            <button
-              onClick={calculateBudget}
-              className={styles.button}
+      {/* Budget Carousel */}
+      <div style={styles.carouselContainer}>
+        <div style={styles.carouselHeader}>
+          <h2 style={styles.sectionTitle}>Your Budgets</h2>
+          <div style={{ display: 'flex', gap: '0.5rem' }}>
+            <button 
+              onClick={handlePrevious} 
+              disabled={currentIndex === 0}
+              style={{
+                ...styles.navigationButton,
+                ...(currentIndex === 0 ? styles.navigationButtonDisabled : styles.navigationButtonEnabled)
+              }}
             >
-              Calculate Budget
+              <ChevronLeft size={24} />
+            </button>
+            <button 
+              onClick={handleNext} 
+              disabled={currentIndex === budgets.length - 1}
+              style={{
+                ...styles.navigationButton,
+                ...(currentIndex === budgets.length - 1 ? styles.navigationButtonDisabled : styles.navigationButtonEnabled)
+              }}
+            >
+              <ChevronRight size={24} />
             </button>
           </div>
         </div>
         
-        {/* Budget Summary and Eligibility Result */}
-        <div className={styles.grid}>
-          {budgetSummary && (
-            <div className={styles.card}>
-              <h2 className={styles.cardTitle}>
-                <span>📊</span> Budget Summary
-              </h2>
-              <div className={styles.summary}>
-                <div className={styles.summaryItem}>
-                  <span className={styles.summaryLabel}>Monthly Income</span>
-                  <span className={styles.summaryValue}>{formatCurrency(budgetSummary.monthlyIncome)}</span>
-                </div>
-                <div className={styles.summaryItem}>
-                  <span className={styles.summaryLabel}>Total Savings (20%)</span>
-                  <span className={styles.summaryValue}>{formatCurrency(budgetSummary.totalSavings)}</span>
-                </div>
-                <div className={styles.summaryItem}>
-                  <span className={styles.summaryLabel}>Remaining Savings</span>
-                  <span className={styles.summaryValue}>{formatCurrency(budgetSummary.savingsPerMonth)}</span>
-                </div>
-                <div className={styles.summaryItem}>
-                  <span className={styles.summaryLabel}>Required EMI</span>
-                  <span className={styles.summaryValue}>{formatCurrency(budgetSummary.requiredEMI)}</span>
-                </div>
-                <div className={styles.summaryItem}>
-                  <span className={styles.summaryLabel}>Required Monthly Savings</span>
-                  <span className={styles.summaryValue}>{formatCurrency(budgetSummary.requiredMonthlySavings)}</span>
-                </div>
-                <div className={styles.summaryItem}>
-                  <span className={styles.summaryLabel}>Budget Limit (60%)</span>
-                  <span className={styles.summaryValue}>{formatCurrency(budgetSummary.budgetLimit)}</span>
-                </div>
-              </div>
-            </div>
-          )}
-          
-          {eligibility && (
-            <div className={styles.card}>
-              <h2 className={styles.cardTitle}>
-                <span>✅</span> Eligibility Result
-              </h2>
-              <div className={`${styles.summary} ${
-                eligibility.status === 'success' ? styles.success : 
-                eligibility.status === 'warning' ? styles.warning : 
-                styles.error
-              }`}>
-                <p>{eligibility.message}</p>
-              </div>
-              
-              {eligibility.status !== 'success' && (
-                <div className={styles.form}>
-                  {eligibility.additionalSavingsNeeded && (
-                    <button
-                      onClick={() => planModifiedBudget(eligibility.additionalSavingsNeeded)}
-                      className={styles.button}
-                    >
-                      Plan Budget for Saving {formatCurrency(eligibility.additionalSavingsNeeded)}/month
-                    </button>
-                  )}
-                  {eligibility.shortfall && (
-                    <button
-                      onClick={() => planModifiedBudget(eligibility.shortfall)}
-                      className={styles.button}
-                    >
-                      Plan Budget for Saving {formatCurrency(eligibility.shortfall)}/month
-                    </button>
-                  )}
-                </div>
-              )}
-              
-              <button
-                onClick={saveGoal}
-                className={styles.button}
-              >
-                Save as Goal
-              </button>
-            </div>
+        <div style={styles.budgetCard}>
+          {budgets.length > 0 ? (
+            renderBudgetTable(budgets[currentIndex])
+          ) : (
+            <div style={styles.emptyState}>No budgets found</div>
           )}
         </div>
       </div>
       
-      {/* Saved Goals Table */}
-      {savedGoals.length > 0 && (
-        <div className={styles.card}>
-          <h2 className={styles.cardTitle}>
-            <span>🎯</span> Your Saved Goals
-          </h2>
-          <div className={styles.summary}>
-            <table className={styles.table}>
+      {/* Predict Button */}
+      <div style={styles.carouselContainer}>
+        <button 
+          onClick={handlePredictBudget}
+          style={styles.primaryButton}
+        >
+          <PlusCircle size={20} style={styles.buttonIcon} />
+          Predict Next Month Budget
+        </button>
+      </div>
+      
+      {/* Target Saving Section */}
+      <div style={styles.targetSavingContainer}>
+        <h2 style={styles.sectionTitle}>Set Target Saving</h2>
+        <div style={styles.inputContainer}>
+          <div style={styles.inputWrapper}>
+            <span style={styles.inputIcon}>
+              <DollarSign size={16} />
+            </span>
+            <input
+              type="number"
+              value={targetSaving}
+              onChange={(e) => setTargetSaving(e.target.value)}
+              placeholder="Enter target saving amount"
+              style={styles.savingInput}
+            />
+          </div>
+          <button 
+            onClick={handleGenerateBudget}
+            style={styles.generateButton}
+          >
+            Generate
+          </button>
+        </div>
+      </div>
+      
+      {/* Prediction Modal */}
+      {showPredictionModal && predictedBudget && (
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '1rem',
+            zIndex: 50,
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: 'white',
+              borderRadius: '0.5rem',
+              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+              width: '100%',
+              maxWidth: '42rem',
+              padding: '1.5rem',
+              maxHeight: '100vh',
+              overflowY: 'auto',
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginBottom: '1rem',
+              }}
+            >
+              <h2
+                style={{
+                  fontSize: '1.25rem',
+                  fontWeight: 700,
+                  color: '#4a3aff',
+                }}
+              >
+                Predicted Budget
+              </h2>
+              <button
+                onClick={() => setShowPredictionModal(false)}
+                style={{
+                  padding: '0.25rem',
+                  borderRadius: '9999px',
+                  border: 'none',
+                  background: 'transparent',
+                  cursor: 'pointer',
+                }}
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            {/* Render Predicted Budget Table */}
+            <table
+              style={{
+                width: '100%',
+                borderCollapse: 'collapse',
+                marginBottom: '1rem',
+              }}
+            >
               <thead>
-                <tr>
-                  <th>Goal Name</th>
-                  <th>Target Amount</th>
-                  <th>Upfront Amount</th>
-                  <th>EMI Months</th>
-                  <th>Monthly Savings</th>
-                  <th>Monthly EMI</th>
-                  <th>Status</th>
-                  <th>Created Date</th>
+                <tr style={{ backgroundColor: 'rgba(243, 244, 246, 1)' }}>
+                  <th style={{ border: '1px solid rgba(209, 213, 219, 1)', padding: '0.5rem', textAlign: 'left' }}>
+                    Category
+                  </th>
+                  <th style={{ border: '1px solid rgba(209, 213, 219, 1)', padding: '0.5rem', textAlign: 'right' }}>
+                    Amount
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                {savedGoals.map((goal) => (
-                  <tr key={goal.id}>
-                    <td>{goal.name}</td>
-                    <td>{formatCurrency(goal.targetAmount)}</td>
-                    <td>{formatCurrency(goal.upfrontAmount)}</td>
-                    <td>{goal.emiMonths}</td>
-                    <td>{formatCurrency(goal.requiredSavings)}</td>
-                    <td>{formatCurrency(goal.requiredEMI)}</td>
-                    <td>
-                      <span className={`${styles.status} ${
-                        goal.eligibility === 'success' ? styles.success : 
-                        goal.eligibility === 'warning' ? styles.warning : 
-                        styles.error
-                      }`}>
-                        {goal.eligibility === 'success' ? 'Eligible' : 
-                         goal.eligibility === 'warning' ? 'Partially Eligible' : 
-                         'Not Eligible'}
-                      </span>
+                {Object.entries(predictedBudget).map(([key, value]) => (
+                  <tr key={key}>
+                    <td style={{ border: '1px solid rgba(209, 213, 219, 1)', padding: '0.5rem' }}>
+                      {key.replace(/([A-Z])/g, ' $1').replace(/^./, (str) => str.toUpperCase())}
                     </td>
-                    <td>{goal.createdAt}</td>
+                    <td style={{ border: '1px solid rgba(209, 213, 219, 1)', padding: '0.5rem', textAlign: 'right' }}>
+                      ₹{value.toFixed(2)}
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
+
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'flex-end',
+                gap: '0.75rem',
+                marginTop: '1.5rem',
+              }}
+            >
+              <button
+                onClick={() => setShowPredictionModal(false)}
+                style={{
+                  padding: '0.5rem 1rem',
+                  border: '1px solid rgba(209, 213, 219, 1)',
+                  borderRadius: '0.375rem',
+                  fontWeight: 500,
+                  color: 'rgba(55, 65, 81, 1)',
+                  backgroundColor: 'transparent',
+                  cursor: 'pointer',
+                }}
+              >
+                Close
+              </button>
+              <button
+                onClick={handleSavePrediction}
+                style={{
+                  padding: '0.5rem 1.5rem',
+                  borderRadius: '0.375rem',
+                  fontWeight: 500,
+                  color: 'white',
+                  backgroundColor: '#4a3aff',
+                  border: 'none',
+                  cursor: 'pointer',
+                }}
+              >
+                Save Budget
+              </button>
+            </div>
           </div>
         </div>
       )}
       
-      {/* About the 10-6-20 Rule Section */}
-      <div className={styles.card}>
-        <h2 className={styles.cardTitle}>About the 10-6-20 Rule</h2>
-        <div className={styles.summary}>
-          <p>
-            The 10-6-20 rule is a financial guideline for budgeting that helps ensure you can afford your purchases:
-          </p>
-          <ul>
-            <li><strong>10%:</strong> Your upfront payment should be at least 10% of the purchase price</li>
-            <li><strong>60%:</strong> Limit your spending to 60% of your income for expenses</li>
-            <li><strong>20%:</strong> Save at least 20% of your income monthly</li>
-          </ul>
-          <p>
-            This budgeting tool checks if your savings and income align with these guidelines for your planned purchase.
-          </p>
+      {/* Target Saving Modal */}
+      {showTargetSavingModal && (
+        <div style={{
+          position: 'fixed',
+          inset: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '1rem',
+          zIndex: 50
+        }}>
+          <div style={{
+            backgroundColor: 'white',
+            borderRadius: '0.5rem',
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+            width: '100%',
+            maxWidth: '42rem',
+            padding: '1.5rem',
+            maxHeight: '100vh',
+            overflowY: 'auto'
+          }}>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginBottom: '1rem'
+            }}>
+              <h2 style={{
+                fontSize: '1.25rem',
+                fontWeight: 700,
+                color: '#4a3aff'
+              }}>
+                Generated Budget with ${targetSaving} Saving
+              </h2>
+              <button 
+                onClick={() => setShowTargetSavingModal(false)}
+                style={{
+                  padding: '0.25rem',
+                  borderRadius: '9999px',
+                  border: 'none',
+                  background: 'transparent',
+                  cursor: 'pointer'
+                }}
+              >
+                <X size={24} />
+              </button>
+            </div>
+            
+            {renderBudgetTable(generatedBudget)}
+            
+            <div style={{
+              display: 'flex',
+              justifyContent: 'flex-end',
+              marginTop: '1.5rem'
+            }}>
+              <button 
+                onClick={handleSaveGenerated}
+                style={{
+                  padding: '0.5rem 1.5rem',
+                  borderRadius: '0.375rem',
+                  fontWeight: 500,
+                  color: 'white',
+                  backgroundColor: '#4a3aff',
+                  border: 'none',
+                  cursor: 'pointer'
+                }}
+              >
+                Save Budget
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

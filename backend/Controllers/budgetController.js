@@ -35,9 +35,8 @@ exports.getBudgetsByAccountId = async (req, res) => {
 // Get budgets by userId (through account)
 exports.getBudgetsByUserId = async (req, res) => {
   try {
-    const accounts = await Account.find({ userId: req.params.userId }).select('_id');
-    const accountIds = accounts.map(acc => acc._id);
-    const budgets = await Budget.find({ accountId: { $in: accountIds } });
+    
+    const budgets = await Budget.find({ userId: req.params.userId  } );
     res.status(200).json(budgets);
   } catch (error) {
     res.status(500).json({ message: 'Failed to retrieve budgets by user ID', error });

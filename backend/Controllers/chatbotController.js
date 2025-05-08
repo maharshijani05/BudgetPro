@@ -1,6 +1,7 @@
 const { spawn } = require('child_process');
 const path = require('path');
-
+// import run_faq_bot from '../FAQ_Chatbot/faq_chatbot.py'
+// const { run_faq_bot } = require('../FAQ_Chatbot/faq_chatbot.py');
 // Main chat handler
 exports.handler = async (req, res) => {
     try {
@@ -66,46 +67,21 @@ exports.handler = async (req, res) => {
 // FAQ handler
 
 exports.faqhandler = async (req, res) => {
-    try {
-        console.log("Received FAQ request:", req.body);
-        const pythonScriptPath = path.join(__dirname, '../../FAQ_Chatbot/faq_chatbot.py');
+  const scriptPath = path.join(__dirname, '../../FAQ_Chatbot/faq_chatbot.py');
 
-        // Spawn the Python process
-        const pythonProcess = spawn('python', [pythonScriptPath]);
+  const python = spawn('python', [scriptPath]);
 
-        let output = '';
-        let errorOutput = '';
+  let result = '';
+  python.stdout.on('data', (data) => {
+    result += data.toString();
+  });
 
-        // Capture Python script output
-        pythonProcess.stdout.on('data', (data) => {
-            output += data.toString();
-        });
+  python.stderr.on('data', (data) => {
+    console.error(`stderr: ${data}`);
+  });
 
-        // Capture Python script errors
-        pythonProcess.stderr.on('data', (data) => {
-            errorOutput += data.toString();
-        });
-
-        // Handle script completion
-        pythonProcess.on('close', (code) => {
-            if (code === 0) {
-                console.log(output)
-                return res.status(200).json({
-                    response: output.trim(),
-                });
-            } else {
-                console.error('Python script error:', errorOutput);
-                return res.status(500).json({
-                    error: 'Python script execution failed',
-                    details: errorOutput.trim(),
-                });
-            }
-        });
-    } catch (error) {
-        console.error('Error handling FAQ request:', error);
-        res.status(500).json({
-            error: 'Internal server error',
-            response: 'Sorry, something went wrong while fetching FAQs.',
-        });
-    }
+  python.on('close', (code) => {
+    console.log(`child process exited with code ${code}`);
+    res.send(result);
+  });
 };

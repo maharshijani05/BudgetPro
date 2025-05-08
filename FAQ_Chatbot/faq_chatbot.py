@@ -74,22 +74,24 @@ def run_faq_bot():
     )
 
     # Terminal interaction loop
-    print("\n🤖 Welcome to the Smart Financial Assistant FAQ Bot!")
-    print("Type your question below. Type 'exit' or 'quit' to end.\n")
+    # print("\n🤖 Welcome to the Smart Financial Assistant FAQ Bot!")
+    # print("Type your question below. Type 'exit' or 'quit' to end.\n")
 
     while True:
         try:
             user_input = input("You: ").strip()
             if user_input.lower() in {"exit", "quit", "bye"}:
-                print("👋 Exiting. Have a great day!")
+                return("👋 Exiting. Have a great day!")
                 break
 
             response = conversational_rag_chain.invoke(
                 {"input": user_input},
                 config={"configurable": {"session_id": session_id}}
             )
-            print(f"SFA Bot: {response['answer']}\n")
+            return(f"SFA Bot: {response['answer']}\n")
 
         except KeyboardInterrupt:
-            print("\n👋 Exiting. Goodbye!")
+            return("\n👋 Exiting. Goodbye!")
             break
+if __name__ == "__main__":
+    run_faq_bot()

@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { 
-  BarChart, Bar, PieChart, Pie, Cell, 
-  ResponsiveContainer, XAxis, YAxis, 
+import {
+  BarChart, Bar, PieChart, Pie, Cell,
+  ResponsiveContainer, XAxis, YAxis,
   Tooltip, Legend, CartesianGrid
 } from 'recharts';
-import { 
-  Calendar, ChevronDown, AlertTriangle, 
+import {
+  Calendar, ChevronDown, AlertTriangle,
   TrendingUp, Users, Filter, ArrowUpRight
 } from 'lucide-react';
 
@@ -185,18 +185,17 @@ const styles = {
   alertItem: (severity) => ({
     padding: '12px',
     borderRadius: '8px',
-    backgroundColor: severity === 'high' 
-      ? 'rgba(239, 68, 68, 0.05)' 
-      : severity === 'medium' 
-        ? 'rgba(245, 158, 11, 0.05)' 
+    backgroundColor: severity === 'high'
+      ? 'rgba(239, 68, 68, 0.05)'
+      : severity === 'medium'
+        ? 'rgba(245, 158, 11, 0.05)'
         : 'rgba(74, 58, 255, 0.05)',
-    borderLeft: `4px solid ${
-      severity === 'high' 
-        ? THEME.error 
-        : severity === 'medium' 
-          ? THEME.warning 
-          : THEME.primaryColor
-    }`,
+    borderLeft: `4px solid ${severity === 'high'
+      ? THEME.error
+      : severity === 'medium'
+        ? THEME.warning
+        : THEME.primaryColor
+      }`,
   }),
   alertHeader: {
     display: 'flex',
@@ -212,15 +211,15 @@ const styles = {
     fontSize: '12px',
     padding: '2px 8px',
     borderRadius: '12px',
-    backgroundColor: severity === 'high' 
-      ? 'rgba(239, 68, 68, 0.1)' 
-      : severity === 'medium' 
-        ? 'rgba(245, 158, 11, 0.1)' 
+    backgroundColor: severity === 'high'
+      ? 'rgba(239, 68, 68, 0.1)'
+      : severity === 'medium'
+        ? 'rgba(245, 158, 11, 0.1)'
         : 'rgba(74, 58, 255, 0.1)',
-    color: severity === 'high' 
-      ? THEME.error 
-      : severity === 'medium' 
-        ? THEME.warning 
+    color: severity === 'high'
+      ? THEME.error
+      : severity === 'medium'
+        ? THEME.warning
         : THEME.primaryColor,
   }),
   alertMessage: {
@@ -249,15 +248,15 @@ const styles = {
     borderRadius: '16px',
     fontSize: '14px',
     fontWeight: '600',
-    backgroundColor: profile === 'spender' 
-      ? 'rgba(239, 68, 68, 0.1)' 
-      : profile === 'balanced' 
-        ? 'rgba(74, 58, 255, 0.1)' 
+    backgroundColor: profile === 'spender'
+      ? 'rgba(239, 68, 68, 0.1)'
+      : profile === 'balanced'
+        ? 'rgba(74, 58, 255, 0.1)'
         : 'rgba(16, 185, 129, 0.1)',
-    color: profile === 'spender' 
-      ? THEME.error 
-      : profile === 'balanced' 
-        ? THEME.primaryColor 
+    color: profile === 'spender'
+      ? THEME.error
+      : profile === 'balanced'
+        ? THEME.primaryColor
         : THEME.success,
   }),
   profileDescription: {
@@ -288,6 +287,10 @@ const styles = {
     fontWeight: '600',
     color: THEME.textDark,
   },
+  metricSubValue: {
+    fontSize: '12px',
+    color: THEME.textMedium,
+  },
   trendsList: {
     display: 'flex',
     flexDirection: 'column',
@@ -313,10 +316,10 @@ const styles = {
     gap: '4px',
     fontSize: '14px',
     fontWeight: '600',
-    color: type === 'increase' 
-      ? THEME.error 
-      : type === 'decrease' 
-        ? THEME.success 
+    color: type === 'increase'
+      ? THEME.error
+      : type === 'decrease'
+        ? THEME.success
         : THEME.textLight,
   }),
   rotated: {
@@ -332,10 +335,10 @@ const styles = {
     height: '100%',
     width: width,
     borderRadius: '4px',
-    backgroundColor: type === 'increase' 
-      ? THEME.error 
-      : type === 'decrease' 
-        ? THEME.success 
+    backgroundColor: type === 'increase'
+      ? THEME.error
+      : type === 'decrease'
+        ? THEME.success
         : THEME.primaryColor,
   }),
   trendAmount: {
@@ -346,8 +349,8 @@ const styles = {
 };
 
 
-  // Fetch data from the backend
-  
+// Fetch data from the backend
+
 export default function SpendingInsightsPage() {
   const [timeRange, setTimeRange] = useState('month');
   const [chartType, setChartType] = useState('pie');
@@ -357,6 +360,13 @@ export default function SpendingInsightsPage() {
   const [pieChartData, setPieChartData] = useState([]);
   const [loading, setLoading] = useState(true);
   const { dbUser } = useAuth(); // Assuming you have a context for user data
+  const [profileMetrics, setProfileMetrics] = useState({
+    monthlySpending: 0,
+    savingsRate: 0,
+    topCategory: { name: '', amount: 0 },
+    highestSavingCategory: { name: '', amount: 0 }
+  });
+  const [spendingTrends, setSpendingTrends] = useState([]);
 
   // Fetch data from the backend
   useEffect(() => {
@@ -394,7 +404,7 @@ export default function SpendingInsightsPage() {
             return transactionDate >= oneWeekAgo && transactionDate <= now;
           } else if (timeRange === 'month') {
             return (
-              transactionDate.getMonth() === now.getMonth()-1 &&
+              transactionDate.getMonth() === now.getMonth() - 1 &&
               transactionDate.getFullYear() === now.getFullYear()
             );
           } else if (timeRange === 'year') {
@@ -411,19 +421,116 @@ export default function SpendingInsightsPage() {
             name: category,
             value: filteredTransactions.reduce((sum, transaction) => {
               return transaction.category?.trim().toLowerCase() === category.toLowerCase()
-                ? sum + transaction.debit 
+                ? sum + transaction.debit
                 : sum;
             }, 0),
           };
         }).filter((item) => item.value > 0);
         console.log('Pie Chart Data:', calculatedPieData);
-        setPieChartData(calculatedPieData);        
+        setPieChartData(calculatedPieData);
 
         if (dbUser.tag) {
-          setUserProfile(dbUser.tag.toLowerCase()); 
+          setUserProfile(dbUser.tag.toLowerCase());
         } else {
           setUserProfile('unknown'); // fallback if tag isn't available
         }
+
+        // Calculate metrics
+        const currentMonth = new Date().getMonth() - 1;
+        const currentYear = new Date().getFullYear();
+
+        // Filter transactions for current month
+        const currentMonthTransactions = filteredTransactions.filter(tx => {
+          const txDate = new Date(tx.date);
+          return txDate.getMonth() === currentMonth && txDate.getFullYear() === currentYear;
+        });
+
+        // Calculate monthly spending
+        const monthlySpending = currentMonthTransactions.reduce((sum, tx) => {
+          return sum + (tx.debit || 0);
+        }, 0);
+
+        // Calculate savings rate
+        const totalIncome = currentMonthTransactions.reduce((sum, tx) => {
+          return sum + (tx.credit || 0);
+        }, 0);
+        const savingsRate = totalIncome > 0 ? ((totalIncome - monthlySpending) / totalIncome) * 100 : 0;
+
+        // Calculate top spending category
+        const categorySpending = currentMonthTransactions.reduce((acc, tx) => {
+          if (tx.debit > 0) {
+            const category = tx.category || 'Uncategorized';
+            acc[category] = (acc[category] || 0) + tx.debit;
+          }
+          return acc;
+        }, {});
+
+        const topCategory = Object.entries(categorySpending)
+          .sort(([, a], [, b]) => b - a)[0] || { name: 'No Data', amount: 0 };
+
+        // Calculate highest saving category
+        const savingByCategory = currentMonthTransactions.reduce((acc, tx) => {
+          if (tx.credit > 0) { // Only consider credit transactions (savings)
+            const category = tx.category || 'Uncategorized';
+            acc[category] = (acc[category] || 0) + tx.credit;
+          }
+          return acc;
+        }, {});
+
+        const highestSavingCategory = Object.entries(savingByCategory)
+          .sort(([, a], [, b]) => b - a)[0] || { name: 'No Data', amount: 0 };
+
+        setProfileMetrics({
+          monthlySpending,
+          savingsRate,
+          topCategory: {
+            name: topCategory[0],
+            amount: topCategory[1]
+          },
+          highestSavingCategory: {
+            name: highestSavingCategory[0],
+            amount: highestSavingCategory[1]
+          }
+        });
+
+        // Calculate trends
+        const now = new Date();
+        const previousMonth = currentMonth === 0 ? 11 : currentMonth - 1;
+        const previousYear = currentMonth === 0 ? currentYear - 1 : currentYear;
+
+        const previousMonthTransactions = filteredTransactions.filter((tx) => {
+          const txDate = new Date(tx.date);
+          return txDate.getMonth() === previousMonth && txDate.getFullYear() === previousYear;
+        });
+
+        const calculateCategoryTotals = (transactions) => {
+          return transactions.reduce((acc, tx) => {
+            if (tx.debit > 0) {
+              const category = tx.category || 'Uncategorized';
+              acc[category] = (acc[category] || 0) + tx.debit;
+            }
+            return acc;
+          }, {});
+        };
+
+        const currentMonthTotals = calculateCategoryTotals(currentMonthTransactions);
+        const previousMonthTotals = calculateCategoryTotals(previousMonthTransactions);
+
+        const trends = CATEGORIES.map((category) => {
+          const current = currentMonthTotals[category] || 0;
+          const previous = previousMonthTotals[category] || 0;
+          const change = previous > 0 ? ((current - previous) / previous) * 100 : 0;
+          return {
+            category,
+            change: change.toFixed(1), // Percentage change
+            amount: current, // Current month's spending
+            previousAmount: previous, // Previous month's spending
+            type: change > 0 ? 'increase' : change < 0 ? 'decrease' : 'neutral',
+          };
+        });
+
+        setSpendingTrends(trends);
+
       } catch (error) {
         console.error('Error fetching data:', error.message);
       } finally {
@@ -455,38 +562,38 @@ export default function SpendingInsightsPage() {
         return "Your financial habits are being evaluated.";
     }
   };
-  
+
   return (
     <div style={styles.container}>
       <header style={styles.header}>
         <h1 style={styles.title}>Spending Insights & Analysis</h1>
         <div style={styles.filterContainer}>
           <div style={styles.filterDropdown}>
-            <button 
-              style={styles.dropdownButton} 
+            <button
+              style={styles.dropdownButton}
               onClick={() => setDropdownOpen(!dropdownOpen)}
             >
               <Calendar size={16} />
               <span>{timeRange.charAt(0).toUpperCase() + timeRange.slice(1)}</span>
               <ChevronDown size={16} />
             </button>
-            
+
             {dropdownOpen && (
               <div style={styles.dropdownMenu}>
-                <button 
-                  style={styles.dropdownItem} 
+                <button
+                  style={styles.dropdownItem}
                   onClick={() => handleTimeRangeChange('week')}
                 >
                   Week
                 </button>
-                <button 
-                  style={styles.dropdownItem} 
+                <button
+                  style={styles.dropdownItem}
                   onClick={() => handleTimeRangeChange('month')}
                 >
                   Month
                 </button>
-                <button 
-                  style={styles.dropdownItem} 
+                <button
+                  style={styles.dropdownItem}
                   onClick={() => handleTimeRangeChange('year')}
                 >
                   Year
@@ -494,9 +601,9 @@ export default function SpendingInsightsPage() {
               </div>
             )}
           </div>
-          
+
           <div style={styles.chartToggle}>
-            <button 
+            <button
               style={{
                 ...styles.toggleButton,
                 ...(chartType === 'pie' ? styles.toggleButtonActive : {})
@@ -505,7 +612,7 @@ export default function SpendingInsightsPage() {
             >
               Pie Chart
             </button>
-            <button 
+            <button
               style={{
                 ...styles.toggleButton,
                 ...(chartType === 'bar' ? styles.toggleButtonActive : {})
@@ -517,10 +624,10 @@ export default function SpendingInsightsPage() {
           </div>
         </div>
       </header>
-      
+
       <div style={styles.dashboardGrid}>
         {/* Chart section */}
-        <div style={{...styles.card, ...styles.fullWidthCard}}>
+        <div style={{ ...styles.card, ...styles.fullWidthCard }}>
           <h2 style={styles.cardTitle}>Spending by Category</h2>
           {loading ? (
             <div style={styles.loading}>Loading...</div>
@@ -542,30 +649,26 @@ export default function SpendingInsightsPage() {
                       <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                     ))}
                   </Pie>
-                  <Tooltip formatter={(value) => `$${value}`} />
+                  <Tooltip formatter={(value) => `₹${value}`} />
                   <Legend layout="vertical" verticalAlign="middle" align="right" />
                 </PieChart>
               ) : (
                 <BarChart
-                  data={transactions}
-                  margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="month" />
-                  <YAxis />
-                  <Tooltip formatter={(value) => `$${value}`} />
-                  <Legend />
-                  <Bar dataKey="Food and Dining" fill={COLORS[0]} />
-                  <Bar dataKey="Transportation" fill={COLORS[1]} />
-                  <Bar dataKey="Shopping" fill={COLORS[2]} />
-                  <Bar dataKey="Bills and Utilities" fill={COLORS[3]} />
-                  <Bar dataKey="Entertainment" fill={COLORS[4]} />
-                </BarChart>
+  data={pieChartData} // Use the same data as the PieChart
+  margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+>
+  <CartesianGrid strokeDasharray="3 3" />
+  <XAxis dataKey="name" /> {/* Use 'name' for the X-axis */}
+  <YAxis />
+  <Tooltip formatter={(value) => `₹${value}`} />
+  <Legend />
+  <Bar dataKey="value" fill={COLORS[0]} /> {/* Use 'value' for the bar height */}
+</BarChart>
               )}
             </ResponsiveContainer>
           )}
         </div>
-        
+
         {/* Unusual spending alerts */}
         {/* <div style={styles.card}>
           <h2 style={styles.cardTitle}>
@@ -590,7 +693,7 @@ export default function SpendingInsightsPage() {
             <div style={styles.emptyState}>No unusual spending detected.</div>
           )}
         </div> */}
-        
+
         {/* User profile/cluster insights */}
         <div style={styles.card}>
           <h2 style={styles.cardTitle}>
@@ -604,24 +707,37 @@ export default function SpendingInsightsPage() {
               </span>
             </div>
             <p style={styles.profileDescription}>{getProfileDescription()}</p>
-            
+
             <div style={styles.profileMetrics}>
               <div style={styles.metricItem}>
                 <span style={styles.metricLabel}>Monthly Avg. Spending</span>
-                <span style={styles.metricValue}>$2,450</span>
+                <span style={styles.metricValue}>
+                  {new Intl.NumberFormat('en-IN', {
+                    style: 'currency',
+                    currency: 'INR',
+                    maximumFractionDigits: 0
+                  }).format(profileMetrics.monthlySpending)}
+                </span>
               </div>
               <div style={styles.metricItem}>
                 <span style={styles.metricLabel}>Savings Rate</span>
-                <span style={styles.metricValue}>18%</span>
+                <span style={styles.metricValue}>{profileMetrics.savingsRate.toFixed(1)}%</span>
               </div>
               <div style={styles.metricItem}>
-                <span style={styles.metricLabel}>Top Category</span>
-                <span style={styles.metricValue}>Food & Dining</span>
+                <span style={styles.metricLabel}>Highest Saving Category</span>
+                <span style={styles.metricValue}>{profileMetrics.highestSavingCategory.name}</span>
+                {/* <span style={styles.metricSubValue}>
+                  {new Intl.NumberFormat('en-IN', {
+                    style: 'currency',
+                    currency: 'INR',
+                    maximumFractionDigits: 0
+                  }).format(profileMetrics.highestSavingCategory.amount)}
+                </span> */}
               </div>
             </div>
           </div>
         </div>
-        
+
         {/* Monthly trends */}
         <div style={styles.card}>
           <h2 style={styles.cardTitle}>
@@ -629,54 +745,36 @@ export default function SpendingInsightsPage() {
             Spending Trends
           </h2>
           <div style={styles.trendsList}>
-            <div style={styles.trendItem}>
-              <div style={styles.trendInfo}>
-                <span style={styles.trendCategory}>Food & Dining</span>
-                <span style={styles.trendChange('increase')}>
-                  <ArrowUpRight size={16} /> 12%
+            {spendingTrends.map((trend, index) => (
+              <div key={index} style={styles.trendItem}>
+                <div style={styles.trendInfo}>
+                  <span style={styles.trendCategory}>{trend.category}</span>
+                  <span style={styles.trendChange(trend.type)}>
+                    {trend.type === 'increase' && <ArrowUpRight size={16} />}
+                    {trend.type === 'decrease' && <ArrowUpRight size={16} style={styles.rotated} />}
+                    {trend.type === 'neutral' && `${Number(trend.amount.toString().slice(0, 2))}%`}
+                    {trend.type !== 'neutral' && ` ${Number(trend.amount.toString().slice(0, 2))}%`}
+                  </span>
+                </div>
+                <div style={styles.trendBar}>
+                  <div
+                    style={{
+                      ...styles.trendProgress(trend.type),
+                      width: `${Math.min(Number(trend.amount.toString().slice(0, 2)), 100)}%`, // Dynamically set width based on ratio
+                    }}
+                  ></div>
+                </div>
+                <span style={styles.trendAmount}>
+                  {new Intl.NumberFormat('en-IN', {
+                    style: 'currency',
+                    currency: 'INR',
+                    maximumFractionDigits: 0,
+                  }).format(trend.amount)}{' '}
+                  this month
                 </span>
+                
               </div>
-              <div style={styles.trendBar}>
-                <div style={styles.trendProgress('increase', '75%')}></div>
-              </div>
-              <span style={styles.trendAmount}>$540 this month</span>
-            </div>
-            <div style={styles.trendItem}>
-              <div style={styles.trendInfo}>
-                <span style={styles.trendCategory}>Transportation</span>
-                <span style={styles.trendChange('decrease')}>
-                  <ArrowUpRight size={16} style={styles.rotated} /> 8%
-                </span>
-              </div>
-              <div style={styles.trendBar}>
-                <div style={styles.trendProgress('decrease', '45%')}></div>
-              </div>
-              <span style={styles.trendAmount}>$190 this month</span>
-            </div>
-            <div style={styles.trendItem}>
-              <div style={styles.trendInfo}>
-                <span style={styles.trendCategory}>Shopping</span>
-                <span style={styles.trendChange('increase')}>
-                  <ArrowUpRight size={16} /> 25%
-                </span>
-              </div>
-              <div style={styles.trendBar}>
-                <div style={styles.trendProgress('increase', '85%')}></div>
-              </div>
-              <span style={styles.trendAmount}>$400 this month</span>
-            </div>
-            <div style={styles.trendItem}>
-              <div style={styles.trendInfo}>
-                <span style={styles.trendCategory}>Bills & Utilities</span>
-                <span style={styles.trendChange('neutral')}>
-                  0%
-                </span>
-              </div>
-              <div style={styles.trendBar}>
-                <div style={styles.trendProgress('neutral', '60%')}></div>
-              </div>
-              <span style={styles.trendAmount}>$350 this month</span>
-            </div>
+            ))}
           </div>
         </div>
       </div>

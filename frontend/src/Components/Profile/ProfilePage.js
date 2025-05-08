@@ -1,7 +1,7 @@
 // ProfilePage.jsx
 import { useState, useEffect } from 'react';
 import styles from './ProfilePage.module.css';
-import { FiEdit2, FiX, FiSave, FiCalendar, FiCreditCard, FiEye } from 'react-icons/fi';
+import { FiEdit2, FiX, FiSave, FiCalendar, FiCreditCard, FiEye, FiUpload } from 'react-icons/fi';
 import { useAuth } from '../../contexts/AuthContext';
 import axios from 'axios';
 
@@ -38,6 +38,9 @@ const ProfilePage = () => {
   const [filteredTransactions, setFilteredTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [csvFile, setCsvFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState(null);
 
   // Fetch user accounts
   useEffect(() => {
@@ -203,6 +206,46 @@ const ProfilePage = () => {
       currency: currency,
       maximumFractionDigits: 0
     }).format(amount);
+  };
+
+  // Add this new function to handle CSV upload
+  const handleCsvUpload = async (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    if (file.type !== 'text/csv') {
+      setUploadError('Please upload a valid CSV file');
+      return;
+    }
+
+    setCsvFile(file);
+    setUploading(true);
+    setUploadError(null);
+
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('accountId', selectedAccount._id);
+
+      const response = await axios.post('http://localhost:5000/transaction/upload-csv', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      if (response.data.success) {
+        // Refresh transactions after successful upload
+        fetchAccountTransactions(selectedAccount._id, startDate, endDate);
+        setCsvFile(null);
+      } else {
+        setUploadError('Failed to process CSV file');
+      }
+    } catch (error) {
+      console.error('Error uploading CSV:', error);
+      setUploadError('Failed to upload CSV file. Please try again.');
+    } finally {
+      setUploading(false);
+    }
   };
 
   if (loading && !dbUser) {
@@ -391,6 +434,18 @@ const ProfilePage = () => {
                   >
                     <FiCalendar /> {showDateFilter ? 'Hide Filter' : 'Date Filter'}
                   </button>
+                  <input
+                    type="file"
+                    accept=".csv"
+                    onChange={handleCsvUpload}
+                    style={{ display: 'none' }}
+                    id="csvUpload"
+                    disabled={uploading}
+                  />
+                  <label htmlFor="csvUpload" className={styles.uploadButton}>
+                    <FiUpload /> {uploading ? 'Uploading...' : 'Upload CSV'}
+                  </label>
+                  {uploadError && <div className={styles.uploadError}>{uploadError}</div>}
                 </div>
               </div>
 

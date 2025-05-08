@@ -4,7 +4,7 @@ const budgetController = require('../Controllers/budgetController');
 
 // Get all budgets
 router.get('/', budgetController.getAllBudgets);
-
+router.get('/userid/:userId', budgetController.getBudgetsByUserId);
 // Get budget by ID
 router.get('/:id', budgetController.getBudgetById);
 
