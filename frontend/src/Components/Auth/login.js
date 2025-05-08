@@ -6,7 +6,7 @@ import './login.css';
 
 const Login = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [formData, setFormData] = useState({ email: 'aarav1@example.com', password: 'Password@123' });
   const [errors, setErrors] = useState({
     email: '',
     password: '',
@@ -137,9 +137,10 @@ const Login = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              placeholder=" "
+              placeholder=""
               className={errors.email ? 'error' : ''}
               maxLength="50"
+              
             />
             <label>Email</label>
             {errors.email && <span className="field-error">{errors.email}</span>}
@@ -152,7 +153,7 @@ const Login = () => {
               value={formData.password}
               onChange={handleChange}
               required
-              placeholder=" "
+              placeholder=""
               className={errors.password ? 'error' : ''}
               minLength="6"
               maxLength="20"

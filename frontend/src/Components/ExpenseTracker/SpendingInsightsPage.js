@@ -469,16 +469,24 @@ export default function SpendingInsightsPage() {
           .sort(([, a], [, b]) => b - a)[0] || { name: 'No Data', amount: 0 };
 
         // Calculate highest saving category
+        console.log('Current Month Transactions:', currentMonthTransactions);
         const savingByCategory = currentMonthTransactions.reduce((acc, tx) => {
-          if (tx.credit > 0) { // Only consider credit transactions (savings)
+          console.log('Transaction:', tx.category, tx.credit);
+          if (tx.debit > 0 && tx.category?.toLowerCase() !== 'na') {
             const category = tx.category || 'Uncategorized';
-            acc[category] = (acc[category] || 0) + tx.credit;
+            acc[category] = (acc[category] || 0) + tx.debit;
           }
           return acc;
         }, {});
 
+        console.log('Saving by Category:', savingByCategory);
+
         const highestSavingCategory = Object.entries(savingByCategory)
-          .sort(([, a], [, b]) => b - a)[0] || { name: 'No Data', amount: 0 };
+          .sort(([, a], [, b]) => b - a)[0] || ['No Data', 0];
+
+        console.log('Highest Spending Category:', highestSavingCategory[0], 'with amount:', highestSavingCategory[1]);
+
+        console.log('Highest Saving Category:', highestSavingCategory);
 
         setProfileMetrics({
           monthlySpending,
@@ -654,16 +662,16 @@ export default function SpendingInsightsPage() {
                 </PieChart>
               ) : (
                 <BarChart
-  data={pieChartData} // Use the same data as the PieChart
-  margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
->
-  <CartesianGrid strokeDasharray="3 3" />
-  <XAxis dataKey="name" /> {/* Use 'name' for the X-axis */}
-  <YAxis />
-  <Tooltip formatter={(value) => `₹${value}`} />
-  <Legend />
-  <Bar dataKey="value" fill={COLORS[0]} /> {/* Use 'value' for the bar height */}
-</BarChart>
+                  data={pieChartData} // Use the same data as the PieChart
+                  margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" /> {/* Use 'name' for the X-axis */}
+                  <YAxis />
+                  <Tooltip formatter={(value) => `₹${value}`} />
+                  <Legend />
+                  <Bar dataKey="value" fill={COLORS[0]} /> {/* Use 'value' for the bar height */}
+                </BarChart>
               )}
             </ResponsiveContainer>
           )}
@@ -724,7 +732,7 @@ export default function SpendingInsightsPage() {
                 <span style={styles.metricValue}>{profileMetrics.savingsRate.toFixed(1)}%</span>
               </div>
               <div style={styles.metricItem}>
-                <span style={styles.metricLabel}>Highest Saving Category</span>
+                <span style={styles.metricLabel}>Highest Spending Category</span>
                 <span style={styles.metricValue}>{profileMetrics.highestSavingCategory.name}</span>
                 {/* <span style={styles.metricSubValue}>
                   {new Intl.NumberFormat('en-IN', {
@@ -772,7 +780,7 @@ export default function SpendingInsightsPage() {
                   }).format(trend.amount)}{' '}
                   this month
                 </span>
-                
+
               </div>
             ))}
           </div>

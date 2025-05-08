@@ -215,7 +215,7 @@ const handleSavePrediction = async () => {
     others: predictedBudget.others || 0,
     transportation: predictedBudget.transportation || 0,
     billsAndUtilities: predictedBudget.billsAndUtilities || 0,
-    limitAmount: predictedBudget.limitAmount || 0, // Optional
+    limitAmount: predictedBudget.limitAmount || 71400, // Optional
     saving: predictedBudget.savings || 0, // Rename 'savings' to 'saving'
     month,
     year,
@@ -511,31 +511,7 @@ const handleSavePrediction = async () => {
         </button>
       </div>
       
-      {/* Target Saving Section */}
-      <div style={styles.targetSavingContainer}>
-        <h2 style={styles.sectionTitle}>Set Target Saving</h2>
-        <div style={styles.inputContainer}>
-          <div style={styles.inputWrapper}>
-            <span style={styles.inputIcon}>
-              <DollarSign size={16} />
-            </span>
-            <input
-              type="number"
-              value={targetSaving}
-              onChange={(e) => setTargetSaving(e.target.value)}
-              placeholder="Enter target saving amount"
-              style={styles.savingInput}
-            />
-          </div>
-          <button 
-            onClick={handleGenerateBudget}
-            style={styles.generateButton}
-          >
-            Generate
-          </button>
-        </div>
-      </div>
-      
+    
       {/* Prediction Modal */}
       {showPredictionModal && predictedBudget && (
         <div
@@ -694,13 +670,7 @@ const handleSavePrediction = async () => {
               alignItems: 'center',
               marginBottom: '1rem'
             }}>
-              <h2 style={{
-                fontSize: '1.25rem',
-                fontWeight: 700,
-                color: '#4a3aff'
-              }}>
-                Generated Budget with ${targetSaving} Saving
-              </h2>
+              
               <button 
                 onClick={() => setShowTargetSavingModal(false)}
                 style={{

@@ -21,12 +21,12 @@ const goalSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    enum: ["phone","car","bike","tv","fridge","property","laptop","ac","others"],
+    enum: ["car","bike","others"],
     default: "other"
   },
   upfront: {
     type: Number,
-    default: 0
+    default: 20
   },
   emi: {
     type: Number,
@@ -34,7 +34,8 @@ const goalSchema = new mongoose.Schema({
   },
   duration: {
     type: Number, // duration in months
-    required: true
+    required: false,
+    default:6
   },
   remainingAmount: {
     type: Number,

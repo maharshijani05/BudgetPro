@@ -172,7 +172,7 @@ const subscriptions = transactions.filter(
       },
       {
         title: 'Savings Target',
-        description: `You are ${Math.round(savingsProgress)}% of the way to your monthly savings goal`,
+        description: `You are 30% of the way to your monthly savings goal`,
         icon: <DollarSign className={styles.insightIcon} />
       },
       {
@@ -219,7 +219,10 @@ const subscriptions = transactions.filter(
       name: 'Chat with AI',
       icon: <MessageSquare />,
       color: '#6366f1',
-      onClick: () => navigate('/chat')
+      onClick: () =>  {
+        window.location.href = 'https://budgetpropfa.streamlit.app/';
+      }
+      
     },
     {
       name: 'Spending Insights',
@@ -237,7 +240,7 @@ const subscriptions = transactions.filter(
       name: 'Goal Tracker',
       icon: <PieChart />,
       color: '#f59e0b',
-      onClick: () => navigate('/profile')
+      onClick: () => navigate('/goalTracker')
     }
   ];
 

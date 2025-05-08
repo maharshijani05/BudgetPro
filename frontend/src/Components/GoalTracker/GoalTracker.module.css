@@ -1,0 +1,314 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title {
+  color: #4a3aff;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.formContainer {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.inputGroup {
+  margin-bottom: 1.5rem;
+}
+
+.inputGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.input:focus,
+.select:focus {
+  border-color: #4a3aff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(74, 58, 255, 0.2);
+}
+
+.analyzeButton {
+  background-color: #4a3aff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.analyzeButton:hover {
+  background-color: #3b2ecc;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.saveButton, .viewGoalsButton {
+  background-color: #4a3aff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  flex: 1;
+  transition: background-color 0.3s;
+}
+
+.saveButton:hover, .viewGoalsButton:hover {
+  background-color: #3b2ecc;
+}
+
+.viewGoalsButton {
+  background-color: white;
+  color: #4a3aff;
+  border: 2px solid #4a3aff;
+}
+
+.viewGoalsButton:hover {
+  background-color: #f0f0ff;
+}
+
+.analysisContainer {
+  background-color: #f0f0ff;
+  border-left: 4px solid #4a3aff;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 5px 5px 0;
+}
+
+.message {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.message:last-of-type {
+  margin-bottom: 1.5rem;
+}
+
+.budgetButton {
+  background-color: #fff;
+  color: #4a3aff;
+  border: 2px solid #4a3aff;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.budgetButton:hover {
+  background-color: #4a3aff;
+  color: white;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: white;
+  border-radius: 10px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.modalTitle {
+  color: #4a3aff;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.budgetForm {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.budgetInputGroup {
+  margin-bottom: 1rem;
+}
+
+.budgetInputGroup label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.budgetInput {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  transition: border-color 0.3s;
+}
+
+.budgetInput:focus {
+  border-color: #4a3aff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(74, 58, 255, 0.2);
+}
+
+.budgetActions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.saveBudgetButton,
+.cancelButton {
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.saveBudgetButton {
+  background-color: #4a3aff;
+  color: white;
+  border: none;
+  flex: 1;
+  margin-right: 0.5rem;
+}
+
+.saveBudgetButton:hover {
+  background-color: #3b2ecc;
+}
+
+.cancelButton {
+  background-color: #fff;
+  color: #666;
+  border: 1px solid #ddd;
+  flex: 1;
+  margin-left: 0.5rem;
+}
+
+.cancelButton:hover {
+  background-color: #f5f5f5;
+}
+
+.goalsContainer {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.goalsTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.goalsTable th, 
+.goalsTable td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #eee;
+}
+
+.goalsTable th {
+  background-color: #f5f5ff;
+  color: #4a3aff;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+}
+
+.goalsTable tr:hover {
+  background-color: #f9f9ff;
+}
+
+.noGoals {
+  text-align: center;
+  color: #666;
+  padding: 2rem 0;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .budgetForm {
+    grid-template-columns: 1fr;
+  }
+  
+  .budgetActions {
+    flex-direction: column;
+  }
+  
+  .saveBudgetButton,
+  .cancelButton {
+    margin: 0.5rem 0;
+  }
+  
+  .buttonContainer {
+    flex-direction: column;
+  }
+  
+  .saveButton,
+  .viewGoalsButton {
+    margin: 0.5rem 0;
+  }
+  
+  .goalsTable {
+    font-size: 0.8rem;
+  }
+  
+  .goalsTable th, 
+  .goalsTable td {
+    padding: 0.5rem;
+  }
+}

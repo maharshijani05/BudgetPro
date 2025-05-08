@@ -13,6 +13,7 @@ import ChatbotPage from './Components/Chatbot/ChatbotPage';
 import FAQChatbotPage from './Components/Chatbot/FAQChatbotPage';
 import SpendingInsightsPage from './Components/ExpenseTracker/SpendingInsightsPage';
 import BudgetPlannerPage from './Components/budgetPlanner/budgetPlannerPage';
+import GoalTracker from './Components/GoalTracker/GoalTracker';
 
 function Layout() {
   const location = useLocation();
@@ -57,7 +58,7 @@ const handleProfile = () => {
             <a href="/" style={{ color: 'white', textDecoration: 'none' }}>Home</a>
             <a href="/dashboard" style={{ color: 'white', textDecoration: 'none' }}>Dashboard</a>
             
-            <a href="/FAQ" style={{ color: 'white', textDecoration: 'none' }}>FAQs</a>
+            <a href="https://budgetprofaq.streamlit.app/" style={{ color: 'white', textDecoration: 'none' }}>FAQs</a>
           </div>
           <div style={{ position: 'relative' }}>
   <button
@@ -116,6 +117,7 @@ const handleProfile = () => {
         <Route path='/chat' element={<ChatbotPage />} />
         <Route path='/FAQ' element={<FAQChatbotPage />} />
         <Route path='/spendingInsights' element={<SpendingInsightsPage />} />
+        <Route path='/goalTracker' element={<GoalTracker />} />
         <Route path='/budget' element={<BudgetPlannerPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>

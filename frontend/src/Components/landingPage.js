@@ -418,7 +418,7 @@ const LandingPage = () => {
               achieve savings goals.
             </p>
             <div style={styles.ctaButtons}>
-              <button style={styles.primaryButton} onClick={() => navigate('/FAQ')}>
+              <button style={styles.primaryButton} onClick={() => window.location.href = 'https://budgetprofaq.streamlit.app/'}>
                 Ask Anything
                 <ChevronRight size={20} />
               </button>
