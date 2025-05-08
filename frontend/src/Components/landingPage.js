@@ -383,7 +383,7 @@ const LandingPage = () => {
       <nav style={styles.navbar}>
         <div style={styles.logo}>
           <span style={styles.logoIcon}>💰</span>
-          <span style={styles.logoText}>SmartFinance</span>
+          <span style={styles.logoText}>BudgetPro</span>
         </div>
         
         <div style={styles.authButtons}>
