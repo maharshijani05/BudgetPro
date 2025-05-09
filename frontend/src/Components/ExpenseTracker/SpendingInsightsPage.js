@@ -374,7 +374,7 @@ export default function SpendingInsightsPage() {
       setLoading(true);
       try {
         // Fetch accounts
-        const accountsResponse = await axios.get(`http://localhost:5000/account/getbyuserid/${dbUser._id}`);
+        const accountsResponse = await axios.get(`https://budgetpro-backend.onrender.com/account/getbyuserid/${dbUser._id}`);
         const accounts = accountsResponse.data;
         if (!accounts || accounts.length === 0) {
           throw new Error('No accounts found for the user.');
@@ -387,7 +387,7 @@ export default function SpendingInsightsPage() {
         }
 
         // Fetch transactions
-        const transactionsResponse = await axios.get(`http://localhost:5000/transaction/accountid/${currentAcc._id}`);
+        const transactionsResponse = await axios.get(`https://budgetpro-backend.onrender.com/transaction/accountid/${currentAcc._id}`);
         const data = transactionsResponse.data;
         if (!data || data.length === 0) {
           throw new Error('No transactions found for the account.');

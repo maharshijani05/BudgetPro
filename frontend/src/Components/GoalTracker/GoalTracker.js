@@ -61,7 +61,7 @@ const GoalTracker = () => {
     }
     
     try {
-      const response = await axios.get(`http://localhost:5000/goal/user/${dbUser._id}`);
+      const response = await axios.get(`https://budgetpro-backend.onrender.com/goal/user/${dbUser._id}`);
       if (response.data) {
         setAllGoals(response.data);
       }
@@ -106,7 +106,7 @@ const GoalTracker = () => {
     let savings = 0;
     try {
       console.log("Fetching accounts for user:", dbUser._id);
-      const res = await axios.get(`http://localhost:5000/account/getbyuserid/${dbUser._id}`);
+      const res = await axios.get(`https://budgetpro-backend.onrender.com/account/getbyuserid/${dbUser._id}`);
       const accounts = res.data;
       const savingAccount = accounts.find(acc => acc.accountType === 'savings');
       const accountId = savingAccount ? savingAccount._id : null;
@@ -160,7 +160,7 @@ const GoalTracker = () => {
       alert("Please fill in all required fields");
       return;
     }
-    const res = await axios.get(`http://localhost:5000/account/getbyuserid/${dbUser._id}`);
+    const res = await axios.get(`https://budgetpro-backend.onrender.com/account/getbyuserid/${dbUser._id}`);
       const accounts = res.data;
       const savingAccount = accounts.find(acc => acc.accountType === 'savings');
       const accountId = savingAccount ? savingAccount._id : null;
@@ -178,7 +178,7 @@ const GoalTracker = () => {
     };
   
     try {
-      const response = await axios.post("http://localhost:5000/goal", goalData, {
+      const response = await axios.post("https://budgetpro-backend.onrender.com/goal", goalData, {
         headers: {
           "Content-Type": "application/json",
         },

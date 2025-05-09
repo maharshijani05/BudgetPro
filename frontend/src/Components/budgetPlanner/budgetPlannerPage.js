@@ -158,7 +158,7 @@ export default function BudgetPlanner() {
     const fetchBudgets = async () => {
       try {
         setLoading(true); // Start loading
-        const response = await axios.get(`http://localhost:5000/budget/userid/${dbUser._id}`); // Replace with your API endpoint
+        const response = await axios.get(`https://budgetpro-backend.onrender.com/budget/userid/${dbUser._id}`); // Replace with your API endpoint
         setBudgets(response.data); // Update state with fetched budgets
       } catch (err) {
         console.error('Error fetching budgets:', err);
@@ -222,7 +222,7 @@ const handleSavePrediction = async () => {
   };
 
   try {
-    const response = await axios.post('http://localhost:5000/budget', newBudget);
+    const response = await axios.post('https://budgetpro-backend.onrender.com/budget', newBudget);
     console.log('Saved to DB:', response.data);
 
     // Update frontend state

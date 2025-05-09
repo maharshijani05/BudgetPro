@@ -175,7 +175,7 @@ const Signup = () => {
         income: parseFloat(formData.income)
       };
 
-      const response = await axios.post('http://localhost:5000/user', userData);
+      const response = await axios.post('https://budgetpro-backend.onrender.com/user', userData);
       
       if (response.status === 201) {
         window.location.replace('/dashboard');

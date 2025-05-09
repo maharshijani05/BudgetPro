@@ -18,7 +18,7 @@ export function AuthProvider({ children }) {
   const fetchDbUser = async (firebaseUser) => {
     try {
       console.log('Fetching database user for email:', firebaseUser.email);
-      const response = await axios.get(`http://localhost:5000/user/email/${firebaseUser.email}`);
+      const response = await axios.get(`https://budgetpro-backend.onrender.com/user/email/${firebaseUser.email}`);
       console.log('Database user data:', response.data);
       setDbUser(response.data);
       setError(null);

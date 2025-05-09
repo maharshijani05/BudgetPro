@@ -29,7 +29,7 @@ const Dashboard = () => {
       try {
         setLoading(true);
         console.log("Getting account data");
-        const accountsResponse = await axios.get(`http://localhost:5000/account/getbyuserid/${dbUser._id}`);
+        const accountsResponse = await axios.get(`https://budgetpro-backend.onrender.com/account/getbyuserid/${dbUser._id}`);
         console.log("Account data fetched:", accountsResponse.data);
         const accounts = accountsResponse.data;
 
@@ -42,7 +42,7 @@ const Dashboard = () => {
         console.log("Current account:", currentAcc);
 
         // Fetch transactions for current account
-        const transactionsResponse = await axios.get(`http://localhost:5000/transaction/accountid/${currentAcc._id}`);
+        const transactionsResponse = await axios.get(`https://budgetpro-backend.onrender.com/transaction/accountid/${currentAcc._id}`);
         console.log("Transactions data fetched:", transactionsResponse.data);
         const allTransactions = transactionsResponse.data;
         setTransactions(allTransactions);

@@ -49,7 +49,7 @@ const ProfilePage = () => {
       try {
         setLoading(true);
         console.log("Fetching accounts for user ID:", dbUser._id);
-        const response = await axios.get(`http://localhost:5000/account/getbyuserid/${dbUser._id}`);
+        const response = await axios.get(`https://budgetpro-backend.onrender.com/account/getbyuserid/${dbUser._id}`);
         console.log("Accounts fetched:", response.data);
         setAccounts(response.data);
         setError(null);
@@ -76,7 +76,7 @@ const ProfilePage = () => {
     try {
       setLoading(true);
       console.log("Fetching transactions for account ID:", accountId);
-      const response = await axios.get(`http://localhost:5000/transaction/accountid/${accountId}`);
+      const response = await axios.get(`https://budgetpro-backend.onrender.com/transaction/accountid/${accountId}`);
       console.log("Transactions fetched:", response.data);
       // Apply date filtering if provided
       let filteredTransactions = response.data;
@@ -134,7 +134,7 @@ const ProfilePage = () => {
     try {
       setLoading(true);
       console.log("Updating user profile:", editedUser);
-      const response = await axios.put(`http://localhost:5000/user/${dbUser._id}`, editedUser);
+      const response = await axios.put(`https://budgetpro-backend.onrender.com/user/${dbUser._id}`, editedUser);
         console.log("Profile updated:", response.data);
       setDbUser(response.data);
       console.log("Updated user data:", response.data);
@@ -227,7 +227,7 @@ const ProfilePage = () => {
       formData.append('file', file);
       formData.append('accountId', selectedAccount._id);
 
-      const response = await axios.post('http://localhost:5000/transaction/upload-csv', formData, {
+      const response = await axios.post('https://budgetpro-backend.onrender.com/transaction/upload-csv', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
