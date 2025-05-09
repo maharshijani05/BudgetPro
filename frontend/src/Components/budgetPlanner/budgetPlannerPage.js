@@ -85,7 +85,7 @@ const predictNextBudget = async (dbUser,previousBudgets) => {
     // Then send payload via fetch to Flask
     const payload = preparePayload(dbUser, previousBudgets);
     console.log('Payload:', payload); // Log the payload for debugging
-    const response = await axios.post('http://localhost:5001/predict-budget',payload);
+    const response = await axios.post('https://budgetpro-budgetpredictor.onrender.com/predict-budget',payload);
     console.log(response.data); // Log the response for debugging
     return response.data; // Assuming the API returns the predicted budget
   } catch (error) {
