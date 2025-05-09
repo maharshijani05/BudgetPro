@@ -220,7 +220,7 @@ const subscriptions = transactions.filter(
       icon: <MessageSquare />,
       color: '#6366f1',
       onClick: () =>  {
-        navigate('https://budgetpropfa.streamlit.app/');
+        window.location.href = 'https://budgetpropfa.streamlit.app/';
       }
       
     },

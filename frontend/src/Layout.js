@@ -14,7 +14,7 @@ import FAQChatbotPage from './Components/Chatbot/FAQChatbotPage';
 import SpendingInsightsPage from './Components/ExpenseTracker/SpendingInsightsPage';
 import BudgetPlannerPage from './Components/budgetPlanner/budgetPlannerPage';
 import GoalTracker from './Components/GoalTracker/GoalTracker';
-
+import {Link} from 'react-router-dom';
 
 function Layout() {
   const location = useLocation();
@@ -56,9 +56,9 @@ const handleProfile = () => {
           width: '98%'
         }}>
           <div style={{ display: 'flex', gap: '2rem' }}>
-            <a href="/" style={{ color: 'white', textDecoration: 'none' }}>Home</a>
-            <a href="/dashboard" style={{ color: 'white', textDecoration: 'none' }}>Dashboard</a>
-            
+            <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>Home</Link>
+    <Link to="/dashboard" style={{ color: 'white', textDecoration: 'none' }}>Dashboard</Link>
+
             <a href="https://budgetprofaq.streamlit.app/" style={{ color: 'white', textDecoration: 'none' }}>FAQs</a>
           </div>
           <div style={{ position: 'relative' }}>

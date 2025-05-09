@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { MessageCircle, PieChart, Target, TrendingUp, ChevronRight, ArrowLeft, ArrowRight, Briefcase, CreditCard, LineChart, Wallet, Shield, BarChart } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 const LandingPage = () => {
   // State for feature carousel
   const [activeSlide, setActiveSlide] = useState(0);
@@ -45,7 +45,7 @@ const LandingPage = () => {
     const interval = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % carouselItems.length);
     }, 3000);
-    
+
     return () => clearInterval(interval);
   }, [carouselItems.length]);
 
@@ -385,21 +385,21 @@ const LandingPage = () => {
           <span style={styles.logoIcon}>💰</span>
           <span style={styles.logoText}>BudgetPro</span>
         </div>
-        
+
         <div style={styles.authButtons}>
-        <button
-          style={styles.loginButton}
-          onClick={() => navigate('/login')}
-        >
-          Log In
-        </button>
-        <button
-          style={styles.signupButton}
-          onClick={() => navigate('/signup')}
-        >
-          Sign Up Free
-        </button>
-      </div>
+          <button
+            style={styles.loginButton}
+            onClick={() => navigate('/login')}
+          >
+            Log In
+          </button>
+          <button
+            style={styles.signupButton}
+            onClick={() => navigate('/signup')}
+          >
+            Sign Up Free
+          </button>
+        </div>
       </nav>
 
       {/* Main Content */}
@@ -412,20 +412,26 @@ const LandingPage = () => {
               Money Companion
             </h1>
             <p style={styles.heroDescription}>
-              Take control of your finances with an intelligent assistant that goes 
-              beyond tracking. Smart Financial Assistant uses AI and machine learning to 
-              understand your spending behavior, plan realistic budgets, help you set and 
+              Take control of your finances with an intelligent assistant that goes
+              beyond tracking. Smart Financial Assistant uses AI and machine learning to
+              understand your spending behavior, plan realistic budgets, help you set and
               achieve savings goals.
             </p>
             <div style={styles.ctaButtons}>
-              <button style={styles.primaryButton} onClick={() => navigate('https://budgetprofaq.streamlit.app/')}>
+
+
+              <Link
+                to="https://budgetprofaq.streamlit.app/"
+                rel="noopener noreferrer"
+                style={styles.primaryButton}
+              >
                 Ask Anything
-                <ChevronRight size={20} />
-              </button>
+              </Link>
+
               {/* <button style={styles.secondaryButton}>Watch Demo</button> */}
             </div>
           </div>
-          
+
           {/* Feature Carousel */}
           <div style={styles.heroImage}>
             <div style={styles.carouselContainer}>
@@ -433,7 +439,7 @@ const LandingPage = () => {
                 <div style={styles.carouselTitle}>Smart Financial Features</div>
                 <div style={styles.carouselDots}>
                   {carouselItems.map((item, index) => (
-                    <div 
+                    <div
                       key={index}
                       style={styles.carouselDot(activeSlide === index, item.color)}
                       onClick={() => goToSlide(index)}
@@ -441,7 +447,7 @@ const LandingPage = () => {
                   ))}
                 </div>
               </div>
-              
+
               <div style={styles.carouselContent}>
                 <div style={styles.slideTransition}>
                   <div style={styles.carouselIconContainer(carouselItems[activeSlide].color)}>
@@ -451,7 +457,7 @@ const LandingPage = () => {
                   <p style={styles.carouselItemDescription}>{carouselItems[activeSlide].description}</p>
                 </div>
               </div>
-              
+
               <div style={styles.carouselNavigation}>
                 <button style={styles.carouselButton} onClick={goToPrevSlide}>
                   <ArrowLeft size={20} color="#555" />
@@ -511,12 +517,12 @@ const LandingPage = () => {
           <button style={styles.footerCta}>Start Your Free Trial</button>
         </div>
       </footer> */}
-       {/* Footer */}
-<footer style={{ backgroundColor: '#4a3aff', height: '2cm', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-  <div className="container">
-    <p>&copy; 2025 FinBot. All rights reserved.</p>
-  </div>
-</footer>
+      {/* Footer */}
+      <footer style={{ backgroundColor: '#4a3aff', height: '2cm', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div className="container">
+          <p>&copy; 2025 FinBot. All rights reserved.</p>
+        </div>
+      </footer>
 
     </div>
   );
