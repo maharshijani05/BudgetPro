@@ -86,7 +86,7 @@ const Login = () => {
 
     try {
       await signInWithEmailAndPassword(auth, formData.email, formData.password);
-      window.location.replace('/dashboard');
+      window.location.replace('/dashboard/index.html');
 
     } catch (err) {
       if (err.code === 'auth/user-not-found') {
