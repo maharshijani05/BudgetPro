@@ -178,7 +178,7 @@ const Signup = () => {
       const response = await axios.post('https://budgetpro-backend.onrender.com/user', userData);
       
       if (response.status === 201) {
-        window.location.replace('/dashboard');
+        navigate('/dashboard');
 
       }
     } catch (error) {

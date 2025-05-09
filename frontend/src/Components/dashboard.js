@@ -208,7 +208,7 @@ const subscriptions = transactions.filter(
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      window.location.replace('/');
+      navigate('/');
     } catch (error) {
       console.error('Logout failed:', error);
     }
@@ -220,7 +220,7 @@ const subscriptions = transactions.filter(
       icon: <MessageSquare />,
       color: '#6366f1',
       onClick: () =>  {
-        window.location.href = 'https://budgetpropfa.streamlit.app/';
+        navigate('https://budgetpropfa.streamlit.app/');
       }
       
     },

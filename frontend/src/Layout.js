@@ -15,20 +15,21 @@ import SpendingInsightsPage from './Components/ExpenseTracker/SpendingInsightsPa
 import BudgetPlannerPage from './Components/budgetPlanner/budgetPlannerPage';
 import GoalTracker from './Components/GoalTracker/GoalTracker';
 
+
 function Layout() {
   const location = useLocation();
-
+  const navigate = useNavigate();
   const handleLogout = () => {
     auth.signOut()
       .then(() => {
-        window.location.replace('/');
+        navigate('/')
       })
       .catch((error) => {
         console.error('Logout failed:', error);
       });
   };
   const [dropdownOpen, setDropdownOpen] = useState(false);
-const navigate = useNavigate();
+
 
 const toggleDropdown = () => {
   setDropdownOpen(prev => !prev);
@@ -114,7 +115,7 @@ const handleProfile = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path='/chat' element={<ChatbotPage />} />
+        <Route path="/chat" element={<ChatbotPage />} />
         <Route path='/FAQ' element={<FAQChatbotPage />} />
         <Route path='/spendingInsights' element={<SpendingInsightsPage />} />
         <Route path='/goalTracker' element={<GoalTracker />} />
